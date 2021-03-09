@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProtocolController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Route::group(['middleware'=>'auth'],function () {
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    Route::get('/activity',[ActivityController::class,'index'])->name('activity');
+    Route::resource('protocols',ProtocolController::class);
+});
+
+require __DIR__.'/auth.php';
