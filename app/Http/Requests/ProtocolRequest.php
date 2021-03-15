@@ -32,14 +32,13 @@ class ProtocolRequest extends FormRequest
                 'incoming_protocol_date' => 'required|date',
             ];
         }elseif ($type == 'outgoing'){
-            $rules = [
-                'outgoing_protocol_date' => 'required|date',
-            ];
+            $rules = [];
         }
 
         $details = [
+            'protocol_date' => 'required|date',
             'type' => Rule::in(['incoming','outgoing']),
-            'sender' => 'required|string|max:80',
+            'creator' => 'required|string|max:80',
             'receiver' => 'required|string|max:80',
             'title' => 'required|string|max:100',
             'description' => 'nullable|string|max:500'

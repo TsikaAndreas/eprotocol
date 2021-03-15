@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redirect;
 
 class ProtocolController extends Controller
 {
@@ -39,11 +40,38 @@ class ProtocolController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ProtocolRequest $request
-     * @return void
+     * @return string[]
      */
     public function store(ProtocolRequest $request)
     {
-        dd($request->validated());
+        //get validated fields & assign them
+        $data = $request->validated();
+
+        $max_protocol_number = Protocol::max('protocol_number') + 1;
+
+        if(Protocol::where('protocol_number',$max_protocol_number)->first() !== null){
+            return ['message' => 'This protocol number already exists. Please try again!'];
+        }
+
+        //save protocol
+        $protocol = new Protocol();
+        $protocol->protocol_number = $max_protocol_number;
+        $protocol->protocol_date = $data['protocol_date'];
+        if ($data['type'] == 'incoming') {
+            $protocol->protocol = 'ΓΑΒ-ΕΙΣ-'.$protocol->protocol_number.'/'.$data['protocol_date'];
+            $protocol->incoming_protocol = $data['incoming_protocol'];
+            $protocol->incoming_protocol_date = $data['incoming_protocol_date'];
+        }elseif ($data['type'] == 'outgoing') {
+            $protocol->protocol = 'ΓΑΒ-ΕΞ-'.$protocol->protocol_number.'/'.$data['protocol_date'];
+        }
+        $protocol->status = 'Active';
+        $protocol->creator = $data['creator'];
+        $protocol->receiver = $data['receiver'];
+        $protocol->title = $data['title'];
+        $protocol->description = $data['description'];
+        $protocol->save();
+
+        return redirect()->back();
     }
 
     /**

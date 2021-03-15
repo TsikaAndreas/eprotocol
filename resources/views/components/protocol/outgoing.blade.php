@@ -4,13 +4,12 @@
     </div>
     <div class="form-section m-4">
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <x-form.label for="outgoing_protocol_date">
-                {{__('Ημερομηνία Εξερχόμενου')}}
-                <x-form.input id="outgoing_protocol_date" class="block mt-1"
-                              type="date" placeholder="DD/MM/YYYY"
-                              name="outgoing_protocol_date" value="{{old('outgoing_protocol_date')}}">
+            <x-form.label for="protocol_date">
+                {{__('Ημερομηνία Πρωτοκόλλου')}}
+                <x-form.input id="protocol_date" class="block mt-1"
+                              type="date" name="protocol_date" value="{{old('protocol_date')}}">
                 </x-form.input>
-                @error('outgoing_protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                @error('protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
         </div>
     </div>
@@ -22,11 +21,12 @@
     <div class="form-section m-4">
         <div class="form-group grid grid-cols-2 gap-x-8">
             <x-form.label for="author">
-                {{__('Αποστολέας')}}
-                <x-form.input id="author" class="block mt-1" type="text"
-                              placeholder="Όνομα Αποστολέα" name="sender" value="{{old('sender')}}">
+                {{__('Δημιουργός')}}
+                <x-form.input id="creator" class="block mt-1" type="text"
+                              placeholder="Δημιουργός Πρωτοκόλλου" name="creator"
+                              value="{{old('creator')}}">
                 </x-form.input>
-                @error('sender') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                @error('creator') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
             <x-form.label for="receiver">
                 {{__('παραλήπτης')}}
