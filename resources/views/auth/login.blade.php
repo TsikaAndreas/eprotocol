@@ -3,7 +3,7 @@
 
         <div class="text-center text-xl">
             <p class="text-xl font-bold">Welcome to e-Protocol</p>
-            <p class="uppercase my-6 text-3xl font-semibold">Log in</p>
+            <p class="uppercase my-6 text-3xl font-semibold">Login</p>
         </div>
 
         <!-- Session Status -->

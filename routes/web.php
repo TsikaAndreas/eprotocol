@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::group(['middleware'=>'auth'],function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
     Route::get('/activity',[ActivityController::class,'index'])->name('activity');
-    Route::resource('protocols',ProtocolController::class);
+    Route::resource('protocol',ProtocolController::class);
 });
 
 require __DIR__.'/auth.php';

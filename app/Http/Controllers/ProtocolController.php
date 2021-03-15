@@ -2,38 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProtocolRequest;
 use App\Models\Protocol;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProtocolController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    /*public function index()
     {
         //
-    }
+    }*/
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View|Response
      */
     public function create()
     {
-        return view('protocol',['title'=>'New Protocol']);
+        return view('protocol',['title'=>'Νέο Εισερχόμενο']);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ProtocolRequest $request
+     * @return void
      */
-    public function store(Request $request)
+    public function store(ProtocolRequest $request)
     {
         //
     }
@@ -41,8 +46,8 @@ class ProtocolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Protocol  $protocol
-     * @return \Illuminate\Http\Response
+     * @param Protocol $protocol
+     * @return void
      */
     public function show(Protocol $protocol)
     {
@@ -52,8 +57,8 @@ class ProtocolController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Protocol  $protocol
-     * @return \Illuminate\Http\Response
+     * @param Protocol $protocol
+     * @return void
      */
     public function edit(Protocol $protocol)
     {
@@ -63,9 +68,9 @@ class ProtocolController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Protocol  $protocol
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Protocol $protocol
+     * @return void
      */
     public function update(Request $request, Protocol $protocol)
     {
@@ -75,8 +80,8 @@ class ProtocolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Protocol  $protocol
-     * @return \Illuminate\Http\Response
+     * @param Protocol $protocol
+     * @return void
      */
     public function destroy(Protocol $protocol)
     {
