@@ -43,7 +43,7 @@ class ProtocolController extends Controller
      */
     public function store(ProtocolRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

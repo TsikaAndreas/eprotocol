@@ -4,19 +4,13 @@
     </div>
     <div class="form-section m-4">
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <x-form.label for="incoming_protocol_no">
-                {{__('Εισερχομένο Πρωτοκόλλο')}}
-                <x-form.input id="incoming_protocol_no" class="block mt-1"
-                              type="text" placeholder="{{__('Αριθμός Πρωτοκόλλου')}}"
-                              name="incoming_protocol_no">
-                </x-form.input>
-            </x-form.label>
-            <x-form.label for="incoming_protocol_date">
-                {{__('Ημερομηνία Εισερχόμενου')}}
-                <x-form.input id="incoming_protocol_date" class="block mt-1"
+            <x-form.label for="outgoing_protocol_date">
+                {{__('Ημερομηνία Εξερχόμενου')}}
+                <x-form.input id="outgoing_protocol_date" class="block mt-1"
                               type="date" placeholder="DD/MM/YYYY"
-                              name="incoming_protocol_date">
+                              name="outgoing_protocol_date" value="{{old('outgoing_protocol_date')}}">
                 </x-form.input>
+                @error('outgoing_protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
         </div>
     </div>
@@ -30,29 +24,33 @@
             <x-form.label for="author">
                 {{__('Αποστολέας')}}
                 <x-form.input id="author" class="block mt-1" type="text"
-                              placeholder="Όνομα Αποστολέα" name="sender">
+                              placeholder="Όνομα Αποστολέα" name="sender" value="{{old('sender')}}">
                 </x-form.input>
+                @error('sender') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
             <x-form.label for="receiver">
                 {{__('παραλήπτης')}}
                 <x-form.input id="receiver" class="block mt-1" type="text"
-                              placeholder="Όνομα παραλήπτη" name="receiver">
+                              placeholder="Όνομα παραλήπτη" name="receiver" value="{{old('receiver')}}">
                 </x-form.input>
+                @error('receiver') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
         </div>
         <div class="form-group">
             <x-form.label for="title">
                 {{__('Τίτλος')}}
                 <x-form.input id="title" class="block mt-1" type="text"
-                              placeholder="Τίτλος Πρωτοκόλλου" name="title">
+                              placeholder="Τίτλος Πρωτοκόλλου" name="title" value="{{old('title')}}">
                 </x-form.input>
+                @error('title') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
         </div>
         <div class="form-group">
             <x-form.label for="description">
                 {{__('Περιγραφή')}}
-                <x-form.textarea id="description" name="description" placeholder="Περιγραφή Πρωτοκόλλου">
+                <x-form.textarea id="description" name="description" placeholder="Περιγραφή Πρωτοκόλλου" value="{{old('description')}}">
                 </x-form.textarea>
+                @error('description') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
         </div>
     </div>

@@ -12,14 +12,15 @@
                     </div>
                     <div>
                         <x-form.cancel-button>{{__('Ακύρωση')}}</x-form.cancel-button>
-                        <x-form.submit-button>{{__('Υποβολή')}}</x-form.submit-button>
+                        <x-form.submit-button form="createProtocol">{{__('Υποβολή')}}</x-form.submit-button>
                     </div>
                 </div>
             </div>
             <div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <form action="{{route('protocol.store')}}" method="POST">
+                <form id="createProtocol" action="{{route('protocol.store')}}" method="POST">
                     @csrf
                     {{--Protocol Content--}}
+                    <input type="hidden" name="type" value="{{$type}}">
                     @if($type == 'incoming')
                         <x-protocol.incoming></x-protocol.incoming>
                     @elseif ($type == 'outgoing')
