@@ -48,7 +48,8 @@
         <div class="form-group">
             <x-form.label for="description">
                 {{__('Περιγραφή')}}
-                <x-form.textarea id="description" name="description" placeholder="Περιγραφή Πρωτοκόλλου" value="{{old('description')}}">
+                <x-form.textarea id="description" name="description" placeholder="Περιγραφή Πρωτοκόλλου">
+                    {{old('description')}}
                 </x-form.textarea>
                 @error('description') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProtocolRequest extends FormRequest
 {
@@ -27,24 +28,32 @@ class ProtocolRequest extends FormRequest
         $type = $this->request->get('type');
         if ($type == 'incoming'){
             $rules = [
-                'incoming_protocol' => 'required|string',
-                'incoming_protocol_date' => 'required|date_format:"d/m/Y"',
+                'incoming_protocol' => 'required|string|max:20',
+                'incoming_protocol_date' => 'required|date',
             ];
         }elseif ($type == 'outgoing'){
             $rules = [
-                'outgoing_protocol_date' => 'required|date_format:"d/m/Y"',
+                'outgoing_protocol_date' => 'required|date',
             ];
         }
 
         $details = [
-            'sender' => 'required|string',
-            'receiver' => 'required|string',
-            'title' => 'required|string',
-            'description' => 'nullable|string'
+            'type' => Rule::in(['incoming','outgoing']),
+            'sender' => 'required|string|max:80',
+            'receiver' => 'required|string|max:80',
+            'title' => 'required|string|max:100',
+            'description' => 'nullable|string|max:500'
         ];
 
         $rules = array_merge( $rules, $details);
 
         return $rules;
+    }
+
+    public function messages()
+    {
+        return [
+            'type.in' => 'The hidden input :attribute must be one of the following types: :values',
+        ];
     }
 }

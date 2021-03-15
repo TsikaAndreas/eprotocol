@@ -16,6 +16,11 @@
                     </div>
                 </div>
             </div>
+            @error('type')
+                <div id="content" class="bg-red-100 overflow-hidden shadow-sm sm:rounded-lg p-6 mb-5">
+                    <span> {{ $message }} </span>
+                </div>
+            @enderror
             <div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <form id="createProtocol" action="{{route('protocol.store')}}" method="POST">
                     @csrf
