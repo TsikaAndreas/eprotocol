@@ -32,12 +32,12 @@
                     </div>
                     <div x-show="selected == 0" class="bg-gray-800">
                         <a class="flex items-center mt-4 py-2 px-10 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                           href="{{route('protocol.create')}}">
+                           href="{{route('protocol.create',['type' => 'incoming'])}}">
                             <span><i class="fas fa-file-import"></i></span>
                             <span class="mx-3">{{__('Εισερχόμενο')}}</span>
                         </a>
                         <a class="flex items-center mt-4 py-2 px-10 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                           href="#">
+                           href="{{route('protocol.create',['type' => 'outgoing'])}}">
                             <span><i class="fas fa-file-export"></i></span>
                             <span class="mx-3">{{__('Εξερχόμενο')}}</span>
                         </a>

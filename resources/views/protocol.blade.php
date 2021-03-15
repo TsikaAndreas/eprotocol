@@ -20,7 +20,11 @@
                 <form action="{{route('protocol.store')}}" method="POST">
                     @csrf
                     {{--Protocol Content--}}
-                    <x-protocol.incoming-protocol></x-protocol.incoming-protocol>
+                    @if($type == 'incoming')
+                        <x-protocol.incoming></x-protocol.incoming>
+                    @elseif ($type == 'outgoing')
+                        <x-protocol.outgoing></x-protocol.outgoing>
+                    @endif
                 </form>
             </div>
         </div>

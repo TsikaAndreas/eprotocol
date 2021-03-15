@@ -25,11 +25,14 @@ class ProtocolController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param $type
      * @return Application|Factory|View|Response
      */
-    public function create()
+    public function create($type)
     {
-        return view('protocol',['title'=>'Νέο Εισερχόμενο']);
+        $title = ($type == 'incoming') ? 'Νέο Εισερχόμενο' : (($type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+
+        return view('protocol')->with(['title' => $title,'type' => $type]);
     }
 
     /**

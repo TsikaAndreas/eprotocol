@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProtocolController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,14 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [GeneralController::class,'slashRedirect']);
 
 Route::group(['middleware'=>'auth'],function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
     Route::get('/activity',[ActivityController::class,'index'])->name('activity');
-    Route::resource('protocol',ProtocolController::class);
+    Route::get('protocol/{type}',[ProtocolController::class,'create'])->name('protocol.create');
+    Route::resource('protocol',ProtocolController::class)->only(['store']);
 });
 
 require __DIR__.'/auth.php';
