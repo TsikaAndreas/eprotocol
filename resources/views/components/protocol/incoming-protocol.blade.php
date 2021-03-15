@@ -4,7 +4,7 @@
     </div>
     <div class="form-section m-4">
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <x-form.label for="incoming_protocol_no" class="">
+            <x-form.label for="incoming_protocol_no">
                 {{__('Εισερχομένο Πρωτοκόλλο')}}
                 <x-form.input id="incoming_protocol_no" class="block mt-1"
                               type="text" placeholder="{{__('Αριθμός Πρωτοκόλλου')}}"
