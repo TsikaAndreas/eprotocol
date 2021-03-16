@@ -12,7 +12,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('login') }}" class="mx-14 leading-6">
+        <form method="POST" action="{{ route('login') }}" class="sm:mx-6 md:mx-14 lg:mx-2 xl:mx-8 leading-6">
             @csrf
 
             <!-- Email Address -->
