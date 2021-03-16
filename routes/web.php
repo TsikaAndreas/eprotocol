@@ -26,7 +26,7 @@ Route::group(['middleware'=>'auth'],function () {
     Route::get('/activity',[ActivityController::class,'index'])->name('activity');
 
     Route::get('/protocol/{type}',[ProtocolController::class,'create'])->name('protocol.create');
-    Route::resource('protocol',ProtocolController::class)->only(['store']);
+    Route::resource('protocol',ProtocolController::class)->only(['store','edit']);
 
     Route::get('/records',[RecordsController::class,'index'])->name('records');
     Route::get('/records/list',[RecordsController::class,'getRecords'])->name('records.list');

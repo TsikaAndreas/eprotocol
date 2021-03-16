@@ -26,8 +26,8 @@
                     @csrf
                     {{--Protocol Content--}}
                     <input type="hidden" name="type" value="{{$type}}">
-                    @if($type == 'incoming')
-                        <x-protocol.incoming></x-protocol.incoming>
+                    @if($type == 'ingoing')
+                        <x-protocol.ingoing></x-protocol.ingoing>
                     @elseif ($type == 'outgoing')
                         <x-protocol.outgoing></x-protocol.outgoing>
                     @endif

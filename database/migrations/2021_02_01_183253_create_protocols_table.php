@@ -15,16 +15,16 @@ class CreateProtocolsTable extends Migration
     {
         Schema::create('protocols', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('protocol_number',)->unique();
+            $table->string('protocol')->nullable()->unique();
             $table->timestamp('protocol_date');
-            $table->string('protocol')->unique();
             $table->string('status');
-            $table->string('incoming_protocol',255)->nullable();
-            $table->timestamp('incoming_protocol_date')->nullable();
+            $table->string('type');
+            $table->string('ingoing_protocol',255)->nullable();
+            $table->timestamp('ingoing_protocol_date')->nullable();
             $table->string('creator',255);
             $table->string('receiver',255);
             $table->text('title');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->timestamp('canceled_at')->nullable();
         });

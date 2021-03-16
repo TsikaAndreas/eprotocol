@@ -13,21 +13,21 @@
             </x-form.label>
         </div>
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <x-form.label for="incoming_protocol">
+            <x-form.label for="ingoing_protocol">
                 {{__('Εισερχομένο Πρωτοκόλλο')}}
-                <x-form.input id="incoming_protocol" class="block mt-1"
+                <x-form.input id="ingoing_protocol" class="block mt-1"
                               type="text" placeholder="{{__('Αριθμός Πρωτοκόλλου')}}"
-                              name="incoming_protocol" value="{{old('incoming_protocol')}}">
+                              name="ingoing_protocol" value="{{old('ingoing_protocol')}}">
                 </x-form.input>
-                @error('incoming_protocol') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                @error('ingoing_protocol') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
-            <x-form.label for="incoming_protocol_date">
+            <x-form.label for="ingoing_protocol_date">
                 {{__('Ημερομηνία Εισερχόμενου')}}
-                <x-form.input id="incoming_protocol_date" class="block mt-1"
+                <x-form.input id="ingoing_protocol_date" class="block mt-1"
                               type="date" placeholder="DD/MM/YYYY"
-                              name="incoming_protocol_date" value="{{old('incoming_protocol_date')}}">
+                              name="ingoing_protocol_date" value="{{old('ingoing_protocol_date')}}">
                 </x-form.input>
-                @error('incoming_protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                @error('ingoing_protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>
         </div>
     </div>
