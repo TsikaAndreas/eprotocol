@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProtocolRequest;
 use App\Models\Protocol;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Redirect;
 
 class ProtocolController extends Controller
 {
@@ -39,7 +42,7 @@ class ProtocolController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ProtocolRequest $request
-     * @return string[]
+     * @return string
      */
     public function store(ProtocolRequest $request)
     {
@@ -63,51 +66,57 @@ class ProtocolController extends Controller
         $protocol->protocol = 'ΓΑΒ-ΕΙΣ-'.$protocol->id.'/'.$protocol->protocol_date;
         $protocol->update();
 
-        return redirect()->back();
+        return Redirect::route('protocol.show',$protocol->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Protocol $protocol
-     * @return void
+     * @param $id
+     * @return Application|Factory|View
      */
-    public function show(Protocol $protocol)
+    public function show($id)
     {
-        //
+        $protocol = Protocol::find($id);
+        $title = ($protocol->type == 'ingoing') ? 'Νέο Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+
+        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW']);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Protocol $protocol
-     * @return void
+     * @param $id
+     * @param ProtocolRequest $request
+     * @return Application|Factory|View|RedirectResponse
      */
-    public function edit(Protocol $protocol)
+    public function edit($id, ProtocolRequest $request)
     {
-        //
+//        $protocol = Protocol::find($id);
+//
+//        return Redirect::route('protocol.edit',$protocol);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param $id
+     * @param ProtocolRequest $request
      * @param Protocol $protocol
-     * @return void
+     * @return RedirectResponse
      */
-    public function update(Request $request, Protocol $protocol)
+    public function update($id,ProtocolRequest $request, Protocol $protocol)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Protocol $protocol
-     * @return void
-     */
-    public function destroy(Protocol $protocol)
-    {
-        //
+//        $data = $request->validated();
+//        $protocol = Protocol::find($id);
+//
+//        $protocol->protocol_date = $data['protocol_date'];
+//        $protocol->creator = $data['creator'];
+//        $protocol->receiver = $data['receiver'];
+//        $protocol->title = $data['title'];
+//        $protocol->description = $data['description'];
+//        $protocol->update();
+//
+//        return Redirect::route('protocol.show',$protocol->id);
     }
 }

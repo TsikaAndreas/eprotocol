@@ -25,8 +25,10 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::get('/activity',[ActivityController::class,'index'])->name('activity');
 
-    Route::get('/protocol/{type}',[ProtocolController::class,'create'])->name('protocol.create');
-    Route::resource('protocol',ProtocolController::class)->only(['store','edit']);
+    Route::get('/protocol/create/{type}',[ProtocolController::class,'create'])->name('protocol.create');
+    Route::post('/protocol/store',[ProtocolController::class,'store'])->name('protocol.store');
+    Route::get('/protocol/{id}',[ProtocolController::class,'show'])->name('protocol.show');
+//    Route::get('/protocol/{id}/edit',[ProtocolController::class,'edit'])->name('protocol.edit');
 
     Route::get('/records',[RecordsController::class,'index'])->name('records');
     Route::get('/records/list',[RecordsController::class,'getRecords'])->name('records.list');
