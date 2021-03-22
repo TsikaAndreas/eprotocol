@@ -8,12 +8,12 @@
         </div>
         <div>
             <x-form.cancel-button>{{__('Ακύρωση')}}</x-form.cancel-button>
-            <x-form.submit-button form="createProtocol">{{__('Υποβολή')}}</x-form.submit-button>
+            <x-form.submit-button form="updateProtocol">{{__('Υποβολή')}}</x-form.submit-button>
         </div>
     </div>
 </div>
 <div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-    <form id="createProtocol" action="{{route('protocol.edit',$protocol->id)}}" method="POST">
+    <form id="updateProtocol" action="{{route('protocol.update',$protocol->id)}}" method="POST">
         @method('PUT')
         @csrf
         @if($protocol->type == 'ingoing')

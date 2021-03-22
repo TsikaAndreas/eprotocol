@@ -2,8 +2,8 @@
     <div class="section-title mb-6 mt-2 border-b border-blue-800 text-blue-800">
         <h2 class="text-xl pl-4 pb-2">{{__("Στοιχεία Πρωτοκόλλου")}}</h2>
     </div>
-
     <div class="form-section m-4">
+{{--        @if(isset($mode) && $mode !== 'EDIT')--}}
         <div class="form-group grid grid-cols-2 gap-x-8">
             <x-form.label for="protocol_date">
                 {{__('Ημερομηνία Πρωτοκόλλου')}}
@@ -17,6 +17,7 @@
                 @endif
             </x-form.label>
         </div>
+{{--        @endif--}}
         <div class="form-group grid grid-cols-2 gap-x-8">
             <x-form.label for="ingoing_protocol">
                 {{__('Εισερχομένο Πρωτοκόλλο')}}

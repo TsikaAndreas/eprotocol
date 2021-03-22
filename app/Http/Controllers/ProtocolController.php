@@ -87,14 +87,14 @@ class ProtocolController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param $id
-     * @param ProtocolRequest $request
      * @return Application|Factory|View|RedirectResponse
      */
-    public function edit($id, ProtocolRequest $request)
+    public function edit($id)
     {
-//        $protocol = Protocol::find($id);
-//
-//        return Redirect::route('protocol.edit',$protocol);
+        $protocol = Protocol::find($id);
+        $title = ($protocol->type == 'ingoing') ? 'Νέο Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+
+        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT']);
     }
 
     /**
@@ -102,21 +102,22 @@ class ProtocolController extends Controller
      *
      * @param $id
      * @param ProtocolRequest $request
-     * @param Protocol $protocol
-     * @return RedirectResponse
+     * @return Application|Factory|View|RedirectResponse
      */
-    public function update($id,ProtocolRequest $request, Protocol $protocol)
+    public function update($id,ProtocolRequest $request)
     {
-//        $data = $request->validated();
-//        $protocol = Protocol::find($id);
-//
+        $data = $request->validated();
+        $protocol = Protocol::find($id);
+
 //        $protocol->protocol_date = $data['protocol_date'];
-//        $protocol->creator = $data['creator'];
-//        $protocol->receiver = $data['receiver'];
-//        $protocol->title = $data['title'];
-//        $protocol->description = $data['description'];
-//        $protocol->update();
-//
-//        return Redirect::route('protocol.show',$protocol->id);
+        $protocol->creator = $data['creator'];
+        $protocol->receiver = $data['receiver'];
+        $protocol->title = $data['title'];
+        $protocol->description = $data['description'];
+        $protocol->update();
+
+        $title = ($protocol->type == 'ingoing') ? 'Νέο Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+
+        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW']);
     }
 }
