@@ -8,7 +8,7 @@
          class="fixed inset-0 h-full w-full z-10" style="display: none;">
     </div>
     <div x-show="notificationOpen"
-         class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl overflow-hidden z-10 mt-24"
+         class="absolute right-0 w-80 bg-white rounded-lg shadow-xl overflow-hidden z-10 mt-24 border border-custom-indigo"
          style="width: 20rem; display: none;">
         <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
             <p class="text-sm mx-2">

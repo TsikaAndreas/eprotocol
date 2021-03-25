@@ -13,7 +13,7 @@
          style="display: none;">
     </div>
     <div x-show="dropdownOpen"
-         class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10 mt-28"
+         class="absolute right-0 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10 mt-24 border border-custom-indigo"
          style="display: none;">
 
         {{ $slot }}
