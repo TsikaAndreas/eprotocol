@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Redirect;
+
 class GeneralController extends Controller
 {
     public function slashRedirect()
     {
         if (!auth()->user()) {
-            return view('auth.login');
+            return Redirect::route('login');
         }
-        return redirect('/dashboard');
+        return Redirect::route('dashboard');
     }
 }
