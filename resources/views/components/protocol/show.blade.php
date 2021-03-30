@@ -8,7 +8,10 @@
         </div>
         <div>
             <x-form.cancel-button>{{__('Ακύρωση')}}</x-form.cancel-button>
-            <x-form.submit-button>{{__('Επεξεργασία')}}</x-form.submit-button>
+            <a id="editProtocol" type="button" class="bg-green-500 border border-green-500 hover:bg-green-600 text-white py-2 px-3"
+            href="{{route('protocol.edit',$protocol->id)}}">
+                {{__('Επεξεργασία')}}
+            </a>
         </div>
     </div>
 </div>
