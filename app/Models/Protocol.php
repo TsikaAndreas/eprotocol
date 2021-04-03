@@ -9,6 +9,9 @@ class Protocol extends Model
 {
     use HasFactory;
 
+    const in_prefix = 'ΓΑΒ-ΕΙΣ-';
+    const out_prefix = 'ΓΑΒ-ΕΞ-';
+
     protected $table = 'protocols';
 
     protected $fillable = ['protocol_number', 'protocol', 'protocol_date', 'type', 'status', 'ingoing_protocol', 'ingoing_protocol_date',

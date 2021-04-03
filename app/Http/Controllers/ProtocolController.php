@@ -46,7 +46,6 @@ class ProtocolController extends Controller
      */
     public function store(ProtocolRequest $request)
     {
-//        dd($request);
         $rules = $request->rules();
         $validateResult = sanitize($request->validated(), $rules);//
         if ($validateResult !== true) {
@@ -68,8 +67,11 @@ class ProtocolController extends Controller
         if ($protocol->type === 'ingoing'){
             $protocol->ingoing_protocol = $data['ingoing_protocol'];
             $protocol->ingoing_protocol_date = $data['ingoing_protocol_date'];
+            $protocol->protocol = Protocol::in_prefix.$protocol->id.'/'.$protocol->protocol_date;
+        } elseif($protocol->type === 'outgoing') {
+            $protocol->protocol = Protocol::out_prefix.$protocol->id.'/'.$protocol->protocol_date;
         }
-        $protocol->protocol = 'ΓΑΒ-ΕΙΣ-'.$protocol->id.'/'.$protocol->protocol_date;
+
         $protocol->update();
 
         return Redirect::route('protocol.show',$protocol->id);
@@ -120,8 +122,6 @@ class ProtocolController extends Controller
 
         $data = $request->validated();
         $protocol = Protocol::find($id);
-
-//        $protocol->protocol_date = $data['protocol_date'];
         $protocol->creator = $data['creator'];
         $protocol->receiver = $data['receiver'];
         $protocol->title = $data['title'];
