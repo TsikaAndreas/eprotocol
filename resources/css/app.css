@@ -4,6 +4,10 @@
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
 
+.input {
+    @apply mt-2 mb-2 appearance-none block w-full border border-red-600 rounded
+}
+
 textarea:focus, input:focus, button:focus {
     outline: none;
 }

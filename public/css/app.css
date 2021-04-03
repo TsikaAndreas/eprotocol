@@ -31736,6 +31736,20 @@ select{
           animation: bounce 1s infinite;
 }
 
+.input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  --tw-border-opacity: 1;
+  border-color: rgba(220, 38, 38, var(--tw-border-opacity));
+  border-radius: 0.25rem;
+  border-width: 1px;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%
+}
+
 textarea:focus, input:focus, button:focus {
   outline: none;
 }

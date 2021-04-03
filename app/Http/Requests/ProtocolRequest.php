@@ -44,6 +44,10 @@ class ProtocolRequest extends FormRequest
             'description' => 'nullable|string|max:500'
         ];
 
+        $files = [
+
+        ];
+
         $rules = array_merge( $rules, $details);
 
         return $rules;

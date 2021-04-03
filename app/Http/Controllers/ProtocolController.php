@@ -78,7 +78,7 @@ class ProtocolController extends Controller
     public function show($id)
     {
         $protocol = Protocol::find($id);
-        $title = ($protocol->type == 'ingoing') ? 'Νέο Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+        $title = ($protocol->type == 'ingoing') ? 'Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Εξερχόμενο' : abort(404));
 
         return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW']);
     }
@@ -92,7 +92,7 @@ class ProtocolController extends Controller
     public function edit($id)
     {
         $protocol = Protocol::find($id);
-        $title = ($protocol->type == 'ingoing') ? 'Νέο Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+        $title = ($protocol->type == 'ingoing') ? 'Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Εξερχόμενο' : abort(404));
 
         return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT']);
     }
@@ -116,7 +116,7 @@ class ProtocolController extends Controller
         $protocol->description = $data['description'];
         $protocol->update();
 
-        $title = ($protocol->type == 'ingoing') ? 'Νέο Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+        $title = ($protocol->type == 'ingoing') ? 'Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Εξερχόμενο' : abort(404));
 
         return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW']);
     }

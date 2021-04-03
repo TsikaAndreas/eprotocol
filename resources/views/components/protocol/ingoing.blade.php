@@ -106,3 +106,20 @@
         </div>
     </div>
 </div>
+
+<div id="protocol_files">
+    <div class="section-title mb-4 border-b border-blue-800 text-blue-800">
+        <h2 class="text-xl pl-4 pb-2">{{__('Έγγραφα')}}</h2>
+    </div>
+    <div class="form-section m-4">
+        <div class="form-group">
+            <x-form.label for="description">
+                {{__('Επιλέξτε αρχείο')}}
+                    <input type="file" name="file_0" placeholder="Επιλέξτε αρχείο" class="input block mt-1">
+                        {{isset($protocol) ? $protocol->file : old('file_0')}}
+                    @error('file_0') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+            </x-form.label>
+        </div>
+    </div>
+</div>
+
