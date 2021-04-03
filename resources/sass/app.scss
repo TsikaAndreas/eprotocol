@@ -1,0 +1,26 @@
+//Tailwindcss
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+//Webfonts
+$fa-font-path: "../webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+.custom-input {
+    @apply mt-2 mb-2 appearance-none block w-full border rounded;
+}
+.custom-label {
+    @apply mb-2 block capitalize tracking-wide text-gray-900 text-base;
+}
+.custom-textarea {
+    @apply mt-2 mb-2 appearance-none block w-full h-24 border rounded;
+}
+textarea:focus, input:focus, button:focus {
+    outline: none;
+}
+.text-end {
+    text-align: end;
+}
