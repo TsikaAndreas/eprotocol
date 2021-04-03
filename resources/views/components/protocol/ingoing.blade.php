@@ -115,7 +115,7 @@
         <div class="form-group">
             <x-form.label for="description">
                 {{__('Επιλέξτε αρχείο')}}
-                    <input type="file" name="file_0" placeholder="Επιλέξτε αρχείο" class="block mt-1">
+                    <input type="file" name="file[1]" placeholder="Επιλέξτε αρχείο" class="block mt-1">
                         {{isset($protocol) ? $protocol->file : old('file_0')}}
                     @error('file_0') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
             </x-form.label>

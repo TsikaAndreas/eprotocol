@@ -46,6 +46,12 @@ class ProtocolController extends Controller
      */
     public function store(ProtocolRequest $request)
     {
+//        dd($request);
+        $rules = $request->rules();
+        $validateResult = sanitize($request->validated(), $rules);//
+        if ($validateResult !== true) {
+            return $validateResult;
+        }
         $data = $request->validated();
 
         $protocol = Protocol::create([
@@ -102,10 +108,16 @@ class ProtocolController extends Controller
      *
      * @param $id
      * @param ProtocolRequest $request
-     * @return Application|Factory|View|RedirectResponse
+     * @return View|bool|RedirectResponse|Factory|Application|string
      */
     public function update($id,ProtocolRequest $request)
     {
+        $rules = $request->rules();
+        $validateResult = sanitize($request->validated(), $rules);//
+        if ($validateResult !== true) {
+            return $validateResult;
+        }
+
         $data = $request->validated();
         $protocol = Protocol::find($id);
 
