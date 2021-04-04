@@ -19,9 +19,9 @@
         @method('PUT')
         @csrf
         @if($protocol->type == 'ingoing')
-            <x-protocol.ingoing :protocol="$protocol"></x-protocol.ingoing>
+            <x-protocol.ingoing :protocol="$protocol" :mode="$preview"></x-protocol.ingoing>
         @elseif ($protocol->type == 'outgoing')
-            <x-protocol.outgoing :protocol="$protocol"></x-protocol.outgoing>
+            <x-protocol.outgoing :protocol="$protocol" :mode="$preview"></x-protocol.outgoing>
         @endif
     </form>
 </div>

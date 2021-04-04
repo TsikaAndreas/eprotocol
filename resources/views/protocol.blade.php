@@ -5,7 +5,7 @@
             @if(isset($preview_mode) && $preview_mode === 'PREVIEW')
                 <x-protocol.show :protocol="$protocol" :preview="$preview_mode"></x-protocol.show>
             @elseif(isset($preview_mode) && $preview_mode === 'EDIT')
-                <x-protocol.edit :protocol="$protocol"></x-protocol.edit>
+                <x-protocol.edit :protocol="$protocol" :preview="$preview_mode"></x-protocol.edit>
             @else
                 <x-protocol.create :type="$type"></x-protocol.create>
             @endif

@@ -3,106 +3,98 @@
         <h2 class="text-xl pl-4 pb-2">{{__("Στοιχεία Πρωτοκόλλου")}}</h2>
     </div>
     <div class="form-section m-4">
-{{--        @if(isset($mode) && $mode !== 'EDIT')--}}
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <x-form.label for="protocol_date">
+            <label for="protocol_date" class="custom-label">
                 {{__('Ημερομηνία Πρωτοκόλλου')}}
-                @if(isset($mode) && $mode === 'PREVIEW')
-                    <x-form.span>{{$protocol->protocol_date}}</x-form.span>
+                @if(isset($mode) && ($mode === 'PREVIEW' || $mode === 'EDIT'))
+                    <span class="custom-span">{{$protocol->protocol_date}}</span>
                 @else
-                    <x-form.input id="protocol_date" class="block mt-1"
+                    <input id="protocol_date" class="block mt-1 custom-input"
                                   type="date" name="protocol_date" value="{{isset($protocol) ? $protocol->protocol_date : old('protocol_date')}}">
-                    </x-form.input>
                     @error('protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
-            </x-form.label>
+            </label>
         </div>
-{{--        @endif--}}
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <x-form.label for="ingoing_protocol">
+            <label for="ingoing_protocol" class="custom-label">
                 {{__('Εισερχομένο Πρωτοκόλλο')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <x-form.span>{{$protocol->ingoing_protocol}}</x-form.span>
+                    <span class="custom-span">{{$protocol->ingoing_protocol}}</span>
                 @else
-                    <x-form.input id="ingoing_protocol" class="block mt-1"
+                    <input id="ingoing_protocol" class="block mt-1 custom-input"
                                   type="text" placeholder="{{__('Αριθμός Πρωτοκόλλου')}}"
                                   name="ingoing_protocol" value="{{isset($protocol) ? $protocol->ingoing_protocol : old('ingoing_protocol')}}">
-                    </x-form.input>
                     @error('ingoing_protocol') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
-            </x-form.label>
-            <x-form.label for="ingoing_protocol_date">
+            </label>
+            <label for="ingoing_protocol_date" class="custom-label">
                 {{__('Ημερομηνία Εισερχόμενου')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <x-form.span>{{$protocol->ingoing_protocol_date}}</x-form.span>
+                    <span class="custom-span">{{$protocol->ingoing_protocol_date}}</span>
                 @else
-                    <x-form.input id="ingoing_protocol_date" class="block mt-1"
+                    <input id="ingoing_protocol_date" class="block mt-1 custom-input"
                                   type="date" name="ingoing_protocol_date"
                                   value="{{isset($protocol) ? $protocol->ingoing_protocol_date : old('ingoing_protocol_date')}}">
-                    </x-form.input>
                     @error('ingoing_protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
-            </x-form.label>
+            </label>
         </div>
     </div>
 </div>
+
 <div id="protocol_details">
     <div class="section-title mb-4 border-b border-blue-800 text-blue-800">
         <h2 class="text-xl pl-4 pb-2">{{__('Πληροφορίες')}}</h2>
     </div>
     <div class="form-section m-4">
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <x-form.label for="author">
+            <label for="author" class="custom-label">
                 {{__('Δημιουργός')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <x-form.span>{{$protocol->creator}}</x-form.span>
+                    <span class="custom-span">{{$protocol->creator}}</span>
                 @else
-                    <x-form.input id="creator" class="block mt-1" type="text"
+                    <input id="creator" class="block mt-1 custom-input" type="text"
                                   placeholder="Δημιουργός Πρωτοκόλλου" name="creator"
                                   value="{{isset($protocol) ? $protocol->creator : old('creator')}}">
-                    </x-form.input>
                     @error('creator') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
-            </x-form.label>
-            <x-form.label for="receiver">
+            </label>
+            <label for="receiver" class="custom-label">
                 {{__('παραλήπτης')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <x-form.span>{{$protocol->receiver}}</x-form.span>
+                    <span class="custom-span">{{$protocol->receiver}}</span>
                 @else
-                    <x-form.input id="receiver" class="block mt-1" type="text"
+                    <input id="receiver" class="block mt-1 custom-input" type="text"
                                   placeholder="Όνομα παραλήπτη" name="receiver"
                                   value="{{isset($protocol) ? $protocol->receiver : old('receiver')}}">
-                    </x-form.input>
                     @error('receiver') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
-            </x-form.label>
+            </label>
         </div>
         <div class="form-group">
-            <x-form.label for="title">
+            <label for="title" class="custom-label">
                 {{__('Τίτλος')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <x-form.span>{{$protocol->title}}</x-form.span>
+                    <span class="custom-span">{{$protocol->title}}</span>
                 @else
-                    <x-form.input id="title" class="block mt-1" type="text"
+                    <input id="title" class="block mt-1 custom-input" type="text"
                                   placeholder="Τίτλος Πρωτοκόλλου" name="title"
                                   value="{{isset($protocol) ? $protocol->title : old('title')}}">
-                    </x-form.input>
                     @error('title') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
-            </x-form.label>
+            </label>
         </div>
         <div class="form-group">
-            <x-form.label for="description">
+            <label for="description" class="custom-label">
                 {{__('Περιγραφή')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <x-form.span>{{$protocol->description}}</x-form.span>
+                    <span class="custom-span">{{$protocol->description}}</span>
                 @else
-                    <x-form.textarea id="description" name="description" placeholder="Περιγραφή Πρωτοκόλλου">
-                        {{isset($protocol) ? $protocol->description : old('description')}}
-                    </x-form.textarea>
+                    <textarea id="description" name="description" placeholder="Περιγραφή Πρωτοκόλλου"
+                              class="custom-textarea">{{isset($protocol) ? $protocol->description : old('description')}}</textarea>
                     @error('description') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
-            </x-form.label>
+            </label>
         </div>
     </div>
 </div>
@@ -113,12 +105,12 @@
     </div>
     <div class="form-section m-4">
         <div class="form-group">
-            <x-form.label for="description">
+            <label for="description" class="custom-label">
                 {{__('Επιλέξτε αρχείο')}}
                     <input type="file" name="file[1]" placeholder="Επιλέξτε αρχείο" class="block mt-1">
                         {{isset($protocol) ? $protocol->file : old('file_0')}}
                     @error('file_0') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
-            </x-form.label>
+            </label>
         </div>
     </div>
 </div>
