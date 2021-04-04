@@ -33,7 +33,7 @@ class ProtocolController extends Controller
      */
     public function create($type)
     {
-        $title = ($type == 'ingoing') ? 'Νέο Εισερχόμενο' : (($type == 'outgoing') ? 'Νέο Εξερχόμενο' : abort(404));
+        $title = (new Protocol)->getProtocolTitle($type);
 
         return view('protocol')->with(['title' => $title,'type' => $type]);
     }
@@ -85,8 +85,8 @@ class ProtocolController extends Controller
      */
     public function show($id)
     {
-        $protocol = Protocol::find($id);
-        $title = ($protocol->type == 'ingoing') ? 'Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Εξερχόμενο' : abort(404));
+        $protocol = Protocol::findOrFail($id);
+        $title = (new Protocol)->getProtocolTitle($protocol->type);
 
         return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW']);
     }
@@ -99,8 +99,8 @@ class ProtocolController extends Controller
      */
     public function edit($id)
     {
-        $protocol = Protocol::find($id);
-        $title = ($protocol->type == 'ingoing') ? 'Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Εξερχόμενο' : abort(404));
+        $protocol = Protocol::findOrFail($id);
+        $title = (new Protocol)->getProtocolTitle($protocol->type);
 
         return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT']);
     }
@@ -128,8 +128,6 @@ class ProtocolController extends Controller
         $protocol->description = $data['description'];
         $protocol->update();
 
-        $title = ($protocol->type == 'ingoing') ? 'Εισερχόμενο' : (($protocol->type == 'outgoing') ? 'Εξερχόμενο' : abort(404));
-
-        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW']);
+        return Redirect::route('protocol.show',$protocol->id);
     }
 }

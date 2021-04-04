@@ -16,4 +16,14 @@ class Protocol extends Model
 
     protected $fillable = ['protocol_number', 'protocol', 'protocol_date', 'type', 'status', 'ingoing_protocol', 'ingoing_protocol_date',
         'creator', 'receiver', 'title', 'description', 'created_at', 'updated_at', 'canceled_at'];
+
+    public function getProtocolTitle($type){
+        if ($type == 'ingoing') {
+            return 'Εισερχόμενο';
+        }
+        elseif ($type == 'outgoing') {
+            return 'Εξερχόμενο';
+        }
+        return abort(404);
+    }
 }
