@@ -83,13 +83,13 @@
                 <div class="uploaded-files mb-5">
                     @foreach($files as $file)
                         <a href="{{route('downloadFile',['protocol'=>$protocol->id,'id'=>$file->id])}}"
-                           class="text-blue-700 mx-2" target="_blank" title="{{__('Click to download')}}">
-                            <i class="fas fa-download"></i>&nbsp;{{$file->name}}
+                           class="text-blue-700 mx-2" title="{{__('Click to download')}}">
+                            <i class="fas fa-download"></i>&nbsp{{$file->name}}
                         </a>
                     @endforeach
                 </div>
             @elseif(isset($mode) && ($mode === 'PREVIEW' || $mode == 'EDIT'))
-                <h2>{{__('No uploaded files have been found.')}}</h2>
+                <h2 class="mb-5">{{__('No uploaded files have been found.')}}</h2>
             @endif
             @if(isset($mode) && $mode == 'EDIT')
                 <label for="description" class="custom-label">
@@ -99,7 +99,7 @@
                 </label>
             @endif
         </div>
-        @if(isset($mode) && $mode === 'CREATE')
+        @if(isset($mode) && $mode !== 'PREVIEW')
             <div>
                 <a id="addFileButton" type="button" class="add-files-button">{{__('Add File')}}</a>
             </div>

@@ -45,7 +45,8 @@ class ProtocolRequest extends FormRequest
         ];
 
         $files = [
-            'file.*' => 'nullable|file|mimes:jpeg,jpg,bmp,png,pdf,doc,docx,xls,xlsx,xlx,msg,txt,zip,7z|max:2048'
+//            'file.*' => 'nullable|file|mimes:jpeg,jpg,bmp,png,pdf,doc,docx,xls,xlsx,xlx,msg,txt,zip,7z|max:2048'
+            'file.*' => 'nullable|file|max:2048'
         ];
 //        jpeg,jpg,bmp,png,pdf,doc,docx,xls,xlsx,msg,txt,zip,7z
         $rules = array_merge( $rules, $details, $files);

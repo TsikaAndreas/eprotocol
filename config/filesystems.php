@@ -53,7 +53,7 @@ return [
         ],
         'custom' => [
             'driver' => 'local',
-            'root' => storage_path('custom/protocols'),
+            'root' => storage_path('app/protocols'),
         ],
     ],
 
