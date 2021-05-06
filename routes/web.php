@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProtocolController;
 use App\Http\Controllers\RecordsController;
+use App\Services\FileManager;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::get('/records',[RecordsController::class,'index'])->name('records');
     Route::get('/records/list',[RecordsController::class,'getRecords'])->name('records.list');
+
+    Route::get('/download/{protocol}/{id}',[FileManager::class,'downloadFile'])->name('downloadFile');
 });
 
 require __DIR__.'/auth.php';

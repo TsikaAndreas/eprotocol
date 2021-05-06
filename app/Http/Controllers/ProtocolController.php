@@ -3,28 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProtocolRequest;
+use App\Models\File;
 use App\Models\Protocol;
-use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
+use App\Services\FileManager;
 
 class ProtocolController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    /*public function index()
-    {
-        //
-    }*/
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +25,7 @@ class ProtocolController extends Controller
     {
         $title = (new Protocol)->getProtocolTitle($type);
 
-        return view('protocol')->with(['title' => $title,'type' => $type]);
+        return view('protocol')->with(['title' => $title,'type' => $type, 'preview_mode'=>'CREATE']);
     }
 
     /**
@@ -47,7 +37,7 @@ class ProtocolController extends Controller
     public function store(ProtocolRequest $request)
     {
         $rules = $request->rules();
-        $validateResult = sanitize($request->validated(), $rules);//
+        $validateResult = sanitize($request->validated(), $rules);
         if ($validateResult !== true) {
             return $validateResult;
         }
@@ -67,12 +57,17 @@ class ProtocolController extends Controller
         if ($protocol->type === 'ingoing'){
             $protocol->ingoing_protocol = $data['ingoing_protocol'];
             $protocol->ingoing_protocol_date = $data['ingoing_protocol_date'];
-            $protocol->protocol = Protocol::in_prefix.$protocol->id.'/'.$protocol->protocol_date;
+            $protocol->protocol = Protocol::in_prefix . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
         } elseif($protocol->type === 'outgoing') {
-            $protocol->protocol = Protocol::out_prefix.$protocol->id.'/'.$protocol->protocol_date;
+            $protocol->protocol = Protocol::out_prefix . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
         }
-
         $protocol->update();
+        if (isset($data['file'])) {
+            $files = (new FileManager())->fileUpload($protocol->id, $data['file']);
+            if (array_key_exists('error',$files)) {
+                return \redirect()->back()->withInput()->withErrors($files);
+            }
+        }
 
         return Redirect::route('protocol.show',$protocol->id);
     }
@@ -88,7 +83,9 @@ class ProtocolController extends Controller
         $protocol = Protocol::findOrFail($id);
         $title = (new Protocol)->getProtocolTitle($protocol->type);
 
-        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW']);
+        $files = File::getFiles($id);
+
+        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW','files' => $files]);
     }
 
     /**
@@ -101,8 +98,9 @@ class ProtocolController extends Controller
     {
         $protocol = Protocol::findOrFail($id);
         $title = (new Protocol)->getProtocolTitle($protocol->type);
+        $files = File::getFiles($id);
 
-        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT']);
+        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT','files' => $files]);
     }
 
     /**
@@ -115,7 +113,7 @@ class ProtocolController extends Controller
     public function update($id,ProtocolRequest $request)
     {
         $rules = $request->rules();
-        $validateResult = sanitize($request->validated(), $rules);//
+        $validateResult = sanitize($request->validated(), $rules);
         if ($validateResult !== true) {
             return $validateResult;
         }
@@ -127,6 +125,10 @@ class ProtocolController extends Controller
         $protocol->title = $data['title'];
         $protocol->description = $data['description'];
         $protocol->update();
+
+        if (isset($data['file'])) {
+            (new FileManager())->fileUpload($protocol->id, $data['file']);
+        }
 
         return Redirect::route('protocol.show',$protocol->id);
     }

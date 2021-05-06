@@ -37963,6 +37963,31 @@ readers do not read off random characters that represent icons */
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
+.add-files-button {
+  --tw-bg-opacity: 1;
+  background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
+}
+
+.add-files-button:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgba(99, 102, 241, var(--tw-bg-opacity));
+}
+
+.add-files-button{
+  --tw-border-opacity: 1;
+  border-color: rgba(165, 180, 252, var(--tw-border-opacity));
+  border-radius: 0.25rem;
+  border-width: 1px;
+  cursor: pointer;
+  margin-top: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
 textarea:focus, input:focus, button:focus {
   outline: none;
 }

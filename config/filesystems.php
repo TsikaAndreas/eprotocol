@@ -51,7 +51,10 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-
+        'custom' => [
+            'driver' => 'local',
+            'root' => storage_path('custom/protocols'),
+        ],
     ],
 
     /*

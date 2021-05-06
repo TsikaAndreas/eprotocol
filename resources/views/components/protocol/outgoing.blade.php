@@ -72,3 +72,37 @@
         </div>
     </div>
 </div>
+
+<div id="protocol_files">
+    <div class="section-title mb-4 border-b border-blue-800 text-blue-800">
+        <h2 class="text-xl pl-4 pb-2">{{__('Έγγραφα')}}</h2>
+    </div>
+    <div class="form-section m-4">
+        <div class="form-group">
+            @if((isset($mode) && ($mode === 'PREVIEW' || $mode == 'EDIT')) && $files)
+                <div class="uploaded-files mb-5">
+                    @foreach($files as $file)
+                        <a href="{{route('downloadFile',['protocol'=>$protocol->id,'id'=>$file->id])}}"
+                           class="text-blue-700 mx-2" target="_blank" title="{{__('Click to download')}}">
+                            <i class="fas fa-download"></i>&nbsp;{{$file->name}}
+                        </a>
+                    @endforeach
+                </div>
+            @elseif(isset($mode) && ($mode === 'PREVIEW' || $mode == 'EDIT'))
+                <h2>{{__('No uploaded files have been found.')}}</h2>
+            @endif
+            @if(isset($mode) && $mode == 'EDIT')
+                <label for="description" class="custom-label">
+                    {{__('Επιλέξτε αρχείο')}}
+                    <input type="file" name="file[]" placeholder="Επιλέξτε αρχείο" class="block mt-1">
+                    @error('file[]') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                </label>
+            @endif
+        </div>
+        @if(isset($mode) && $mode === 'CREATE')
+            <div>
+                <a id="addFileButton" type="button" class="add-files-button">{{__('Add File')}}</a>
+            </div>
+        @endif
+    </div>
+</div>

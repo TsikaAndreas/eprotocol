@@ -36,7 +36,7 @@ class ProtocolRequest extends FormRequest
         }
 
         $details = [
-            'protocol_date' => 'required|date',
+            'protocol_date' => 'nullable|date',
             'type' => Rule::in(['ingoing','outgoing']),
             'creator' => 'required|string|max:80',
             'receiver' => 'required|string|max:80',
@@ -45,10 +45,10 @@ class ProtocolRequest extends FormRequest
         ];
 
         $files = [
-
+            'file.*' => 'nullable|file|mimes:jpeg,jpg,bmp,png,pdf,doc,docx,xls,xlsx,xlx,msg,txt,zip,7z|max:2048'
         ];
-
-        $rules = array_merge( $rules, $details);
+//        jpeg,jpg,bmp,png,pdf,doc,docx,xls,xlsx,msg,txt,zip,7z
+        $rules = array_merge( $rules, $details, $files);
 
         return $rules;
     }

@@ -18,14 +18,14 @@
 </div>
 @enderror
 <div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-    <form id="createProtocol" action="{{route('protocol.store')}}" method="POST">
+    <form id="createProtocol" action="{{route('protocol.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         {{--Protocol Content--}}
         <input type="hidden" name="type" value="{{$type}}">
         @if($type == 'ingoing')
-            <x-protocol.ingoing></x-protocol.ingoing>
+            <x-protocol.ingoing :mode="$preview"></x-protocol.ingoing>
         @elseif ($type == 'outgoing')
-            <x-protocol.outgoing></x-protocol.outgoing>
+            <x-protocol.outgoing :mode="$preview"></x-protocol.outgoing>
         @endif
     </form>
 </div>
