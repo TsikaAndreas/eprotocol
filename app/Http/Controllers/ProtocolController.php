@@ -23,7 +23,7 @@ class ProtocolController extends Controller
      */
     public function create($type)
     {
-        $title = (new Protocol)->getProtocolTitle($type);
+        $title = (new Protocol)->getProtocolType($type);
 
         return view('protocol')->with(['title' => $title,'type' => $type, 'preview_mode'=>'CREATE']);
     }
@@ -54,12 +54,12 @@ class ProtocolController extends Controller
             'protocol' => null
         ]);
 
-        if ($protocol->type === 'ingoing'){
+        if ($protocol->type === Protocol::INGOING){
             $protocol->ingoing_protocol = $data['ingoing_protocol'];
             $protocol->ingoing_protocol_date = $data['ingoing_protocol_date'];
-            $protocol->protocol = Protocol::in_prefix . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
-        } elseif($protocol->type === 'outgoing') {
-            $protocol->protocol = Protocol::out_prefix . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
+            $protocol->protocol = Protocol::IN_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
+        } elseif($protocol->type === Protocol::OUTGOING) {
+            $protocol->protocol = Protocol::OUT_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
         }
         $protocol->update();
         if (isset($data['file'])) {
@@ -81,7 +81,7 @@ class ProtocolController extends Controller
     public function show($id)
     {
         $protocol = Protocol::findOrFail($id);
-        $title = (new Protocol)->getProtocolTitle($protocol->type);
+        $title = (new Protocol)->getProtocolType($protocol->type);
 
         $files = File::getFiles($id);
 
@@ -97,7 +97,7 @@ class ProtocolController extends Controller
     public function edit($id)
     {
         $protocol = Protocol::findOrFail($id);
-        $title = (new Protocol)->getProtocolTitle($protocol->type);
+        $title = (new Protocol)->getProtocolType($protocol->type);
         $files = File::getFiles($id);
 
         return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT','files' => $files]);
@@ -124,12 +124,23 @@ class ProtocolController extends Controller
         $protocol->receiver = $data['receiver'];
         $protocol->title = $data['title'];
         $protocol->description = $data['description'];
+
+        if ($protocol->type === Protocol::INGOING){
+            $protocol->ingoing_protocol = $data['ingoing_protocol'];
+            $protocol->ingoing_protocol_date = $data['ingoing_protocol_date'];
+            $protocol->protocol = Protocol::IN_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
+        } elseif($protocol->type === Protocol::OUTGOING) {
+            $protocol->protocol = Protocol::OUT_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
+        }
+
         $protocol->update();
 
         if (isset($data['file'])) {
-            (new FileManager())->fileUpload($protocol->id, $data['file']);
+            $files = (new FileManager())->fileUpload($protocol->id, $data['file']);
+            if (array_key_exists('error',$files)) {
+                return \redirect()->back()->withInput()->withErrors($files);
+            }
         }
-
         return Redirect::route('protocol.show',$protocol->id);
     }
 }

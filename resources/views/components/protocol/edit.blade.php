@@ -33,6 +33,7 @@
     <form id="updateProtocol" action="{{route('protocol.update',$protocol->id)}}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
+            <input type="hidden" name="type" value="{{$protocol->type}}">
         @if($protocol->type == 'ingoing')
             <x-protocol.ingoing :protocol="$protocol" :mode="$preview" :files="$files"></x-protocol.ingoing>
         @elseif ($protocol->type == 'outgoing')

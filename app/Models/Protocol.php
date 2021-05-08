@@ -2,28 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Protocol extends Model
 {
-    use HasFactory;
-
-    const in_prefix = 'ΓΑΒ-ΕΙΣ-';
-    const out_prefix = 'ΓΑΒ-ΕΞ-';
+    const IN_PREFIX = 'ΓΑΒ-ΕΙΣ-';
+    const OUT_PREFIX = 'ΓΑΒ-ΕΞ-';
+    const INGOING = 'ingoing';
+    const OUTGOING = 'outgoing';
 
     protected $table = 'protocols';
 
     protected $fillable = ['protocol_number', 'protocol', 'protocol_date', 'type', 'status', 'ingoing_protocol', 'ingoing_protocol_date',
         'creator', 'receiver', 'title', 'description', 'created_at', 'updated_at', 'canceled_at'];
 
-    public function getProtocolTitle($type){
-        if ($type == 'ingoing') {
+    public function getProtocolType($type){
+        if ($type == self::INGOING) {
             return 'Εισερχόμενο';
         }
-        elseif ($type == 'outgoing') {
+        elseif ($type == self::OUTGOING) {
             return 'Εξερχόμενο';
         }
-        return abort(404);
+        return abort(500);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Protocol;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -26,12 +27,12 @@ class ProtocolRequest extends FormRequest
     {
         $rules = array();
         $type = $this->request->get('type');
-        if ($type == 'ingoing'){
+        if ($type == Protocol::INGOING){
             $rules = [
                 'ingoing_protocol' => 'required|string|max:20',
                 'ingoing_protocol_date' => 'required|date',
             ];
-        }elseif ($type == 'outgoing'){
+        }elseif ($type == Protocol::OUTGOING){
             $rules = [];
         }
 
