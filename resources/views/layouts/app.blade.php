@@ -8,12 +8,12 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+        @stack('head-styles')
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
+        @stack('head-scripts')
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-200 flex">
@@ -28,7 +28,6 @@
                 <footer>
                     <div>
                         @stack('footer-scripts')
-{{--                        <script type="text/javascript" src="{{ asset('js/protocol/protocol.min.js') }}"></script>--}}
                     </div>
                 </footer>
             </div>

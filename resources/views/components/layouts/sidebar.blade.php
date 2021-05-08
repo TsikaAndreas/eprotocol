@@ -45,7 +45,7 @@
                 </li>
                 <li>
                     <a class="flex items-center mt-4 py-2 px-4 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                       href="{{route('records')}}">
+                       href="{{route('records.index')}}">
                         <span><i class="fas fa-th-list"></i></span>
                         <span class="mx-3">{{__('Εγγραφές')}}</span>
                     </a>

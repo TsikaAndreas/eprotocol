@@ -26,15 +26,14 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::get('/activity',[ActivityController::class,'index'])->name('activity');
 
-//    Route::resource('protocol',ProtocolController::class);
     Route::get('/protocol/create/{type}',[ProtocolController::class,'create'])->name('protocol.create');
     Route::post('/protocol/store',[ProtocolController::class,'store'])->name('protocol.store');
     Route::get('/protocol/{id}',[ProtocolController::class,'show'])->name('protocol.show');
     Route::get('/protocol/{id}/edit',[ProtocolController::class,'edit'])->name('protocol.edit');
     Route::put('/protocol/{id}',[ProtocolController::class,'update'])->name('protocol.update');
 
-    Route::get('/records',[RecordsController::class,'index'])->name('records');
-    Route::get('/records/list',[RecordsController::class,'getRecords'])->name('records.list');
+    Route::get('/records',[RecordsController::class,'index'])->name('records.index');
+    Route::get('/records/get',[RecordsController::class,'getRecords'])->middleware('ajax')->name('records.getRecords');
 
     Route::get('/download/{protocol}/{id}',[FileManager::class,'downloadFile'])->name('downloadFile');
 });
