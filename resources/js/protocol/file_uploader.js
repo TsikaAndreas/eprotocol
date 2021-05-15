@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     var addButton = document.getElementById("addFileButton");
     if (addButton !== null) {
         addButton.addEventListener("click", addNewFileInput);

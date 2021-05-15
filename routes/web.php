@@ -32,6 +32,11 @@ Route::group(['middleware'=>'auth'],function () {
     Route::get('/protocol/{id}/edit',[ProtocolController::class,'edit'])->name('protocol.edit');
     Route::put('/protocol/{id}',[ProtocolController::class,'update'])->name('protocol.update');
 
+    Route::group(['middleware' => 'ajax'],function () {
+        Route::post('/protocol/{id}/cancel',[ProtocolController::class,'cancel']);
+        Route::post('/protocol/{id}/reactivate',[ProtocolController::class,'reactivate']);
+    });
+
     Route::get('/records',[RecordsController::class,'index'])->name('records.index');
     Route::get('/records/get',[RecordsController::class,'getRecords'])->middleware('ajax')->name('records.getRecords');
 

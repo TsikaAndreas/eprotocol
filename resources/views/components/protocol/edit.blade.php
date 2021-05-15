@@ -11,7 +11,7 @@
         </div>
         <div>
             <a id="backButton" type="button" class="cancel-button" href="{{route('protocol.show',$protocol->id)}}">
-                {{__('Ακύρωση')}}
+                {{__('Πίσω')}}
             </a>
             <x-form.submit-button form="updateProtocol">{{__('Υποβολή')}}</x-form.submit-button>
         </div>

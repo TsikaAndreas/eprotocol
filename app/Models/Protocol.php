@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Protocol extends Model
 {
+    const CANCELED = 'Canceled';
+    const ACTIVE = 'Active';
+
     const IN_PREFIX = 'ΓΑΒ-ΕΙΣ-';
     const OUT_PREFIX = 'ΓΑΒ-ΕΞ-';
     const INGOING = 'ingoing';

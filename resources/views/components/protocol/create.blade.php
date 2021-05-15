@@ -7,7 +7,7 @@
             </h2>
         </div>
         <div>
-            <x-form.cancel-button>{{__('Ακύρωση')}}</x-form.cancel-button>
+            <x-form.cancel-button>{{__('Πίσω')}}</x-form.cancel-button>
             <x-form.submit-button form="createProtocol">{{__('Υποβολή')}}</x-form.submit-button>
         </div>
     </div>

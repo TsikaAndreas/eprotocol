@@ -10,6 +10,11 @@
             </h2>
         </div>
         <div>
+            @if($protocol->status === \App\Models\Protocol::CANCELED)
+                <button id="reactivateProtocol" type="button" class="status-button" value="{{$protocol->id}}">{{__('Eπανενεργοποίηση')}}</button>
+            @elseif($protocol->status === \App\Models\Protocol::ACTIVE)
+                <button id="cancelProtocol" type="button" class="status-button" value="{{$protocol->id}}">{{__('Ακυρωση')}}</button>
+            @endif
             <x-form.cancel-button>{{__('Πίσω')}}</x-form.cancel-button>
             <a id="editProtocol" type="button" class="submit-button"
             href="{{route('protocol.edit',$protocol->id)}}">
@@ -25,3 +30,5 @@
             <x-protocol.outgoing :protocol="$protocol" :mode="$preview" :files="$files"></x-protocol.outgoing>
         @endif
 </div>
+
+<x-modals.confirmation></x-modals.confirmation>

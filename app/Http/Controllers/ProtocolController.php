@@ -143,4 +143,28 @@ class ProtocolController extends Controller
         }
         return Redirect::route('protocol.show',$protocol->id);
     }
+
+    public function cancel($protocol_id){
+        $protocol = Protocol::find($protocol_id);
+        if ($protocol->status === Protocol::CANCELED)
+        {
+            return response()->json(['error' => true, 'message' => 'The Protocol has already been canceled!']);
+        }
+        $protocol->status = Protocol::CANCELED;
+        $protocol->canceled_at = date('Y-m-d H:i:s');
+        $protocol->update();
+
+        return response()->json(['success' => true, 'message' => 'The Protocol has been canceled successfully!']);
+    }
+    public function reactivate($protocol_id){
+        $protocol = Protocol::find($protocol_id);
+        if ($protocol->status === Protocol::ACTIVE)
+        {
+            return response()->json(['error' => true, 'message' => 'The Protocol has already been reactivated!']);
+        }
+        $protocol->status = Protocol::ACTIVE;
+        $protocol->update();
+
+        return response()->json(['success' => true, 'message' => 'The Protocol has been reactivated successfully!']);
+    }
 }
