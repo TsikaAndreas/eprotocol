@@ -25,6 +25,7 @@
                         {{ $slot }}
                     </div>
                 </main>
+                @stack('modals')
                 <footer>
                     <div>
                         @stack('footer-scripts')

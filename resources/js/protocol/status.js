@@ -8,35 +8,35 @@ $(document).ready(function() {
     if (protocolCancelBtn !== null) {
         protocolCancelBtn.addEventListener('click',cancelProtocol);
     }
-    let confirmationModal = document.getElementById('confirmationModal');
-    confirmationModal.getElementsByClassName('modal-close')[0].addEventListener('click',hideConfirmationModal);
-    confirmationModal.getElementsByClassName('modal-cancel')[0].addEventListener('click',hideConfirmationModal);
+    let changeStatusModal = document.getElementById('changeProtocolStatusModal');
+    changeStatusModal.getElementsByClassName('modal-close')[0].addEventListener('click',hideChangeStatusModal);
+    changeStatusModal.getElementsByClassName('modal-cancel')[0].addEventListener('click',hideChangeStatusModal);
 
 });
 
-var confirmationModal = document.getElementById('confirmationModal');
+var changeStatusModal = document.getElementById('changeProtocolStatusModal');
 var applicationUrl = window.location.origin;
 
 function reactivateProtocol() {
     let protocolId = document.getElementById('reactivateProtocol').value;
-    let reactivateMsg = confirmationModal.getElementsByClassName('reactivation-message')[0];
-    let submitBtn = confirmationModal.getElementsByClassName('modal-submit')[0];
+    let reactivateMsg = changeStatusModal.getElementsByClassName('reactivation-message')[0];
+    let submitBtn = changeStatusModal.getElementsByClassName('modal-submit')[0];
 
     reactivateMsg.classList.remove('hidden');
     submitBtn.setAttribute('onclick','statusAjax('+ protocolId + ',\'reactivate\')');
-    showConfirmationModal();
+    showChangeStatusModal();
 }
 function cancelProtocol() {
     let protocolId = document.getElementById('cancelProtocol').value;
-    let cancelBtn = confirmationModal.getElementsByClassName('cancel-message')[0];
-    let submitBtn = confirmationModal.getElementsByClassName('modal-submit')[0];
+    let cancelBtn = changeStatusModal.getElementsByClassName('cancel-message')[0];
+    let submitBtn = changeStatusModal.getElementsByClassName('modal-submit')[0];
 
     cancelBtn.classList.remove('hidden');
     submitBtn.setAttribute('onclick','statusAjax('+ protocolId + ',\'cancel\')');
-    showConfirmationModal();
+    showChangeStatusModal();
 }
 statusAjax = function (protocolId,action){
-    let confirmationMsg = confirmationModal.getElementsByClassName('modal-message')[0];
+    let confirmationMsg = changeStatusModal.getElementsByClassName('modal-message')[0];
 
     let csrf_token = $('meta[name="csrf-token"]').attr('content');
     $.ajaxSetup({
@@ -64,14 +64,14 @@ statusAjax = function (protocolId,action){
     });
 }
 
-function hideConfirmationModal() {
-    confirmationModal.classList.add('hidden');
-    confirmationModal.getElementsByClassName('modal-message')[0].innerText = '';
+function hideChangeStatusModal() {
+    changeStatusModal.classList.add('hidden');
+    changeStatusModal.getElementsByClassName('modal-message')[0].innerText = '';
     hideInitialMessages();
 }
 function hideInitialMessages(){
-    let cancelMsg = confirmationModal.getElementsByClassName('cancel-message')[0];
-    let reactivateMsg = confirmationModal.getElementsByClassName('reactivation-message')[0];
+    let cancelMsg = changeStatusModal.getElementsByClassName('cancel-message')[0];
+    let reactivateMsg = changeStatusModal.getElementsByClassName('reactivation-message')[0];
 
     if (!cancelMsg.classList.contains('hidden')){
         cancelMsg.classList.add('hidden');
@@ -80,6 +80,6 @@ function hideInitialMessages(){
         reactivateMsg.classList.add('hidden');
     }
 }
-function showConfirmationModal() {
-    confirmationModal.classList.remove('hidden');
+function showChangeStatusModal() {
+    changeStatusModal.classList.remove('hidden');
 }
