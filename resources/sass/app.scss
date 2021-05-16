@@ -58,3 +58,24 @@ textarea:focus, input:focus, button:focus {
 .custom-delete-2 {
     @apply text-red-700 ml-3 mr-3 cursor-pointer self-center;
 }
+// ScrollBar
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(79, 70, 229) transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(79, 70, 229);
+    border-radius: 20px;
+    border: 3px solid rgb(79, 70, 229);
+}
