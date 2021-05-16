@@ -15,27 +15,28 @@ $(document).ready(function() {
 });
 
 var changeStatusModal = document.getElementById('changeProtocolStatusModal');
-var applicationUrl = window.location.origin;
-
+// Reactivate Protocol Action
 function reactivateProtocol() {
     let protocolId = document.getElementById('reactivateProtocol').value;
     let reactivateMsg = changeStatusModal.getElementsByClassName('reactivation-message')[0];
     let submitBtn = changeStatusModal.getElementsByClassName('modal-submit')[0];
 
     reactivateMsg.classList.remove('hidden');
-    submitBtn.setAttribute('onclick','statusAjax('+ protocolId + ',\'reactivate\')');
+    submitBtn.setAttribute('onclick','protocolStatusAjax('+ protocolId + ',\'reactivate\')');
     showChangeStatusModal();
 }
+// Cancel Protocol Action
 function cancelProtocol() {
     let protocolId = document.getElementById('cancelProtocol').value;
     let cancelBtn = changeStatusModal.getElementsByClassName('cancel-message')[0];
     let submitBtn = changeStatusModal.getElementsByClassName('modal-submit')[0];
 
     cancelBtn.classList.remove('hidden');
-    submitBtn.setAttribute('onclick','statusAjax('+ protocolId + ',\'cancel\')');
+    submitBtn.setAttribute('onclick','protocolStatusAjax('+ protocolId + ',\'cancel\')');
     showChangeStatusModal();
 }
-statusAjax = function (protocolId,action){
+// Ajax request for status change.
+protocolStatusAjax = function (protocolId,action){
     let confirmationMsg = changeStatusModal.getElementsByClassName('modal-message')[0];
 
     let csrf_token = $('meta[name="csrf-token"]').attr('content');
@@ -44,7 +45,7 @@ statusAjax = function (protocolId,action){
             { 'X-CSRF-TOKEN': csrf_token }
     });
     $.ajax({
-        url: applicationUrl + '/protocol/' + protocolId + '/' + action,
+        url: window.location.origin + '/protocol/' + protocolId + '/' + action,
         method: "post",
         dataType: "json",
         data: {
@@ -63,12 +64,13 @@ statusAjax = function (protocolId,action){
         confirmationMsg.innerHTML += '<p>' + result.responseText + '</p>';
     });
 }
-
+// Hide Modal
 function hideChangeStatusModal() {
     changeStatusModal.classList.add('hidden');
     changeStatusModal.getElementsByClassName('modal-message')[0].innerText = '';
     hideInitialMessages();
 }
+// Hide modal's initial messages
 function hideInitialMessages(){
     let cancelMsg = changeStatusModal.getElementsByClassName('cancel-message')[0];
     let reactivateMsg = changeStatusModal.getElementsByClassName('reactivation-message')[0];
@@ -80,6 +82,7 @@ function hideInitialMessages(){
         reactivateMsg.classList.add('hidden');
     }
 }
+// Show Modal
 function showChangeStatusModal() {
     changeStatusModal.classList.remove('hidden');
 }

@@ -16,7 +16,7 @@ class FileManager
         $this->dir_location = Storage::disk('custom');
     }
 
-    public function fileUpload($protocol_id,$files){
+    public function fileUpload($protocol_id,$files) {
 
         $uploaded = array();
         foreach ($files as $file){
@@ -40,9 +40,23 @@ class FileManager
         return $uploaded;
     }
 
-    public function downloadFile($protocol,$file_id){
+    public function downloadFile($protocol_id, $file_id) {
         $file = File::where('id',$file_id)->first();
-        return $this->dir_location->download($protocol.DIRECTORY_SEPARATOR.$file->hash_name,$file->name);
+        return $this->dir_location->download($protocol_id.DIRECTORY_SEPARATOR.$file->hash_name,$file->name);
+    }
+
+    public function deleteFile($protocol_id, $file_id) {
+        $file = File::where('id',$file_id)->first();
+        if ($file === null){
+            return response()->json(['error' => true, 'message' => 'Sorry, we couldn\'t find your file! Please contact administrator for additional information.']);
+        }
+        $delete = $this->dir_location->delete($protocol_id.DIRECTORY_SEPARATOR.$file->hash_name);
+        if ($delete)
+        {
+            File::where('id',$file_id)->first()->delete();
+            return response()->json(['success' => true, 'message' => 'The File: '.$file->name.' was deleted successfully!']);
+        }
+        return response()->json(['error' => true, 'message' => 'Couldn\'t delete the File: '.$file->name.'!']);
     }
 
 

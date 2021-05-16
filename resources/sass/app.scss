@@ -51,3 +51,10 @@ textarea:focus, input:focus, button:focus {
 .custom-modal-header {
     @apply flex justify-between bg-indigo-500 px-6 py-3 text-white;
 }
+//files
+.custom-delete-1 {
+    @apply text-red-700 ml-3 mr-3 cursor-pointer;
+}
+.custom-delete-2 {
+    @apply text-red-700 ml-3 mr-3 cursor-pointer self-center;
+}

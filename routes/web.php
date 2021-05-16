@@ -33,8 +33,11 @@ Route::group(['middleware'=>'auth'],function () {
     Route::put('/protocol/{id}',[ProtocolController::class,'update'])->name('protocol.update');
 
     Route::group(['middleware' => 'ajax'],function () {
+        // Protocol Status Change
         Route::post('/protocol/{id}/cancel',[ProtocolController::class,'cancel']);
         Route::post('/protocol/{id}/reactivate',[ProtocolController::class,'reactivate']);
+        // File Download
+        Route::post('/deletefile/{protocol}/{id}',[FileManager::class,'deleteFile']);
     });
 
     Route::get('/records',[RecordsController::class,'index'])->name('records.index');

@@ -21,5 +21,5 @@ mix.js('resources/js/app.js', 'public/js')
         ]
     });
 
-mix.js('resources/js/protocol/file_uploader.js','public/js/protocol/file_uploader.min.js');
+mix.js('resources/js/protocol/file_manager.js','public/js/protocol/file_manager.min.js');
 mix.js('resources/js/protocol/status.js','public/js/protocol/status.min.js');

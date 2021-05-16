@@ -108,19 +108,28 @@
             @if((isset($mode) && ($mode === 'PREVIEW' || $mode == 'EDIT')) && $files)
                 <div class="uploaded-files mb-5">
                     @foreach($files as $file)
-                        <a href="{{route('downloadFile',['protocol'=>$protocol->id,'id'=>$file->id])}}"
-                           class="text-blue-700 mx-2" title="{{__('Click to download')}}">
-                            <i class="fas fa-download"></i>&nbsp;{{$file->name}}
-                        </a>
+                        <span class="mb-5 mr-5 inline-block border-2 p-2 rounded">
+                            <a href="{{route('downloadFile',['protocol'=>$protocol->id,'id'=>$file->id])}}"
+                               class="download-file text-blue-700 mx-2" title="{{__('Click to download')}}">
+                                <i class="fas fa-download"></i>&nbsp;{{$file->name}}
+                            </a>
+                            @if($mode == 'EDIT')
+                                <span>&#10072;</span>
+                                <i class="uploaded-file custom-delete-1 fas fa-trash-alt" title="Click to delete"
+                                data-file="{{$file->id}}" data-protocol="{{$protocol->id}}"></i>
+                            @endif
+                        </span>
                     @endforeach
                 </div>
             @elseif(isset($mode) && ($mode === 'PREVIEW' || $mode == 'EDIT'))
                 <h2 class="mb-5">{{__('No uploaded files have been found.')}}</h2>
             @endif
             @if(isset($mode) && $mode == 'EDIT')
-                <label for="description" class="custom-label">
+                <label for="file" class="custom-label">
                     {{__('Επιλέξτε αρχείο')}}
-                    <input type="file" name="file[]" placeholder="Επιλέξτε αρχείο" class="block mt-1">
+                    <div class="flex">
+                        <input type="file" name="file[]" placeholder="Επιλέξτε αρχείο" class="block mt-1">
+                    </div>
                     @error('file[]') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 </label>
             @endif

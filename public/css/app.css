@@ -38073,6 +38073,23 @@ textarea:focus, input:focus, button:focus {
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
+.custom-delete-1 {
+  cursor: pointer;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(185, 28, 28, var(--tw-text-opacity));
+}
+
+.custom-delete-2 {
+  cursor: pointer;
+  align-self: center;
+  margin-right: 0.75rem;
+  margin-left: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgba(185, 28, 28, var(--tw-text-opacity));
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
