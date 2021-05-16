@@ -51,11 +51,15 @@
                     </a>
                 </li>
                 <li>
-                    <a class="flex items-center mt-4 py-2 px-4 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                       href="{{route('activity')}}">
-                        <span><i class="fas fa-archive"></i></span>
-                        <span class="mx-3">{{__('Αρχείο Καταγραφής')}}</span>
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{route('logout')}}"
+                           class="flex items-center mt-4 py-2 px-4 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
+                           onclick="event.preventDefault(); this.closest('form').submit();">
+                            <span><i class="fas fa-power-off"></i></span>
+                            <span class="mx-3">{{__('Αποσύνδεση')}}</span>
+                        </a>
+                    </form>
                 </li>
             </ul>
         </nav>

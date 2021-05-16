@@ -7,7 +7,8 @@
         <x-layouts.user-nav-menu>
             <a href="#"
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
-                {{ __('Profile') }}
+                <span><i class="fas fa-user"></i></span>
+                <span class="mx-3">{{__('Προφίλ')}}</span>
             </a>
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
@@ -15,7 +16,8 @@
                 <a href="{{route('logout')}}"
                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
                    onclick="event.preventDefault(); this.closest('form').submit();">
-                    {{ __('Logout') }}
+                    <span><i class="fas fa-power-off"></i></span>
+                    <span class="mx-3">{{__('Αποσύνδεση')}}</span>
                 </a>
             </form>
         </x-layouts.user-nav-menu>
