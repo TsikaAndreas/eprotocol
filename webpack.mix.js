@@ -23,3 +23,4 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/protocol/file_manager.js','public/js/protocol/file_manager.min.js');
 mix.js('resources/js/protocol/status.js','public/js/protocol/status.min.js');
+mix.copy('node_modules/chart.js/dist/chart.min.js', 'public/js/chart.js/chart.min.js');

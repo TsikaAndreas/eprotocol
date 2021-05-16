@@ -5,7 +5,7 @@ namespace App\Widgets;
 use App\Models\Protocol;
 use Arrilot\Widgets\AbstractWidget;
 
-class LatestProtocols extends AbstractWidget
+class Piechart extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -13,12 +13,9 @@ class LatestProtocols extends AbstractWidget
      * @var array
      */
     protected $config = [
-        'title' => 'Latest Protocols',
+        'title' => 'Protocols PieChart',
         'data' => ''
     ];
-
-// Reload widget every 60 seconds
-//    public $reloadTimeout = 60;
 
     public function container()
     {
@@ -39,10 +36,14 @@ class LatestProtocols extends AbstractWidget
      */
     public function run()
     {
-        $protocols = Protocol::orderBy('updated_at','desc')->take(10)->get();
+        $protocols['Total'] = Protocol::all()->count();
+        $protocols['Ingoing'] = Protocol::where('type','=',Protocol::INGOING)->get()->count();
+        $protocols['Outgoing'] = Protocol::where('type','=',Protocol::OUTGOING)->get()->count();
+        $protocols['Active'] = Protocol::where('status','=',Protocol::ACTIVE)->get()->count();
+        $protocols['Canceled'] = Protocol::where('status','=',Protocol::CANCELED)->get()->count();
         $this->config = array_merge($this->config, ['data' => $protocols]);
 
-        return view('widgets.latest_protocols', [
+        return view('widgets.piechart', [
             'config' => $this->config,
         ]);
     }
