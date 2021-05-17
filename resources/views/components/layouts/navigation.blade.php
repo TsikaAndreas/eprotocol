@@ -4,11 +4,12 @@
     </div>
     <div class="flex items-center">
         <x-layouts.notification></x-layouts.notification>
+        <x-layouts.language></x-layouts.language>
         <x-layouts.user-nav-menu>
             <a href="#"
                class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
                 <span><i class="fas fa-user"></i></span>
-                <span class="mx-3">{{__('Προφίλ')}}</span>
+                <span class="mx-3">{{__('app.profile')}}</span>
             </a>
             <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
@@ -17,7 +18,7 @@
                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
                    onclick="event.preventDefault(); this.closest('form').submit();">
                     <span><i class="fas fa-power-off"></i></span>
-                    <span class="mx-3">{{__('Αποσύνδεση')}}</span>
+                    <span class="mx-3">{{__('app.logout')}}</span>
                 </a>
             </form>
         </x-layouts.user-nav-menu>

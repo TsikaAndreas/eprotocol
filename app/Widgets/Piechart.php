@@ -13,7 +13,7 @@ class Piechart extends AbstractWidget
      * @var array
      */
     protected $config = [
-        'title' => 'Protocols PieChart',
+        'title' => 'dashboard.piechart_title',
         'data' => ''
     ];
 

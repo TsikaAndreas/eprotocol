@@ -6,6 +6,6 @@ class DashboardController extends Controller
 {
     public function show(){
 
-        return view('dashboard',['title'=>'Dashboard']);
+        return view('dashboard',['title'=> 'app.dashboard']);
     }
 }

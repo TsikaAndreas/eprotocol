@@ -2,23 +2,23 @@
     {{--Protocol Header--}}
     <div class="p-2 mx-6 flex flex-initial justify-between">
         <div class="self-center">
-            <h2 class="text-xl">{{__('Πρωτόκολλο:')}}
-                <span id="protocol" class="text-indigo-700">{{isset($protocol->protocol) ? $protocol->protocol : __('Μη καταχωριμένο')}}</span>
+            <h2 class="text-xl">{{__('protocol.protocol')}}
+                <span id="protocol" class="text-indigo-700">{{isset($protocol->protocol) ? $protocol->protocol : __('protocol.no_registered')}}</span>
             </h2>
-            <h2 class="text-xl mt-1">{{__('Κατάσταση:')}}
-                <span id="protocol_status" class="text-indigo-700">{{$protocol->status}}</span>
+            <h2 class="text-xl mt-1">{{__('protocol.status')}}
+                <span id="protocol_status" class="text-indigo-700">{{__('protocol.'.strtolower($protocol->status))}}</span>
             </h2>
         </div>
         <div>
             @if($protocol->status === \App\Models\Protocol::CANCELED)
-                <button id="reactivateProtocol" type="button" class="status-button" value="{{$protocol->id}}">{{__('Eπανενεργοποίηση')}}</button>
+                <button id="reactivateProtocol" type="button" class="status-button" value="{{$protocol->id}}">{{__('protocol.reactivate')}}</button>
             @elseif($protocol->status === \App\Models\Protocol::ACTIVE)
-                <button id="cancelProtocol" type="button" class="status-button" value="{{$protocol->id}}">{{__('Ακυρωση')}}</button>
+                <button id="cancelProtocol" type="button" class="status-button" value="{{$protocol->id}}">{{__('protocol.cancel')}}</button>
             @endif
-            <x-form.cancel-button>{{__('Πίσω')}}</x-form.cancel-button>
+            <x-form.cancel-button>{{__('protocol.back')}}</x-form.cancel-button>
             <a id="editProtocol" type="button" class="submit-button"
             href="{{route('protocol.edit',$protocol->id)}}">
-                {{__('Επεξεργασία')}}
+                {{__('protocol.edit')}}
             </a>
         </div>
     </div>

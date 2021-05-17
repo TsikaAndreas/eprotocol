@@ -1,6 +1,6 @@
 @if(sizeof($config['data']) > 0)
 <div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg h-1/6" style="text-align-last: justify">
-    <h3 class="p-1 inline-block">{{$config['title']}}</h3>
+    <h3 class="p-1 inline-block">{{__($config['title'])}}</h3>
 </div>
 
 <div class="w-full">

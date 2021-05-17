@@ -9,7 +9,7 @@
         <div class="flex items-center justify-center mt-8">
             <div class="flex items-center">
                 <a href="{{route('dashboard')}}" class="text-white text-2xl mx-2 font-semibold">
-                    {{__('eProtocol')}}
+                    {{__('app.eProtocol')}}
                 </a>
             </div>
         </div>
@@ -21,25 +21,25 @@
                         <span>
                             <i class="fas fa-tachometer-alt"></i>
                         </span>
-                        <span class="mx-3">{{__('Dashboard')}}</span>
+                        <span class="mx-3">{{__('app.dashboard')}}</span>
                     </a>
                 </li>
                 <li x-data="{selected:null}">
                     <div class="flex items-center mt-4 py-2 px-4 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100">
                         <span><i class="fas fa-file-alt"></i></span>
                         <span class="mx-4 cursor-pointer"
-                              @click="selected !== 0 ? selected = 0 : selected = null">{{__("Πρωτόκολλο")}}</span>
+                              @click="selected !== 0 ? selected = 0 : selected = null">{{__("app.protocol")}}</span>
                     </div>
                     <div x-show="selected == 0" class="bg-gray-800">
                         <a class="flex items-center mt-4 py-2 px-10 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                            href="{{route('protocol.create',['type' => 'ingoing'])}}">
                             <span><i class="fas fa-file-import"></i></span>
-                            <span class="mx-3">{{__('Εισερχόμενο')}}</span>
+                            <span class="mx-3">{{__('app.ingoing')}}</span>
                         </a>
                         <a class="flex items-center mt-4 py-2 px-10 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                            href="{{route('protocol.create',['type' => 'outgoing'])}}">
                             <span><i class="fas fa-file-export"></i></span>
-                            <span class="mx-3">{{__('Εξερχόμενο')}}</span>
+                            <span class="mx-3">{{__('app.outgoing')}}</span>
                         </a>
                     </div>
                 </li>
@@ -47,7 +47,7 @@
                     <a class="flex items-center mt-4 py-2 px-4 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                        href="{{route('records.index')}}">
                         <span><i class="fas fa-th-list"></i></span>
-                        <span class="mx-3">{{__('Εγγραφές')}}</span>
+                        <span class="mx-3">{{__('app.records')}}</span>
                     </a>
                 </li>
                 <li>
@@ -57,7 +57,7 @@
                            class="flex items-center mt-4 py-2 px-4 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
                            onclick="event.preventDefault(); this.closest('form').submit();">
                             <span><i class="fas fa-power-off"></i></span>
-                            <span class="mx-3">{{__('Αποσύνδεση')}}</span>
+                            <span class="mx-3">{{__('app.logout')}}</span>
                         </a>
                     </form>
                 </li>

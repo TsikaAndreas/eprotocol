@@ -2,18 +2,18 @@
     {{--Protocol Header--}}
     <div class="p-2 mx-6 flex flex-initial justify-between">
         <div class="self-center">
-            <h2 class="text-xl">{{__('Πρωτόκολλο:')}}
-                <span id="protocol" class="text-indigo-700">{{isset($protocol->protocol) ? $protocol->protocol : __('Μη καταχωριμένο')}}</span>
+            <h2 class="text-xl">{{__('protocol.protocol')}}
+                <span id="protocol" class="text-indigo-700">{{isset($protocol->protocol) ? $protocol->protocol : __('protocol.no_registered')}}</span>
             </h2>
-            <h2 class="text-xl mt-1">{{__('Κατάσταση:')}}
-                <span id="protocol_status" class="text-indigo-700">{{$protocol->status}}</span>
+            <h2 class="text-xl mt-1">{{__('protocol.status')}}
+                <span id="protocol_status" class="text-indigo-700">{{__('protocol.'.strtolower($protocol->status))}}</span>
             </h2>
         </div>
         <div>
             <a id="backButton" type="button" class="cancel-button" href="{{route('protocol.show',$protocol->id)}}">
-                {{__('Πίσω')}}
+                {{__('protocol.back')}}
             </a>
-            <x-form.submit-button form="updateProtocol">{{__('Υποβολή')}}</x-form.submit-button>
+            <x-form.submit-button form="updateProtocol">{{__('protocol.submit')}}</x-form.submit-button>
         </div>
     </div>
 </div>

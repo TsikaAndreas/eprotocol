@@ -9,7 +9,7 @@ class RecordsController extends Controller
 {
     public function index()
     {
-        return view('records')->with(['title' => 'Εγγραφές']);
+        return view('records')->with(['title' => 'app.records']);
     }
 
     public function getRecords()

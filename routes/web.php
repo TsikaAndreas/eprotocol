@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProtocolController;
 use App\Http\Controllers\RecordsController;
 use App\Services\FileManager;
@@ -20,11 +20,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [GeneralController::class,'slashRedirect']);
+Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 
 Route::group(['middleware'=>'auth'],function () {
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
-
-    Route::get('/activity',[ActivityController::class,'index'])->name('activity');
 
     Route::get('/protocol/create/{type}',[ProtocolController::class,'create'])->name('protocol.create');
     Route::post('/protocol/store',[ProtocolController::class,'store'])->name('protocol.store');

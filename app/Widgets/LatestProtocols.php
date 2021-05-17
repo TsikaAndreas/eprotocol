@@ -13,7 +13,7 @@ class LatestProtocols extends AbstractWidget
      * @var array
      */
     protected $config = [
-        'title' => 'Latest Protocols',
+        'title' => 'dashboard.latest_protocols_title',
         'data' => ''
     ];
 

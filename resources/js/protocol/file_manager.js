@@ -23,7 +23,6 @@ function addNewFileInput(){
     let label = document.createElement('label');
     label.htmlFor = 'file';
     label.className = 'custom-label';
-    label.innerText = 'Επιλέξτε αρχείο:';
     form_group.appendChild(label);
 
     let div = document.createElement('div');
@@ -33,7 +32,7 @@ function addNewFileInput(){
     let input = document.createElement('input');
     input.type = 'file';
     input.name = 'file[]';
-    input.placeholder = 'Επιλέξτε αρχείο';
+    input.placeholder = 'Select File';
     input.className = 'block mt-1';
     div.appendChild(input);
 

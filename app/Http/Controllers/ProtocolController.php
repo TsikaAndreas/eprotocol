@@ -15,17 +15,20 @@ use App\Services\FileManager;
 
 class ProtocolController extends Controller
 {
+    const lang_prefix = 'protocol.header_';
+
     /**
      * Show the form for creating a new resource.
      *
      * @param $type
      * @return Application|Factory|View|Response
      */
+
     public function create($type)
     {
         $title = (new Protocol)->getProtocolType($type);
 
-        return view('protocol')->with(['title' => $title,'type' => $type, 'preview_mode'=>'CREATE']);
+        return view('protocol')->with(['title' => self::lang_prefix.$title,'type' => $type, 'preview_mode'=>'CREATE']);
     }
 
     /**
@@ -85,7 +88,7 @@ class ProtocolController extends Controller
 
         $files = File::getFiles($id);
 
-        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW','files' => $files]);
+        return view('protocol',['title'=> self::lang_prefix.$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW','files' => $files]);
     }
 
     /**
@@ -100,7 +103,7 @@ class ProtocolController extends Controller
         $title = (new Protocol)->getProtocolType($protocol->type);
         $files = File::getFiles($id);
 
-        return view('protocol',['title'=>$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT','files' => $files]);
+        return view('protocol',['title'=> self::lang_prefix.$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT','files' => $files]);
     }
 
     /**

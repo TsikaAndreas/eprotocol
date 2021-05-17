@@ -21,10 +21,10 @@ class Protocol extends Model
 
     public function getProtocolType($type){
         if ($type == self::INGOING) {
-            return 'Εισερχόμενο';
+            return self::INGOING;
         }
         elseif ($type == self::OUTGOING) {
-            return 'Εξερχόμενο';
+            return self::OUTGOING;
         }
         return abort(500);
     }
