@@ -16,12 +16,12 @@
                     <div class="inline-block w-4/12">
                         <span class="block text-base">{{__('dashboard.latest_protocols_type')}}
                             <span class="capitalize text-indigo-600">
-                                {{$record->type}}
+                                {{__('dashboard.latest_protocols_'.strtolower($record->type))}}
                             </span>
                         </span>
-                        <span class="block text-base">{{__('dashboard.latest_protocols_status')}}
+                        <span class="block text-sm">{{__('dashboard.latest_protocols_status')}}
                             <span class="capitalize text-indigo-600">
-                                {{$record->status}}
+                                {{__('dashboard.latest_protocols_'.strtolower($record->status))}}
                             </span>
                         </span>
                     </div>
