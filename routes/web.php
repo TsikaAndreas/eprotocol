@@ -23,8 +23,11 @@ Route::get('/', [GeneralController::class,'slashRedirect']);
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 
 Route::group(['middleware'=>'auth'],function () {
-    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    // Global Search
+    Route::post('/global-search/{keyword}', [GeneralController::class, 'globalSearch']);
 
+    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    // Protocols
     Route::get('/protocol/create/{type}',[ProtocolController::class,'create'])->name('protocol.create');
     Route::post('/protocol/store',[ProtocolController::class,'store'])->name('protocol.store');
     Route::get('/protocol/{id}',[ProtocolController::class,'show'])->name('protocol.show');
@@ -38,11 +41,10 @@ Route::group(['middleware'=>'auth'],function () {
         // File Download
         Route::post('/deletefile/{protocol}/{id}',[FileManager::class,'deleteFile']);
     });
+    Route::get('/download/{protocol}/{id}',[FileManager::class,'downloadFile'])->name('downloadFile');
 
     Route::get('/records',[RecordsController::class,'index'])->name('records.index');
     Route::get('/records/get',[RecordsController::class,'getRecords'])->middleware('ajax')->name('records.getRecords');
-
-    Route::get('/download/{protocol}/{id}',[FileManager::class,'downloadFile'])->name('downloadFile');
 });
 
 require __DIR__.'/auth.php';
