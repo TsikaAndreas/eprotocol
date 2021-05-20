@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DateTimeInterface;
 
 class Protocol extends Model
 {
@@ -27,5 +28,10 @@ class Protocol extends Model
             return self::OUTGOING;
         }
         return abort(500);
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }
