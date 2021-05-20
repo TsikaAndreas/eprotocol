@@ -63,6 +63,10 @@ body {
     color: #9fb7d9;
 }
 
+.page_wrapper .inner_sidebar .sidebar_nav_links li div {
+    background-color: #3369b6;
+}
+
 .page_wrapper .inner_sidebar .sidebar_nav_links li div a {
     padding-left: 70px;
 }

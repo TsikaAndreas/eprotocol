@@ -16,7 +16,7 @@
                 </span>
                     <span class="title">{{__('app.dashboard')}}</span>
                 </a></li>
-            <li x-data="{selected:null}">
+            <li x-data="{selected:{{request()->is('protocol/create/*')? '0' : 'null' }}}">
                 <a href="#" @click="selected !== 0 ? selected = 0 : selected = null">
                 <span class="icon">
                     <i class="fas fa-file-alt"></i>
