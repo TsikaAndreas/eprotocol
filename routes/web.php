@@ -23,8 +23,6 @@ Route::get('/', [GeneralController::class,'slashRedirect']);
 Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 
 Route::group(['middleware'=>'auth'],function () {
-    // Global Search
-    Route::post('/global-search/{keyword}', [GeneralController::class, 'globalSearch']);
 
     Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
     // Protocols
@@ -40,6 +38,8 @@ Route::group(['middleware'=>'auth'],function () {
         Route::post('/protocol/{id}/reactivate',[ProtocolController::class,'reactivate']);
         // File Download
         Route::post('/deletefile/{protocol}/{id}',[FileManager::class,'deleteFile']);
+        // Global Search
+        Route::get('/global-search', [GeneralController::class, 'globalSearch']);
     });
     Route::get('/download/{protocol}/{id}',[FileManager::class,'downloadFile'])->name('downloadFile');
 

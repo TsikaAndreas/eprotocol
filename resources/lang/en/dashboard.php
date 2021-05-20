@@ -10,6 +10,6 @@ return  [
     'latest_protocols_active' => 'Active',
     'latest_protocols_canceled' => 'Canceled',
     // Pie Chart Widget
-    'piechart_title' => 'Pie Chart',
+    'piechart_title' => 'Protocols Pie Chart',
 
 ];

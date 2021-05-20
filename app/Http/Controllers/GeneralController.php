@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Protocol;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
@@ -15,19 +16,18 @@ class GeneralController extends Controller
         return Redirect::route('dashboard');
     }
 
-    public function globalSearch($keyword)
+    public function globalSearch(Request $request)
     {
-        $keyword = trim($keyword);
+        $keyword = trim($request->keyword);
 
         $query = Protocol::query();
-        $query->select('protocol', 'ingoing_protocol', 'creator', 'receiver', 'created_at', 'type');
+        $query->select('id', 'protocol', 'ingoing_protocol', 'creator', 'receiver', 'created_at');
 
         $query->where('protocol', 'like', '%'. $keyword . '%');
         $query->orWhere('ingoing_protocol', 'like', '%'. $keyword . '%');
         $query->orWhere('creator', 'like', '%'. $keyword . '%');
         $query->orWhere('receiver', 'like', '%'. $keyword . '%');
         $query->orWhere('created_at', 'like', '%'. $keyword . '%');
-        $query->orWhere('type', 'like', '%'. $keyword . '%');
 
         $total = $query->count();
         $result = $query->limit(10)->get();

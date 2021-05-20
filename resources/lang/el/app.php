@@ -11,5 +11,5 @@ return  [
 
     // Navigation
     'profile' => 'Προφίλ',
-    'search' => 'Αναζήτηση',
+    'search' => 'Αναζήτηση...',
 ];

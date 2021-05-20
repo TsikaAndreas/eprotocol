@@ -10,6 +10,6 @@ return  [
     'latest_protocols_active' => 'Ενεργό',
     'latest_protocols_canceled' => 'Ακυρωμένο',
     // Pie Chart Widget
-    'piechart_title' => 'Κυκλικό Διάγραμμα',
+    'piechart_title' => 'Κυκλικό Διάγραμμα Πρωτοκόλλων',
 
 ];
