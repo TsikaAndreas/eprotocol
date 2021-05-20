@@ -48,7 +48,7 @@ class FileManager
     public function deleteFile($protocol_id, $file_id) {
         $file = File::where('id',$file_id)->first();
         if ($file === null){
-            return response()->json(['error' => true, 'message' => 'Sorry, we couldn\'t find your file! Please contact administrator for additional information.']);
+            return response()->json(['error' => true, 'message' => 'Sorry, we couldn\'t find your file! Please contact the administrator for additional information.']);
         }
         $delete = $this->dir_location->delete($protocol_id.DIRECTORY_SEPARATOR.$file->hash_name);
         if ($delete)
