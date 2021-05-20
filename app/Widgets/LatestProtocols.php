@@ -24,7 +24,7 @@ class LatestProtocols extends AbstractWidget
     {
         return [
             'element'       => 'div',
-            'attributes'    => 'class="bg-white rounded-lg shadow-xl h-96 overflow-hidden"',
+            'attributes'    => 'class="bg-white rounded-lg shadow-xl overflow-hidden" style="height: 24rem;"',
         ];
     }
 
