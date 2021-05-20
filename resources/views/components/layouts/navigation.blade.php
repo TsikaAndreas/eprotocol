@@ -1,9 +1,13 @@
-<header class="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
+<div class="top_navbar justify-between">
     <div class="flex items-center">
+        <div class="hamburger">
+            <div class="hamburger__inner">
+                <i class="fas fa-bars text-indigo-600"></i>
+            </div>
+        </div>
         <x-layouts.search></x-layouts.search>
     </div>
-    <div class="flex items-center">
-        <x-layouts.notification></x-layouts.notification>
+    <div class="flex">
         <x-layouts.language></x-layouts.language>
         <x-layouts.user-nav-menu>
             <a href="#"
@@ -23,4 +27,4 @@
             </form>
         </x-layouts.user-nav-menu>
     </div>
-</header>
+</div>

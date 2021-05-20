@@ -10,28 +10,30 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
         @stack('head-styles')
         <!-- Scripts -->
         <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
         @stack('head-scripts')
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-200 flex">
-            <x-layouts.sidebar></x-layouts.sidebar>
-            <div class="flex-1 flex flex-col overflow-hidden">
-                <x-layouts.navigation></x-layouts.navigation>
-                <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
-                    <div class="container mx-auto px-6 py-8">
-                        {{ $slot }}
-                    </div>
-                </main>
-                @stack('modals')
-                <footer>
-                    <div>
-                        @stack('footer-scripts')
-                    </div>
-                </footer>
+    <body class="font-sans">
+
+    <div class="page_wrapper">
+        <x-layouts.sidebar></x-layouts.sidebar>
+        <div class="main_container">
+            <x-layouts.navigation></x-layouts.navigation>
+            <div class="container">
+                {{ $slot }}
             </div>
+            @stack('modals')
         </div>
+        <footer>
+            <div>
+                <script type="text/javascript" src="{{ asset('js/sidebar.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('js/global-search.js') }}"></script>
+                @stack('footer-scripts')
+            </div>
+        </footer>
+    </div>
     </body>
 </html>
