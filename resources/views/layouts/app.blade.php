@@ -18,7 +18,7 @@
     </head>
     <body class="font-sans">
 
-    <div class="page_wrapper">
+    <div class="page_wrapper" style="min-height: 100vh;">
         <x-layouts.sidebar></x-layouts.sidebar>
         <div class="main_container">
             <x-layouts.navigation></x-layouts.navigation>
@@ -27,12 +27,8 @@
             </div>
             @stack('modals')
         </div>
-        <footer>
-            <div>
-                <script type="text/javascript" src="{{ asset('js/basic.min.js') }}"></script>
-                @stack('footer-scripts')
-            </div>
-        </footer>
+        <script type="text/javascript" src="{{ asset('js/basic.min.js') }}"></script>
+        @stack('footer-scripts')
     </div>
     </body>
 </html>

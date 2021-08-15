@@ -1,48 +1,47 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <x-auth.auth-card>
+        <div class="md:flex w-full">
+            <div class="w-full py-10 px-5 md:px-10">
+                <div class="text-center mb-5">
+                    <h1 class="mb-2 font-bold text-3xl text-gray-900">{{__('auth.reset_password.header')}}</h1>
+                    <p>{{__('auth.reset_password.description')}}</p>
+                </div>
+                <!-- Session Status -->
+                <x-auth.auth-session-status :status="session('status')" />
+                <!-- Validation Errors -->
+                <x-auth.auth-validation-errors :errors="$errors" />
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
-
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                <form method="POST" action="{{ route('password.update') }}">
+                    @csrf
+                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                    <div class="flex">
+                        <div class="w-full px-3 mb-5">
+                            <i class="fas fa-envelope fa-sm"></i>
+                            <x-auth.label for="email">{{__('auth.reset_password.email')}}</x-auth.label>
+                            <x-auth.input id="email" name="email" type="email" value="{{old('email')}}" placeholder="{{__('auth.reset_password.email')}}"/>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="w-full px-3 mb-5">
+                            <i class="fas fa-lock fa-sm"></i>
+                            <x-auth.label for="password">{{__('auth.reset_password.password')}}</x-auth.label>
+                            <x-auth.input id="password" name="password" type="password" placeholder="{{__('auth.reset_password.password')}}"/>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="w-full px-3 mb-5">
+                            <i class="fas fa-lock fa-sm"></i>
+                            <x-auth.label for="password_confirmation">{{__('auth.reset_password.password_confirmation')}}</x-auth.label>
+                            <x-auth.input id="password_confirmation" name="password_confirmation" type="password_confirmation" placeholder="{{__('auth.reset_password.password_confirmation')}}"/>
+                        </div>
+                    </div>
+                    <div class="flex">
+                        <div class="w-full px-3">
+                            <x-auth.button class="green-color-btn">{{__('auth.reset_password.button')}}</x-auth.button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+        </div>
+    </x-auth.auth-card>
 </x-guest-layout>

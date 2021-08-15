@@ -3,7 +3,7 @@ return  [
     // Sidebar
     'eProtocol' => 'eProtocol',
     'dashboard' => 'Dashboard',
-    'protocol' => 'Protocol',
+    'protocol' => 'Protocols',
     'ingoing' => 'Ingoing',
     'outgoing' => 'Outgoing',
     'records' => 'Records',
@@ -12,4 +12,5 @@ return  [
     // Navigation
     'profile' => 'Profile',
     'search' => 'Search...',
+    'language' => 'Language'
 ];

@@ -3,7 +3,7 @@ return  [
     // Sidebar
     'eProtocol' => 'eProtocol',
     'dashboard' => 'Tαμπλό',
-    'protocol' => 'Πρωτόκολλο',
+    'protocol' => 'Πρωτόκολλα',
     'ingoing' => 'Εισερχόμενο',
     'outgoing' => 'Εξερχόμενο',
     'records' => 'Εγγραφές',
@@ -12,4 +12,5 @@ return  [
     // Navigation
     'profile' => 'Προφίλ',
     'search' => 'Αναζήτηση...',
+    'language' => 'Γλώσσα'
 ];
