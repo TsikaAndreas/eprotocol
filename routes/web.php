@@ -45,6 +45,8 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::get('/records',[RecordsController::class,'index'])->name('records.index');
     Route::get('/records/get',[RecordsController::class,'getRecords'])->middleware('ajax')->name('records.getRecords');
+
+    Route::get('/profile', [\App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
 });
 
 require __DIR__.'/auth.php';
