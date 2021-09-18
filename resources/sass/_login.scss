@@ -1,0 +1,28 @@
+// login elements
+.guest-input {
+    @apply block w-full pl-4 pr-3 py-2 rounded-lg border-2 border-gray-200 focus:border-indigo-500;
+}
+.guest-button {
+    @apply block w-full max-w-xs mx-auto text-center text-white rounded-lg px-3 py-3 font-semibold;
+}
+.guest-remember {
+    @apply rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+}
+.green-color-btn {
+    @apply bg-green-500 hover:bg-green-600 focus:bg-green-600;
+}
+.indigo-color-btn {
+    @apply bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-600;
+}
+// Guest Layout
+.guest-layout-bg {
+    @apply min-h-screen guest-gradient flex items-center justify-center;
+}
+.auth-card-bg {
+    @apply bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full max-w-screen-lg overflow-hidden;
+}
+
+.guest-gradient {
+    background: linear-gradient(128deg,#7BC3F6,#8570db, #974fc1);
+    background-size: cover;
+}

@@ -6,9 +6,12 @@
              src="{{asset('/assets/images/profile_icon.svg')}}"
              alt="Your avatar">
     </button>
-    <span @click="dropdownOpen = ! dropdownOpen" class="ml-2 text-gray-500 cursor-pointer">
+    <div @click="dropdownOpen = ! dropdownOpen" class="ml-2 text-gray-500 cursor-pointer">
+        <span class="hidden sm:inline-flex mr-1">
             {{ Auth::user()->name }}
-    </span>
+        </span>
+        <i class="fas fa-angle-down align-middle"></i>
+    </div>
     <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
          style="display: none;">
     </div>

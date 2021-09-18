@@ -1,0 +1,21 @@
+// Custom Form Elements
+.custom-input {
+    @apply mt-2 mb-2 appearance-none block w-full border rounded;
+}
+.custom-label {
+    @apply mb-2 block capitalize tracking-wide text-gray-900 text-base;
+}
+.custom-textarea {
+    @apply mt-2 mb-2 appearance-none block w-full h-24 border rounded;
+}
+.custom-span {
+    @apply flex flex-col mt-2 p-2 border border-gray-100 bg-gray-100 rounded;
+}
+
+// Files
+.custom-delete-1 {
+    @apply text-red-700 ml-3 mr-3 cursor-pointer;
+}
+.custom-delete-2 {
+    @apply text-red-700 ml-3 mr-3 cursor-pointer self-center;
+}

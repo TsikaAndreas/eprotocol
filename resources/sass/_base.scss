@@ -10,6 +10,15 @@ body {
     background: #e8e8ed;
 }
 
+textarea:focus, input:focus, button:focus {
+    outline: none;
+}
+.text-end {
+    text-align: end;
+}
+
+// Sidebar for side menu
+
 .page_wrapper {
     display: flex;
     width: 100%;
@@ -199,6 +208,28 @@ body {
 }
 .page_wrapper .search-list .item-protocol span {
     margin-left: 10px;
+}
+
+// ScrollBar
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(79, 70, 229) transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(79, 70, 229);
+    border-radius: 20px;
+    border: 3px solid rgb(79, 70, 229);
 }
 
 /* Media queries*/

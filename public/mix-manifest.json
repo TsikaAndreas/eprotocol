@@ -1,9 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/basic.min.js": "/js/basic.min.js",
-    "/js/protocol/file_manager.min.js": "/js/protocol/file_manager.min.js",
-    "/js/protocol/status.min.js": "/js/protocol/status.min.js",
-    "/css/basic.min.css": "/css/basic.min.css",
     "/css/app.css": "/css/app.css",
+    "/js/protocol/protocol-bundle.js": "/js/protocol/protocol-bundle.js",
     "/js/chart.js/chart.min.js": "/js/chart.js/chart.min.js"
 }

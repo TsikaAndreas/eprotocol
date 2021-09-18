@@ -1,4 +1,4 @@
-<div class="top_navbar justify-between">
+<div class="top_navbar justify-between z-10">
     <div class="flex items-center">
         <div class="hamburger">
             <div class="hamburger__inner">

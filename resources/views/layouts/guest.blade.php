@@ -17,7 +17,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="guest-layout-bg px-5 py-5">
+        <div class="guest-layout-bg px-5 py-10">
             <x-layouts.language class="absolute top-2 left-1"></x-layouts.language>
             {{ $slot }}
         </div>

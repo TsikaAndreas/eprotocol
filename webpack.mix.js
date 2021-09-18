@@ -20,10 +20,14 @@ mix.js('resources/js/app.js', 'public/js')
             require('autoprefixer'),
         ]
     });
-
+// ------------ General Bundle -------------
 mix.js('resources/js/basic.js','public/js/basic.min.js');
-mix.js('resources/js/protocol/file_manager.js','public/js/protocol/file_manager.min.js');
-mix.js('resources/js/protocol/status.js','public/js/protocol/status.min.js');
-mix.copy('node_modules/chart.js/dist/chart.min.js', 'public/js/chart.js/chart.min.js');
 
-mix.css('resources/css/basic.css', 'public/css/basic.min.css');
+// ------------ Protocols Bundle -------------
+mix.babel([
+    'resources/js/protocol/file_manager.js',
+    'resources/js/protocol/status.js'
+], 'public/js/protocol/protocol-bundle.js')
+
+// ------------ Charts -------------
+mix.copy('node_modules/chart.js/dist/chart.min.js', 'public/js/chart.js/chart.min.js');
