@@ -15,6 +15,11 @@ $fa-font-path: "../webfonts";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 
+//Datatables
+@import "~datatables.net-dt";
+@import "~datatables.net-responsive-dt";
+@import "~datatables.net-buttons-dt";
+
 // modal
 .custom-modal {
     @apply fixed top-0 left-0 h-screen w-screen overflow-auto bg-black bg-opacity-50;
