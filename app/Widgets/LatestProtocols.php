@@ -2,6 +2,7 @@
 
 namespace App\Widgets;
 
+use App\Http\Controllers\RecordsController;
 use App\Models\Protocol;
 use Arrilot\Widgets\AbstractWidget;
 
@@ -39,7 +40,12 @@ class LatestProtocols extends AbstractWidget
      */
     public function run()
     {
-        $protocols = Protocol::orderBy('updated_at','desc')->take(10)->get();
+        $protocols = Protocol::orderBy('updated_at','desc')->limit(10)->get()->each(function ($protocol) {
+            $protocol->status = '<span class="badge-'.RecordsController::$protocol_status[$protocol->status].'">'.
+                __('dashboard.latest_protocols_'.strtolower($protocol->status)).'</span>';
+            return $protocol;
+        });
+
         $this->config = array_merge($this->config, ['data' => $protocols]);
 
         return view('widgets.latest_protocols', [

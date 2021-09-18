@@ -19,9 +19,9 @@
                                 {{__('dashboard.latest_protocols_'.strtolower($record->type))}}
                             </span>
                         </span>
-                        <span class="block text-sm">{{__('dashboard.latest_protocols_status')}}
+                        <span class="block text-sm">
                             <span class="capitalize text-indigo-600">
-                                {{__('dashboard.latest_protocols_'.strtolower($record->status))}}
+                                {!! $record->status !!}
                             </span>
                         </span>
                     </div>
