@@ -84,6 +84,8 @@ class ProtocolController extends Controller
     public function show($id)
     {
         $protocol = Protocol::findOrFail($id);
+        $protocol->badge = '<span id="protocol_status" class="badge-'.Protocol::$protocol_status[$protocol->status].'-lg">'.$protocol->status.'</span>';
+
         $title = (new Protocol)->getProtocolType($protocol->type);
 
         $files = File::getFiles($id);

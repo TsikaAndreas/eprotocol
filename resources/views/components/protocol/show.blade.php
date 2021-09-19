@@ -6,7 +6,7 @@
                 <span id="protocol" class="text-indigo-700">{{isset($protocol->protocol) ? $protocol->protocol : __('protocol.no_registered')}}</span>
             </h2>
             <h2 class="text-xl mt-1">{{__('protocol.status')}}
-                <span id="protocol_status" class="text-indigo-700">{{__('protocol.'.strtolower($protocol->status))}}</span>
+                {!! $protocol->badge !!}
             </h2>
         </div>
         <div>

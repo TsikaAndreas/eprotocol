@@ -10,5 +10,7 @@ return [
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
     'canceled_at' => 'Canceled At',
-    'action' => 'Action'
+    'action' => 'Action',
+    'ingoing' => 'Ingoing',
+    'outgoing' => 'Outgoing'
 ];

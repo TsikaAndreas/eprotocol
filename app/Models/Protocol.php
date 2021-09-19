@@ -20,6 +20,11 @@ class Protocol extends Model
     protected $fillable = ['protocol', 'protocol_date', 'type', 'status', 'ingoing_protocol', 'ingoing_protocol_date',
         'creator', 'receiver', 'title', 'description', 'created_at', 'updated_at', 'canceled_at'];
 
+    static array $protocol_status = [
+        'Active' => 'active',
+        'Canceled' => 'canceled'
+    ];
+
     public function getProtocolType($type){
         if ($type == self::INGOING) {
             return self::INGOING;

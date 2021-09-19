@@ -10,5 +10,7 @@ return [
     'created_at' => 'Δημιουργήθηκε',
     'updated_at' => 'Ενημερώθηκε',
     'canceled_at' => 'Ακυρώθηκε',
-    'action' => 'Ενέργεια'
+    'action' => 'Ενέργεια',
+    'ingoing' => 'Εισερχόμενο',
+    'outgoing' => 'Εξερχόμενο'
 ];

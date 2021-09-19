@@ -10,11 +10,6 @@ use Yajra\DataTables\DataTables;
 
 class RecordsController extends Controller
 {
-    static array $protocol_status = [
-        'Active' => 'active',
-        'Canceled' => 'cancel'
-    ];
-
     /**
      * Function that returns the columns for the datatable.
      *
@@ -70,8 +65,11 @@ class RecordsController extends Controller
                 }
                 return null;
             })
+            ->editColumn('type', function ($protocol) {
+                return __('dataTable.'.$protocol->type);
+            })
             ->editColumn('status', function ($protocol) {
-                return '<div class="mx-auto badge-'.self::$protocol_status[$protocol->status].'">'.$protocol->status.'</div>';
+                return '<div class="mx-auto badge-'.Protocol::$protocol_status[$protocol->status].'">'.$protocol->status.'</div>';
             })
             // add action button
             ->addColumn('action', function ($protocol) {
