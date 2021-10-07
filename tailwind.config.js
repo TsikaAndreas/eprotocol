@@ -4,11 +4,9 @@ module.exports = {
     purge: [
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/views/components/**/*.blade.php',
         './resources/views/*.blade.php',
-        '/css/*.css',
-        '/js/**/*.js',
-        '/js/*.js',
+        './resources/**/*.scss',
+        './resources/**/*.css'
     ],
     theme: {
         extend: {
