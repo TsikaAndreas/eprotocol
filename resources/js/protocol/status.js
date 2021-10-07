@@ -8,81 +8,66 @@ $(document).ready(function() {
     if (protocolCancelBtn !== null) {
         protocolCancelBtn.addEventListener('click',cancelProtocol);
     }
-    let changeStatusModal = document.getElementById('changeProtocolStatusModal');
-    changeStatusModal.getElementsByClassName('modal-close')[0].addEventListener('click',hideChangeStatusModal);
-    changeStatusModal.getElementsByClassName('modal-cancel')[0].addEventListener('click',hideChangeStatusModal);
-
 });
 
-var changeStatusModal = document.getElementById('changeProtocolStatusModal');
-// Reactivate Protocol Action
-function reactivateProtocol() {
-    let protocolId = document.getElementById('reactivateProtocol').value;
-    let reactivateMsg = changeStatusModal.getElementsByClassName('reactivation-message')[0];
-    let submitBtn = changeStatusModal.getElementsByClassName('modal-submit')[0];
-
-    reactivateMsg.classList.remove('hidden');
-    submitBtn.setAttribute('onclick','protocolStatusAjax('+ protocolId + ',\'reactivate\')');
-    showChangeStatusModal();
-}
-// Cancel Protocol Action
 function cancelProtocol() {
-    let protocolId = document.getElementById('cancelProtocol').value;
-    let cancelBtn = changeStatusModal.getElementsByClassName('cancel-message')[0];
-    let submitBtn = changeStatusModal.getElementsByClassName('modal-submit')[0];
-
-    cancelBtn.classList.remove('hidden');
-    submitBtn.setAttribute('onclick','protocolStatusAjax('+ protocolId + ',\'cancel\')');
-    showChangeStatusModal();
-}
-// Ajax request for status change.
-protocolStatusAjax = function (protocolId,action){
-    let confirmationMsg = changeStatusModal.getElementsByClassName('modal-message')[0];
-
-    let csrf_token = $('meta[name="csrf-token"]').attr('content');
-    $.ajaxSetup({
-        headers:
-            { 'X-CSRF-TOKEN': csrf_token }
-    });
-    $.ajax({
-        url: window.location.origin + '/protocol/' + protocolId + '/' + action,
-        method: "post",
-        dataType: "json",
-        data: {
-            protocol_id: protocolId
-        }
-    }).done( function (result) {
-        hideInitialMessages();
-        if (result.success) {
-            confirmationMsg.innerHTML = '<p class="text-green-500">' + result.message + '</p>';
-        } else if (result.error) {
-            confirmationMsg.innerHTML = '<p class="text-red-500">' + result.message + '</p>';
-        }
-    }).fail( function (result) {
-        hideInitialMessages();
-        confirmationMsg.innerHTML = '<p class="text-red-500">' + result.statusText + '</p>';
-        confirmationMsg.innerHTML += '<p>' + result.responseText + '</p>';
-    });
-}
-// Hide Modal
-function hideChangeStatusModal() {
-    changeStatusModal.classList.add('hidden');
-    changeStatusModal.getElementsByClassName('modal-message')[0].innerText = '';
-    hideInitialMessages();
-}
-// Hide modal's initial messages
-function hideInitialMessages(){
-    let cancelMsg = changeStatusModal.getElementsByClassName('cancel-message')[0];
-    let reactivateMsg = changeStatusModal.getElementsByClassName('reactivation-message')[0];
-
-    if (!cancelMsg.classList.contains('hidden')){
-        cancelMsg.classList.add('hidden');
+    let protocol = {
+        id: document.getElementById('cancelProtocol').value,
+        name: document.getElementById('protocol').textContent,
+        action: 'cancel'
     }
-    if (!reactivateMsg.classList.contains('hidden')){
-        reactivateMsg.classList.add('hidden');
-    }
+    protocolStatusChange('Cancellation', protocol);
 }
-// Show Modal
-function showChangeStatusModal() {
-    changeStatusModal.classList.remove('hidden');
+
+function reactivateProtocol() {
+    let protocol = {
+        id: document.getElementById('reactivateProtocol').value,
+        name: document.getElementById('protocol').textContent,
+        action: 'reactivate'
+    }
+    protocolStatusChange('Reactivation', protocol);
+}
+
+function protocolStatusChange(action, protocol) {
+    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    Swal.fire({
+        html: '<p>Please confirm the <b>'+ action +'</b> of the following protocol.</p><p><b>' + protocol.name + '</b></p>',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#10b981',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirm',
+        showLoaderOnConfirm: true,
+    }).then(function (e) {
+        if (e.isConfirmed) {
+            $.ajax({
+                url: window.location.origin + '/protocol/change-status',
+                method: 'POST',
+                dataType: 'JSON',
+                data: {
+                    _token: CSRF_TOKEN,
+                    id: protocol.id,
+                    action: protocol.action
+                },
+                success: function (results) {
+                    if (results.success === true) {
+                        Swal.fire('', results.message, "success").then(function (target) {
+                            if (target.isConfirmed || target.isDismissed) {
+                                window.location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire('', results.message, "warning").then(function (target) {
+                            if (target.isConfirmed || target.isDismissed) {
+                                window.location.reload();
+                            }
+                        });
+                    }
+                },
+                fail: function (results) {
+                    Swal.fire('', results.message, "error");
+                }
+            });
+        }
+    });
 }

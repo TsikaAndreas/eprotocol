@@ -1,6 +1,6 @@
 require('./bootstrap');
 require('alpinejs');
-
+window.Swal = require('sweetalert2');
 /**
  * We load all the required packages for the DataTables.
  */
@@ -17,4 +17,3 @@ require( 'datatables.net-buttons/js/dataTables.buttons.min' );
 require( 'datatables.net-buttons/js/buttons.html5.min' );
 require( 'datatables.net-buttons/js/buttons.colVis.min' );
 require( 'datatables.net-buttons/js/buttons.print.min' );
-

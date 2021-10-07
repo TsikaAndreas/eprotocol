@@ -12,6 +12,6 @@
         </div>
     </div>
     @push('footer-scripts')
-        <script type="text/javascript" src="{{ asset('js/protocol/file_manager.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/protocol/protocol-bundle.js') }}"></script>
     @endpush
 </x-app-layout>

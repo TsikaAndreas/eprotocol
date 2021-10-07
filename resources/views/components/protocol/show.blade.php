@@ -33,7 +33,3 @@
 @push('modals')
     <x-modals.change-protocol-status></x-modals.change-protocol-status>
 @endpush
-
-@push('footer-scripts')
-    <script type="text/javascript" src="{{ asset('js/protocol/status.min.js') }}"></script>
-@endpush

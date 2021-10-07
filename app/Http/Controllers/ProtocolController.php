@@ -9,6 +9,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Redirect;
 use App\Services\FileManager;
@@ -149,27 +150,30 @@ class ProtocolController extends Controller
         return Redirect::route('protocol.show',$protocol->id);
     }
 
-    public function cancel($protocol_id){
-        $protocol = Protocol::find($protocol_id);
-        if ($protocol->status === Protocol::CANCELED)
-        {
-            return response()->json(['error' => true, 'message' => 'The Protocol has already been canceled!']);
-        }
-        $protocol->status = Protocol::CANCELED;
-        $protocol->canceled_at = date('Y-m-d H:i:s');
-        $protocol->update();
+    public function changeStatus(Request $request) {
+        $data = $request->only('id','action');
+        $protocol = Protocol::find($data['id']);
+        $action = $data['action'];
 
-        return response()->json(['success' => true, 'message' => 'The Protocol has been canceled successfully!']);
-    }
-    public function reactivate($protocol_id){
-        $protocol = Protocol::find($protocol_id);
-        if ($protocol->status === Protocol::ACTIVE)
-        {
-            return response()->json(['error' => true, 'message' => 'The Protocol has already been reactivated!']);
-        }
-        $protocol->status = Protocol::ACTIVE;
-        $protocol->update();
+        if ($action === 'cancel') {
+            if ($protocol->status === Protocol::CANCELED) {
+                return response()->json(['error' => true, 'message' => __('message.already_canceled')]);
+            }
+            $protocol->status = Protocol::CANCELED;
+            $protocol->canceled_at = date('Y-m-d H:i:s');
+            $protocol->update();
 
-        return response()->json(['success' => true, 'message' => 'The Protocol has been reactivated successfully!']);
+            return response()->json(['success' => true, 'message' => __('message.success_cancel')]);
+        }
+        if ($action === 'reactivate') {
+            if ($protocol->status === Protocol::ACTIVE) {
+                return response()->json(['error' => true, 'message' => __('message.already_reactivated')]);
+            }
+            $protocol->status = Protocol::ACTIVE;
+            $protocol->update();
+
+            return response()->json(['success' => true, 'message' => __('message.success_reactivation')]);
+        }
+        return response()->json(['error' => true, 'message' => __('message.invalid_action')]);
     }
 }
