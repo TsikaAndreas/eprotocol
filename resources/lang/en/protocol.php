@@ -9,7 +9,7 @@ return  [
     'active' => 'Active',
     'canceled' => 'Canceled',
     'protocol' => 'Protocol:',
-    'no_registered' => 'No registered',
+    'no_registered' => 'Unregistered',
     'back' => 'Back',
     'submit' => 'Submit',
     'status' => 'Status:',

@@ -6,7 +6,7 @@
                 <span id="protocol" class="text-indigo-700">{{isset($protocol->protocol) ? $protocol->protocol : __('protocol.no_registered')}}</span>
             </h2>
             <h2 class="text-xl mt-1">{{__('protocol.status')}}
-                <span id="protocol_status" class="text-indigo-700">{{__('protocol.'.strtolower($protocol->status))}}</span>
+                {!! $protocol->badge !!}
             </h2>
         </div>
         <div>
@@ -29,7 +29,8 @@
 </div>
 @enderror
 
-<div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+<div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 relative">
+    <x-loader>{{__('message.submitting')}}</x-loader>
     <form id="updateProtocol" action="{{route('protocol.update',$protocol->id)}}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf

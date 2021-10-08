@@ -26,7 +26,7 @@ mix.js('resources/js/basic.js','public/js/basic.min.js');
 // ------------ Protocols Bundle -------------
 mix.babel([
     'resources/js/protocol/file_manager.js',
-    'resources/js/protocol/status.js'
+    'resources/js/protocol/base.js'
 ], 'public/js/protocol/protocol-bundle.js')
 
 // ------------ Charts -------------

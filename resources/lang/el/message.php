@@ -8,5 +8,6 @@ return [
     'success_submission' => 'Το πρωτόκολλο υποβλήθηκε επιτυχώς!',
     'invalid_action' => 'Δόθηκε μη έγκυρη ενέργεια!',
     'error' => 'Σφάλμα!',
-    'success' => 'Επιτυχία!'
+    'success' => 'Επιτυχία!',
+    'submitting' => 'Υποβολή...'
 ];

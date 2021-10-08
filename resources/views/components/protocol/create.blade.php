@@ -29,7 +29,8 @@
 </div>
 @enderror
 
-<div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+<div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 relative">
+    <x-loader>{{__('message.submitting')}}</x-loader>
     <form id="createProtocol" action="{{route('protocol.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         {{--Protocol Content--}}

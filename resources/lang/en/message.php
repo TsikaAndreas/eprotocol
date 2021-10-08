@@ -8,5 +8,6 @@ return [
     'success_submission' => 'The Protocol has been submitted successfully!',
     'invalid_action' => 'Invalid action was provided!',
     'error' => 'Error!',
-    'success' => 'Success!'
+    'success' => 'Success!',
+    'submitting' => 'Submitting...'
 ];
