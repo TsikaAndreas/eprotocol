@@ -53,8 +53,8 @@ $(document).ready(function () {
                         '<span><b>Created:</b> ' + date.getFullYear() + '-' + Number(date.getMonth() + 1) + '-' + date.getDate() + '</span></div>' +
                         '<div class="item-creator"><b>Creator:</b> ' + item.creator + '</div>' +
                         '<div class="item-receiver"><b>Receiver:</b> ' + item.receiver + '</div>';
-                    if (item.ingoing_protocol !== null) {
-                        html += '<div class="item-ingoing"><b>Ingoing Protocol:</b> ' + item.ingoing_protocol + '</div></li><hr>';
+                    if (item.incoming_protocol !== null) {
+                        html += '<div class="item-incoming"><b>incoming Protocol:</b> ' + item.incoming_protocol + '</div></li><hr>';
                     } else {
                         html += '</li><hr>';
                     }

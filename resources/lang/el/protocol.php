@@ -2,7 +2,7 @@
 return  [
 
     // Header
-    'header_ingoing' => 'Εισερχόμενο',
+    'header_incoming' => 'Εισερχόμενο',
     'header_outgoing' => 'Εξερχόμενο',
     // General
     'active' => 'Ενεργό',
@@ -33,8 +33,8 @@ return  [
     'select_file' => 'Επιλέξτε αρχείο',
     'add_file' => 'Προσθήκη αρχείου',
 
-    // Ingoing
-    'ingoing_protocol' => 'Εισερχομένο Πρωτοκόλλο',
-    'ingoing_number' => 'Αριθμός Πρωτοκόλλου',
-    'ingoing_date' => 'Ημερομηνία Εισερχόμενου',
+    // Incoming
+    'incoming_protocol' => 'Εισερχομένο Πρωτοκόλλο',
+    'incoming_number' => 'Αριθμός Πρωτοκόλλου',
+    'incoming_date' => 'Ημερομηνία Εισερχόμενου',
 ];

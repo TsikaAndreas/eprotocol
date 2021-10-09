@@ -16,26 +16,26 @@
             </label>
         </div>
         <div class="form-group grid grid-cols-2 gap-x-8">
-            <label for="ingoing_protocol" class="custom-label">
-                {{__('protocol.ingoing_protocol')}}
+            <label for="incoming_protocol" class="custom-label">
+                {{__('protocol.incoming_protocol')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <span class="custom-span">{{$protocol->ingoing_protocol}}</span>
+                    <span class="custom-span">{{$protocol->incoming_protocol}}</span>
                 @else
-                    <input id="ingoing_protocol" class="block mt-1 custom-input"
-                                  type="text" placeholder="{{__('protocol.ingoing_number')}}"
-                                  name="ingoing_protocol" value="{{isset($protocol) ? $protocol->ingoing_protocol : old('ingoing_protocol')}}">
-                    @error('ingoing_protocol') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    <input id="incoming_protocol" class="block mt-1 custom-input"
+                                  type="text" placeholder="{{__('protocol.incoming_number')}}"
+                                  name="incoming_protocol" value="{{isset($protocol) ? $protocol->incoming_protocol : old('incoming_protocol')}}">
+                    @error('incoming_protocol') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
             </label>
-            <label for="ingoing_protocol_date" class="custom-label">
-                {{__('protocol.ingoing_date')}}
+            <label for="incoming_protocol_date" class="custom-label">
+                {{__('protocol.incoming_date')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
-                    <span class="custom-span">{{$protocol->ingoing_protocol_date}}</span>
+                    <span class="custom-span">{{$protocol->incoming_protocol_date}}</span>
                 @else
-                    <input id="ingoing_protocol_date" class="block mt-1 custom-input"
-                                  type="date" name="ingoing_protocol_date"
-                                  value="{{isset($protocol) ? $protocol->ingoing_protocol_date : old('ingoing_protocol_date')}}">
-                    @error('ingoing_protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    <input id="incoming_protocol_date" class="block mt-1 custom-input"
+                                  type="date" name="incoming_protocol_date"
+                                  value="{{isset($protocol) ? $protocol->incoming_protocol_date : old('incoming_protocol_date')}}">
+                    @error('incoming_protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
                 @endif
             </label>
         </div>

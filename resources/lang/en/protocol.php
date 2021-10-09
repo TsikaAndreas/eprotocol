@@ -3,7 +3,7 @@
 return  [
 
     // Header
-    'header_ingoing' => 'Ingoing',
+    'header_incoming' => 'Incoming',
     'header_outgoing' => 'Outgoing',
     // General
     'active' => 'Active',
@@ -34,8 +34,8 @@ return  [
     'select_file' => 'Select File',
     'add_file' => 'Add File',
 
-    // Ingoing
-    'ingoing_protocol' => 'Ingoing Protocol',
-    'ingoing_number' => 'Ingoing Number',
-    'ingoing_date' => 'Ingoing Date',
+    // Incoming
+    'incoming_protocol' => 'Incoming Protocol',
+    'incoming_number' => 'Incoming Number',
+    'incoming_date' => 'Incoming Date',
 ];

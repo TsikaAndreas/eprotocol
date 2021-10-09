@@ -35,8 +35,8 @@
         @csrf
         {{--Protocol Content--}}
         <input type="hidden" name="type" value="{{$type}}">
-        @if($type == 'ingoing')
-            <x-protocol.ingoing :mode="$preview"></x-protocol.ingoing>
+        @if($type == 'incoming')
+            <x-protocol.incoming :mode="$preview"></x-protocol.incoming>
         @elseif ($type == 'outgoing')
             <x-protocol.outgoing :mode="$preview"></x-protocol.outgoing>
         @endif

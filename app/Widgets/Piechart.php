@@ -37,7 +37,7 @@ class Piechart extends AbstractWidget
     public function run()
     {
         $protocols['Total'] = Protocol::all()->count();
-        $protocols['Ingoing'] = Protocol::where('type','=',Protocol::INGOING)->get()->count();
+        $protocols['Incoming'] = Protocol::where('type','=',Protocol::INCOMING)->get()->count();
         $protocols['Outgoing'] = Protocol::where('type','=',Protocol::OUTGOING)->get()->count();
         $protocols['Active'] = Protocol::where('status','=',Protocol::ACTIVE)->get()->count();
         $protocols['Canceled'] = Protocol::where('status','=',Protocol::CANCELED)->get()->count();

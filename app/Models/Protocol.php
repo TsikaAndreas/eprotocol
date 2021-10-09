@@ -12,12 +12,12 @@ class Protocol extends Model
 
     const IN_PREFIX = 'ΓΑΒ-ΕΙΣ-';
     const OUT_PREFIX = 'ΓΑΒ-ΕΞ-';
-    const INGOING = 'ingoing';
+    const INCOMING = 'incoming';
     const OUTGOING = 'outgoing';
 
     protected $table = 'protocols';
 
-    protected $fillable = ['protocol', 'protocol_date', 'type', 'status', 'ingoing_protocol', 'ingoing_protocol_date',
+    protected $fillable = ['protocol', 'protocol_date', 'type', 'status', 'incoming_protocol', 'incoming_protocol_date',
         'creator', 'receiver', 'title', 'description', 'created_at', 'updated_at', 'canceled_at'];
 
     static array $protocol_status = [
@@ -26,8 +26,8 @@ class Protocol extends Model
     ];
 
     public function getProtocolType($type){
-        if ($type == self::INGOING) {
-            return self::INGOING;
+        if ($type == self::INCOMING) {
+            return self::INCOMING;
         }
         elseif ($type == self::OUTGOING) {
             return self::OUTGOING;

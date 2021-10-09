@@ -11,6 +11,6 @@ return [
     'updated_at' => 'Ενημερώθηκε',
     'canceled_at' => 'Ακυρώθηκε',
     'action' => 'Ενέργεια',
-    'ingoing' => 'Εισερχόμενο',
+    'incoming' => 'Εισερχόμενο',
     'outgoing' => 'Εξερχόμενο'
 ];

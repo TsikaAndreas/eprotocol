@@ -24,8 +24,8 @@
     </div>
 </div>
 <div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-        @if($protocol->type == 'ingoing')
-            <x-protocol.ingoing :protocol="$protocol" :mode="$preview" :files="$files"></x-protocol.ingoing>
+        @if($protocol->type == 'incoming')
+            <x-protocol.incoming :protocol="$protocol" :mode="$preview" :files="$files"></x-protocol.incoming>
         @elseif ($protocol->type == 'outgoing')
             <x-protocol.outgoing :protocol="$protocol" :mode="$preview" :files="$files"></x-protocol.outgoing>
         @endif

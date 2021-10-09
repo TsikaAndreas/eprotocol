@@ -58,9 +58,9 @@ class ProtocolController extends Controller
             'protocol' => null
         ]);
 
-        if ($protocol->type === Protocol::INGOING){
-            $protocol->ingoing_protocol = $data['ingoing_protocol'];
-            $protocol->ingoing_protocol_date = $data['ingoing_protocol_date'];
+        if ($protocol->type === Protocol::INCOMING){
+            $protocol->incoming_protocol = $data['incoming_protocol'];
+            $protocol->incoming_protocol_date = $data['incoming_protocol_date'];
             $protocol->protocol = Protocol::IN_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
         } elseif($protocol->type === Protocol::OUTGOING) {
             $protocol->protocol = Protocol::OUT_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
@@ -135,9 +135,9 @@ class ProtocolController extends Controller
         $protocol->title = $data['title'];
         $protocol->description = $data['description'];
 
-        if ($protocol->type === Protocol::INGOING){
-            $protocol->ingoing_protocol = $data['ingoing_protocol'];
-            $protocol->ingoing_protocol_date = $data['ingoing_protocol_date'];
+        if ($protocol->type === Protocol::INCOMING){
+            $protocol->incoming_protocol = $data['incoming_protocol'];
+            $protocol->incoming_protocol_date = $data['incoming_protocol_date'];
             $protocol->protocol = Protocol::IN_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
         } elseif($protocol->type === Protocol::OUTGOING) {
             $protocol->protocol = Protocol::OUT_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;

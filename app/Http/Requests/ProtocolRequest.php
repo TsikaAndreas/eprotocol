@@ -27,10 +27,10 @@ class ProtocolRequest extends FormRequest
     {
         $rules = array();
         $type = $this->request->get('type');
-        if ($type == Protocol::INGOING){
+        if ($type == Protocol::INCOMING){
             $rules = [
-                'ingoing_protocol' => 'required|string|max:20',
-                'ingoing_protocol_date' => 'required|date',
+                'incoming_protocol' => 'required|string|max:20',
+                'incoming_protocol_date' => 'required|date',
             ];
         }elseif ($type == Protocol::OUTGOING){
             $rules = [];
@@ -38,7 +38,7 @@ class ProtocolRequest extends FormRequest
 
         $details = [
             'protocol_date' => 'nullable|date',
-            'type' => Rule::in(['ingoing','outgoing']),
+            'type' => Rule::in(['incoming','outgoing']),
             'creator' => 'required|string|max:80',
             'receiver' => 'required|string|max:80',
             'title' => 'required|string|max:100',

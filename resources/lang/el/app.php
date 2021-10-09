@@ -4,7 +4,7 @@ return  [
     'eProtocol' => 'eProtocol',
     'dashboard' => 'Tαμπλό',
     'protocol' => 'Πρωτόκολλα',
-    'ingoing' => 'Εισερχόμενο',
+    'incoming' => 'Εισερχόμενο',
     'outgoing' => 'Εξερχόμενο',
     'records' => 'Εγγραφές',
     'logout' => 'Αποσύνδεση',

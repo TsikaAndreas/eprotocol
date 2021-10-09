@@ -11,6 +11,6 @@ return [
     'updated_at' => 'Updated At',
     'canceled_at' => 'Canceled At',
     'action' => 'Action',
-    'ingoing' => 'Ingoing',
+    'incoming' => 'Incoming',
     'outgoing' => 'Outgoing'
 ];

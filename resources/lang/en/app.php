@@ -4,7 +4,7 @@ return  [
     'eProtocol' => 'eProtocol',
     'dashboard' => 'Dashboard',
     'protocol' => 'Protocols',
-    'ingoing' => 'Ingoing',
+    'incoming' => 'Incoming',
     'outgoing' => 'Outgoing',
     'records' => 'Records',
     'logout' => 'Logout',

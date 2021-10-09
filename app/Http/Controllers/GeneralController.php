@@ -21,10 +21,10 @@ class GeneralController extends Controller
         $keyword = trim($request->keyword);
 
         $query = Protocol::query();
-        $query->select('id', 'protocol', 'ingoing_protocol', 'creator', 'receiver', 'created_at');
+        $query->select('id', 'protocol', 'incoming_protocol', 'creator', 'receiver', 'created_at');
 
         $query->where('protocol', 'like', '%'. $keyword . '%');
-        $query->orWhere('ingoing_protocol', 'like', '%'. $keyword . '%');
+        $query->orWhere('incoming_protocol', 'like', '%'. $keyword . '%');
         $query->orWhere('creator', 'like', '%'. $keyword . '%');
         $query->orWhere('receiver', 'like', '%'. $keyword . '%');
         $query->orWhere('created_at', 'like', '%'. $keyword . '%');

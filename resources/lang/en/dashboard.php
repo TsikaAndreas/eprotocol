@@ -5,7 +5,7 @@ return  [
     'latest_protocols_type' => 'Type: ',
     'latest_protocols_status' => 'Status: ',
     'latest_protocols_view' => 'View',
-    'latest_protocols_ingoing' => 'Ingoing',
+    'latest_protocols_incoming' => 'Incoming',
     'latest_protocols_outgoing' => 'Outgoing',
     'latest_protocols_active' => 'Active',
     'latest_protocols_canceled' => 'Canceled',

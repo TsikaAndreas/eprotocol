@@ -24,12 +24,12 @@
                     <span class="title">{{__("app.protocol")}}</span>
                 </a>
                 <div x-show="selected == 0">
-                    <a href="{{route('protocol.create',['type' => 'ingoing'])}}"
-                       class="{{request()->is('protocol/create/ingoing')? 'active' : ''}}">
+                    <a href="{{route('protocol.create',['type' => 'incoming'])}}"
+                       class="{{request()->is('protocol/create/incoming')? 'active' : ''}}">
                     <span class="icon">
                         <i class="fas fa-file-import"></i>
                     </span>
-                        <span class="title">{{__("app.ingoing")}}</span>
+                        <span class="title">{{__("app.incoming")}}</span>
                     </a>
                     <a href="{{route('protocol.create',['type' => 'outgoing'])}}"
                        class="{{request()->is('protocol/create/outgoing')? 'active' : ''}}">
