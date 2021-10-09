@@ -67,9 +67,9 @@ class ProtocolController extends Controller
         }
         $protocol->update();
         if (isset($data['file'])) {
-            $files = (new FileManager())->fileUpload($protocol->id, $data['file']);
-            if (array_key_exists('error',$files)) {
-                return \redirect()->back()->withInput()->withErrors($files);
+            $result = (new FileManager())->fileUpload($protocol->id, $data['file']);
+            if (array_key_exists('error',$result)) {
+                return \redirect()->back()->withInput()->withErrors($result['error']);
             }
         }
 
@@ -146,9 +146,9 @@ class ProtocolController extends Controller
         $protocol->update();
 
         if (isset($data['file'])) {
-            $files = (new FileManager())->fileUpload($protocol->id, $data['file']);
-            if (array_key_exists('error',$files)) {
-                return \redirect()->back()->withInput()->withErrors($files);
+            $result = (new FileManager())->fileUpload($protocol->id, $data['file']);
+            if (array_key_exists('error',$result)) {
+                return \redirect()->back()->withInput()->withErrors($result['error']);
             }
         }
         return Redirect::route('protocol.show',$protocol->id);

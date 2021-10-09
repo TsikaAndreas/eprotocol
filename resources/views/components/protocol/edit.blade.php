@@ -42,7 +42,3 @@
         @endif
     </form>
 </div>
-
-@push('modals')
-    <x-modals.file-delete></x-modals.file-delete>
-@endpush

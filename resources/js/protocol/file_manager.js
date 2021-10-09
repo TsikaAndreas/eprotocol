@@ -3,16 +3,6 @@ $(document).ready(function() {
     if (addButton !== null) {
         addButton.addEventListener("click", addNewFileInput);
     }
-
-    let deleteFileModal = $('#deleteFileModal');
-    let closeDeleteFileModal = deleteFileModal.find('.modal-close');
-    if (closeDeleteFileModal.length !== 0){
-        closeDeleteFileModal.click(hideDeleteFileModal);
-    }
-    let cancelDeleteFileModal = deleteFileModal.find('.modal-cancel');
-    if (cancelDeleteFileModal.length !== 0){
-        cancelDeleteFileModal.click(hideDeleteFileModal);
-    }
 });
 
 function addNewFileInput(){
@@ -50,8 +40,6 @@ function removeTemporaryFile() {
     });
 }
 
-var deleteFileModal = document.getElementById('deleteFileModal');
-
 // Get all uploaded files and check's if the delete icons is clicked
 let uploadedFiles = $('.uploaded-file');
 if (uploadedFiles.length !== 0) {
@@ -67,58 +55,42 @@ function deleteFile(element) {
     let child = element.parentElement.getElementsByClassName('download-file')[0];
     let fileName = child.lastChild.nodeValue.trim();
 
-    deleteFileModal.getElementsByClassName('delete-message')[0].classList.remove('hidden');
-    deleteFileModal.getElementsByClassName('modal-message')[0].innerHTML =
-        'File: <span class="text-indigo-700">' + fileName + '</span>';
-    let submitBtn = deleteFileModal.getElementsByClassName('modal-submit')[0];
-    submitBtn.setAttribute('onclick','deleteFileAjax(' + protocol + ',' + file + ')');
-    showDeleteFileModal();
-}
-// show the modal
-function showDeleteFileModal() {
-    deleteFileModal.classList.remove('hidden');
-}
-// hide the modal
-function hideDeleteFileModal() {
-    deleteFileModal.classList.add('hidden');
-}
-// hides the initial message of the modal
-function hideDeleteInitialMessages() {
-    let deleteMsg = deleteFileModal.getElementsByClassName('delete-message')[0];
-    if (!deleteMsg.classList.contains('hidden')){
-        deleteMsg.classList.add('hidden');
-    }
-}
-// ajax request for file deletion
-deleteFileAjax = function (protocol,file,fileName) {
-    let deleteFileMsg = deleteFileModal.getElementsByClassName('modal-message')[0];
-    let csrf_token = $('meta[name="csrf-token"]').attr('content');
-    $.ajaxSetup({
-        headers:
-            { 'X-CSRF-TOKEN': csrf_token }
-    });
-    $.ajax({
-        url: window.location.origin + '/deletefile/' + protocol + '/' + file,
-        method: "post",
-        dataType: "json",
-        data: {
-            protocol_id: protocol,
-            file_id: file
-        }
-    }).done( function (result) {
-        hideDeleteInitialMessages();
-        if (result.success) {
-            deleteFileMsg.innerHTML = '<p class="text-green-500">' + result.message + '</p>';
-            removeDeletedFile(protocol,file);
-        } else if (result.error) {
-            deleteFileMsg.innerHTML = '<p class="text-red-500">' + result.message + '</p>';
-        }
+    let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-    }).fail( function (result) {
-        hideDeleteInitialMessages();
-        deleteFileMsg.innerHTML = '<p class="text-red-500">' + result.statusText + '</p>';
-        deleteFileMsg.innerHTML += '<p>' + result.responseText + '</p>';
+    Swal.fire({
+        html: '<p>Are you sure you want to delete the following file?</p><p><b>'+ fileName + '</b></p>',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#10b981',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirm',
+        showLoaderOnConfirm: true,
+    }).then(function (e) {
+        if (e.isConfirmed) {
+            $.ajax({
+                url: window.location.origin + '/deletefile/' + protocol + '/' + file,
+                method: "post",
+                dataType: "json",
+                data: {
+                    _token: CSRF_TOKEN,
+                    protocol_id: protocol,
+                    file_id: file
+                },
+                success: function (results) {
+                    if (results.success) {
+                        Swal.fire('', results.message, "success");
+                        removeDeletedFile(protocol,file);
+                    } else {
+                        Swal.fire('Error!', results.message, "error");
+                    }
+                },
+                fail: function (results) {
+                    Swal.fire('Error!', results.message, "error");
+                }
+            });
+        }
     });
+
 }
 // Remove the file from the front if its deleted
 function removeDeletedFile(protocol,file) {
@@ -127,4 +99,3 @@ function removeDeletedFile(protocol,file) {
         element.parentElement.remove();
     }
 }
-

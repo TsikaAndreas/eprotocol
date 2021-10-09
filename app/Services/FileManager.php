@@ -19,8 +19,8 @@ class FileManager
     public function fileUpload($protocol_id,$files) {
 
         $uploaded = array();
-        foreach ($files as $file){
-
+        $errors = array();
+        foreach ($files as $key => $file){
             $stored = $this->dir_location->putFile($protocol_id,$file);
             if ($stored) {
                 $tmp = new File;
@@ -32,10 +32,12 @@ class FileManager
                 $tmp->save();
 
                 array_push($uploaded,$tmp);
-            }else
-            {
-                return ['error' => 'An error occurred during the upload.'];
+            } else {
+                $errors['file.'.$key] = trans('message.file_save_error', ['file' => $file->getClientOriginalName()]);
             }
+        }
+        if (!empty($errors)) {
+            return ['error' => $errors];
         }
         return $uploaded;
     }
@@ -48,15 +50,15 @@ class FileManager
     public function deleteFile($protocol_id, $file_id) {
         $file = File::where('id',$file_id)->first();
         if ($file === null){
-            return response()->json(['error' => true, 'message' => 'Sorry, we couldn\'t find your file! Please contact the administrator for additional information.']);
+            return response()->json(['error' => true, 'message' => __('message.file_no_found')]);
         }
         $delete = $this->dir_location->delete($protocol_id.DIRECTORY_SEPARATOR.$file->hash_name);
         if ($delete)
         {
             File::where('id',$file_id)->first()->delete();
-            return response()->json(['success' => true, 'message' => 'The File: '.$file->name.' was deleted successfully!']);
+            return response()->json(['success' => true, 'message' => __('message.delete_file_success')]);
         }
-        return response()->json(['error' => true, 'message' => 'Couldn\'t delete the File: '.$file->name.'!']);
+        return response()->json(['error' => true, 'message' => __('message.delete_file_error')]);
     }
 
 

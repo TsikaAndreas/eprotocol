@@ -30,6 +30,3 @@
             <x-protocol.outgoing :protocol="$protocol" :mode="$preview" :files="$files"></x-protocol.outgoing>
         @endif
 </div>
-@push('modals')
-    <x-modals.change-protocol-status></x-modals.change-protocol-status>
-@endpush

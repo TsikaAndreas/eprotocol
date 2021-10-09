@@ -9,5 +9,9 @@ return [
     'invalid_action' => 'Invalid action was provided!',
     'error' => 'Error!',
     'success' => 'Success!',
-    'submitting' => 'Submitting...'
+    'submitting' => 'Submitting...',
+    'delete_file_success' => 'The file was successfully deleted!',
+    'delete_file_error' => 'The file could not be deleted.',
+    'file_no_found' => 'The file was not found.',
+    'file_save_error' => 'An error occurred while saving the file: :file'
 ];

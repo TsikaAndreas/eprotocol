@@ -24,7 +24,6 @@
             <div class="container">
                 {{ $slot }}
             </div>
-            @stack('modals')
         </div>
         <script type="text/javascript" src="{{ asset('js/basic.min.js') }}"></script>
         @stack('footer-scripts')
