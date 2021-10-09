@@ -10,7 +10,10 @@
          class="absolute w-24 bg-white rounded-md overflow-hidden shadow-xl z-10 mt-24 ml-4 border border-custom-indigo">
         @foreach (\Illuminate\Support\Facades\Config::get('languages') as $lang => $language)
             <a href="{{ route('lang.switch', $lang) }}"
-               class="block right-0 pl-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
+               class="flex right-0 pl-2 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">
+                <span class="pr-2 self-center">
+                    <img src="{{asset('assets/images/'.$lang.'.png')}}" height="20" width="20">
+                </span>
                 <span>{{$language}}</span>
             </a>
         @endforeach
