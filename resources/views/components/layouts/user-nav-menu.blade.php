@@ -8,7 +8,7 @@
     </button>
     <div @click="dropdownOpen = ! dropdownOpen" class="ml-2 text-gray-500 cursor-pointer">
         <span class="hidden sm:inline-flex mr-1">
-            {{ Auth::user()->name }}
+            {{ Auth::user()->username }}
         </span>
         <i class="fas fa-angle-down align-middle"></i>
     </div>
