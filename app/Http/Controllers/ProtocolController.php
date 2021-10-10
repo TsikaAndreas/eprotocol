@@ -33,7 +33,7 @@ class ProtocolController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource.
      *
      * @param ProtocolRequest $request
      * @return string
@@ -66,8 +66,14 @@ class ProtocolController extends Controller
             $protocol->protocol = Protocol::OUT_PREFIX . $protocol->id . DIRECTORY_SEPARATOR . $protocol->protocol_date;
         }
         $protocol->update();
+
+        // Activity Log
+        activity('create')->causedBy(auth()->user()->getAuthIdentifier())
+            ->performedOn($protocol)
+            ->log(auth()->user()->getFullName() . ' created a new protocol: '. $protocol->protocol);
+
         if (isset($data['file'])) {
-            $result = (new FileManager())->fileUpload($protocol->id, $data['file']);
+            $result = (new FileManager())->fileUpload($protocol, $data['file']);
             if (array_key_exists('error',$result)) {
                 return \redirect()->back()->withInput()->withErrors($result['error']);
             }
@@ -114,7 +120,7 @@ class ProtocolController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource.
      *
      * @param $id
      * @param ProtocolRequest $request
@@ -145,8 +151,13 @@ class ProtocolController extends Controller
 
         $protocol->update();
 
+        // Activity Log
+        activity('edit')->causedBy(auth()->user()->getAuthIdentifier())
+            ->performedOn($protocol)
+            ->log(auth()->user()->getFullName() . ' edited the protocol: '. $protocol->protocol);
+
         if (isset($data['file'])) {
-            $result = (new FileManager())->fileUpload($protocol->id, $data['file']);
+            $result = (new FileManager())->fileUpload($protocol, $data['file']);
             if (array_key_exists('error',$result)) {
                 return \redirect()->back()->withInput()->withErrors($result['error']);
             }
@@ -154,6 +165,11 @@ class ProtocolController extends Controller
         return Redirect::route('protocol.show',$protocol->id);
     }
 
+    /**
+     * Function that change the status of the Protocol
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function changeStatus(Request $request) {
         $data = $request->only('id','action');
         $protocol = Protocol::find($data['id']);
@@ -167,6 +183,11 @@ class ProtocolController extends Controller
             $protocol->canceled_at = date('Y-m-d H:i:s');
             $protocol->update();
 
+            // Activity Log
+            activity('protocol-cancel')->causedBy(auth()->user()->getAuthIdentifier())
+                ->performedOn($protocol)
+                ->log(auth()->user()->getFullName() . ' canceled the protocol: '. $protocol->protocol);
+
             return response()->json(['success' => true, 'message' => __('message.success_cancel')]);
         }
         if ($action === 'reactivate') {
@@ -175,6 +196,11 @@ class ProtocolController extends Controller
             }
             $protocol->status = Protocol::ACTIVE;
             $protocol->update();
+
+            // Activity Log
+            activity('protocol-reactivate')->causedBy(auth()->user()->getAuthIdentifier())
+                ->performedOn($protocol)
+                ->log(auth()->user()->getFullName() . ' reactivated the protocol: '. $protocol->protocol);
 
             return response()->json(['success' => true, 'message' => __('message.success_reactivation')]);
         }
