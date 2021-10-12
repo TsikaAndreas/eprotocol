@@ -1,12 +1,27 @@
-.badge-canceled {
-    @apply text-sm px-3 bg-red-200 text-red-800 rounded-full text-center w-min;
-}
-.badge-active {
+// Small badges
+.badge-success {
     @apply text-sm px-3 bg-green-200 text-green-800 rounded-full text-center w-min;
 }
-.badge-canceled-lg {
+.badge-danger {
+    @apply text-sm px-3 bg-red-200 text-red-800 rounded-full text-center w-min;
+}
+.badge-primary {
+    @apply text-sm px-3 bg-blue-200 text-blue-800 rounded-full text-center w-min;
+}
+.badge-warning {
+    @apply text-sm px-3 bg-yellow-200 text-yellow-800 rounded-full text-center w-min;
+}
+
+// Big badges
+.badge-success-lg {
+    @apply text-lg px-3 py-0.5 bg-green-200 text-green-800 rounded-full text-center w-min;
+}
+.badge-danger-lg {
     @apply text-lg px-3 py-0.5 bg-red-200 text-red-800 rounded-full text-center w-min;
 }
-.badge-active-lg {
-    @apply text-lg px-3 py-0.5 bg-green-200 text-green-800 rounded-full text-center w-min;
+.badge-primary-lg {
+    @apply text-lg px-3 py-0.5 bg-blue-200 text-blue-800 rounded-full text-center w-min;
+}
+.badge-warning-lg {
+    @apply text-lg px-3 py-0.5 bg-yellow-200 text-yellow-800 rounded-full text-center w-min;
 }

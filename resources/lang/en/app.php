@@ -8,6 +8,7 @@ return  [
     'outgoing' => 'Outgoing',
     'records' => 'Records',
     'logout' => 'Logout',
+    'activity_log' => 'Activity Log',
 
     // Navigation
     'profile' => 'Profile',

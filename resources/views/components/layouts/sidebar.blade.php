@@ -40,11 +40,20 @@
                     </a>
                 </div>
             </li>
-            <li><a href="{{route('records.index')}}" class="{{request()->is('records')? 'active' : ''}}">
+            <li>
+                <a href="{{route('records.index')}}" class="{{request()->is('records')? 'active' : ''}}">
                 <span class="icon">
                     <i class="fas fa-th-list"></i>
                 </span>
                     <span class="title">{{__("app.records")}}</span>
+                </a></li>
+            <li>
+            <li>
+                <a href="{{route('activity.index')}}" class="{{request()->is('activity')? 'active' : ''}}">
+                <span class="icon">
+                    <i class="fas fa-database"></i>
+                </span>
+                    <span class="title">{{__("app.activity_log")}}</span>
                 </a></li>
             <li>
                 <form method="POST" action="{{ route('logout') }}">

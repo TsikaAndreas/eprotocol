@@ -12,5 +12,13 @@ return [
     'canceled_at' => 'Canceled At',
     'action' => 'Action',
     'incoming' => 'Incoming',
-    'outgoing' => 'Outgoing'
+    'outgoing' => 'Outgoing',
+
+    'log_name' => 'Action Type',
+    'description' => 'Description',
+    'causer_type' => 'Caused Type',
+    'causer_id' => 'Causer ID',
+    'subject_type' => 'Subject Type',
+    'subject_id' => 'Subject ID',
+    'properties' => 'Additional Info'
 ];

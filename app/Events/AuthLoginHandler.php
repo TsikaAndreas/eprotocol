@@ -47,7 +47,7 @@ class AuthLoginHandler
     }
     public function failed($event) {
         if (!empty($event->user)) {
-            activity('auth-invalid')->causedBy($event->user->id)
+            activity('auth-failed')->causedBy($event->user->id)
                 ->withProperties(['ip',Request::ip(), 'agent', Request::userAgent()])
                 ->log('An failed login attempt was made for this email.');
         }

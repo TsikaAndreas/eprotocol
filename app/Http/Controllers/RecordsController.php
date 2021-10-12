@@ -35,8 +35,13 @@ class RecordsController extends Controller
 
     public function index()
     {
-        $languageFile = file_get_contents(resource_path('dataTables/lang/'.Config::get('languages')[Lang::getLocale()].'.json'));
-        return view('records')->with(['title' => 'app.records', 'columns' => $this->columns(), 'language_file' => $languageFile]);
+        $langFile = file_get_contents(resource_path('dataTables/lang/'.Config::get('languages')[Lang::getLocale()].'.json'));
+        return view('records')->with([
+            'title' => 'app.records',
+            'columns' => $this->columns(),
+            'lang_file' => $langFile,
+            'url' => route('records.getData')
+        ]);
     }
 
     /**
@@ -47,7 +52,7 @@ class RecordsController extends Controller
      */
     public function tableData()
     {
-        return DataTables::of(Protocol::query()->limit(1000))
+        return DataTables::of(Protocol::query())
             //added order by latest modified protocol
             ->order(function ($query) {
                 $query->orderBy('updated_at', 'desc');

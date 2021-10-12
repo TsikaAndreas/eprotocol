@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\LanguageController;
@@ -45,6 +46,9 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::get('/records',[RecordsController::class,'index'])->name('records.index');
     Route::get('/records/data',[RecordsController::class,'tableData'])->middleware('ajax')->name('records.getData');
+
+    Route::get('/activity', [ActivityController::class, 'index'])->name('activity.index');
+    Route::get('/activity/data',[ActivityController::class,'tableData'])->middleware('ajax')->name('activity.getData');
 
     Route::get('/profile', [UserController::class, 'show'])->name('profile.show');
 });

@@ -21,8 +21,8 @@ class Protocol extends Model
         'creator', 'receiver', 'title', 'description', 'created_at', 'updated_at', 'canceled_at'];
 
     static array $protocol_status = [
-        'Active' => 'active',
-        'Canceled' => 'canceled'
+        'Active' => 'success',
+        'Canceled' => 'danger'
     ];
 
     public function getProtocolType($type){

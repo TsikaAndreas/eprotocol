@@ -8,6 +8,7 @@ return  [
     'outgoing' => 'Εξερχόμενο',
     'records' => 'Εγγραφές',
     'logout' => 'Αποσύνδεση',
+    'activity_log' => 'Αρχείο δραστηριότητας',
 
     // Navigation
     'profile' => 'Προφίλ',
