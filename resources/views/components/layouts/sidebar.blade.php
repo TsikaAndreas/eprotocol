@@ -12,14 +12,14 @@
         <ul class="sidebar_nav_links">
             <li><a href="{{route('dashboard')}}" class="{{request()->is('dashboard')? 'active' : ''}}">
                 <span class="icon">
-                    <i class="fas fa-tachometer-alt"></i>
+                    <i class="fas fa-home"></i>
                 </span>
                     <span class="title">{{__('app.dashboard')}}</span>
                 </a></li>
             <li x-data="{selected:{{request()->is('protocol/create/*')? '0' : 'null' }}}">
                 <a href="#" @click="selected !== 0 ? selected = 0 : selected = null">
                 <span class="icon">
-                    <i class="fas fa-file-alt"></i>
+                    <i class="fas fa-file-signature"></i>
                 </span>
                     <span class="title">{{__("app.protocol")}}</span>
                 </a>
@@ -43,7 +43,7 @@
             <li>
                 <a href="{{route('records.index')}}" class="{{request()->is('records')? 'active' : ''}}">
                 <span class="icon">
-                    <i class="fas fa-th-list"></i>
+                    <i class="fas fa-list"></i>
                 </span>
                     <span class="title">{{__("app.records")}}</span>
                 </a></li>

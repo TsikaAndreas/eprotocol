@@ -13,9 +13,6 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
-            backgroundImage: {
-                'city': "url('/assets/images/night_city.jpg')",
-            },
             colors:{
                 'custom-indigo':'#7579ff',
                 'custom-purple':'#b224ef',
