@@ -13,5 +13,9 @@ return  [
     // Navigation
     'profile' => 'Προφίλ',
     'search' => 'Αναζήτηση...',
-    'language' => 'Γλώσσα'
+    'language' => 'Γλώσσα',
+
+    // Breadcrumbs
+    'home' => 'Αρχική',
+    'new-protocol' => 'Νεο :type'
 ];

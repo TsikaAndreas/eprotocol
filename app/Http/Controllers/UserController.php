@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function show() {
 
-        return view('profile')->with(['title' => 'Profile']);
+        return view('profile')->with(['title' => 'Profile', 'user' => Auth::user()]);
     }
 }

@@ -19,14 +19,3 @@ $fa-font-path: "../webfonts";
 @import "~datatables.net-dt";
 @import "~datatables.net-responsive-dt";
 @import "~datatables.net-buttons-dt";
-
-// modal
-.custom-modal {
-    @apply fixed top-0 left-0 h-screen w-screen overflow-auto bg-black bg-opacity-50;
-}
-.custom-modal-content {
-    @apply flex flex-col bg-white border-gray-200 md:mx-auto mt-32 xl:w-1/3 lg:w-1/2 md:w-1/2;
-}
-.custom-modal-header {
-    @apply flex justify-between bg-indigo-500 px-6 py-3 text-white;
-}

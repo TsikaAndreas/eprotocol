@@ -92,7 +92,7 @@ class ProtocolController extends Controller
     {
         $protocol = Protocol::findOrFail($id);
         $protocol->badge = '<span id="protocol_status" class="badge-'. Protocol::$protocol_status[$protocol->status]
-            . '-lg">' . __('protocol.'.Protocol::$protocol_status[$protocol->status]) .'</span>';
+            . '-lg">' . __('protocol.'.strtolower($protocol->status)) .'</span>';
 
         $title = (new Protocol)->getProtocolType($protocol->type);
 
@@ -111,7 +111,7 @@ class ProtocolController extends Controller
     {
         $protocol = Protocol::findOrFail($id);
         $protocol->badge = '<span id="protocol_status" class="badge-'. Protocol::$protocol_status[$protocol->status]
-            . '-lg">' . __('protocol.'.Protocol::$protocol_status[$protocol->status]) .'</span>';
+            . '-lg">' . __('protocol.'.strtolower($protocol->status)) .'</span>';
 
         $title = (new Protocol)->getProtocolType($protocol->type);
         $files = File::getFiles($id);

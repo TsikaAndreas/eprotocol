@@ -13,5 +13,9 @@ return  [
     // Navigation
     'profile' => 'Profile',
     'search' => 'Search...',
-    'language' => 'Language'
+    'language' => 'Language',
+
+    // Breadcrumbs
+    'home' => 'Home',
+    'new-protocol' => 'New :type'
 ];

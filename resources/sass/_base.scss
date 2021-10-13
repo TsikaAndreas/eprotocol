@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #e8e8ed;
+    background: #f7f7f7;
 }
 
 textarea:focus, input:focus, button:focus {
@@ -66,7 +66,8 @@ textarea:focus, input:focus, button:focus {
 .page_wrapper .inner_sidebar .sidebar_nav_links li a {
     padding: 10px 50px;
     display: block;
-    height: 50px;
+    min-height: 50px;
+    max-height: fit-content;
     position: relative;
     margin-bottom: 1px;
     color: #9fb7d9;
@@ -265,11 +266,14 @@ textarea:focus, input:focus, button:focus {
     }
 }
 
+.page-container {
+    @apply max-w-full mx-4 bg-white overflow-hidden shadow-sm sm:rounded-lg mb-5 p-6;
+}
 // Header Icons
-
 .header-icon {
-    background-color: white;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    padding: 15px;
+    @apply bg-white p-4 border border-gray-100 border-solid rounded-full;
+}
+// Breadcrumb
+.breadcrumb {
+    @apply my-4;
 }
