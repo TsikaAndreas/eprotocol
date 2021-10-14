@@ -11,3 +11,6 @@
 .add-files-button {
     @apply bg-indigo-600 cursor-pointer border border-indigo-300 hover:bg-indigo-500 text-white py-2 px-3 mt-5 rounded;
 }
+.reset-password-button {
+    @apply bg-red-500 border border-red-500 hover:bg-red-600 text-white py-2 px-3;
+}

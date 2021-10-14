@@ -17,5 +17,18 @@ return  [
 
     // Breadcrumbs
     'home' => 'Home',
-    'new-protocol' => 'New :type'
+    'new-protocol' => 'New :type',
+
+    // Profile
+    'account_details' => 'Account Details',
+    'password_change' => 'Password Change',
+    'username' => 'Username',
+    'email' => 'Email',
+    'firstname' => 'First Name',
+    'lastname' => 'Last Name',
+    'password' => 'Current Password',
+    'new_password' => 'New Password',
+    'new_password_confirmation' => 'Password Confirmation',
+    'update_details_btn' => 'Update Details',
+    'change_password_btn' => 'Change Password'
 ];

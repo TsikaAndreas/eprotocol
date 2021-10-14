@@ -95,6 +95,7 @@ return [
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
     'password' => 'The password is incorrect.',
+    'current_password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => 'The :attribute field is required.',
@@ -134,6 +135,11 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'mixedCase' => 'The :attribute must contain at least one uppercase and one lowercase letter.',
+        'letters' => 'The :attribute must contain at least one letter.',
+        'symbols' => 'The :attribute must contain at least one symbol.',
+        'numbers' => 'The :attribute must contain at least one number.',
+        'uncompromised' => 'The given :attribute has appeared in a data leak. Please choose a different :attribute.'
     ],
 
     /*

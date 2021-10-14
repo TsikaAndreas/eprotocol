@@ -12,7 +12,7 @@
                     <input id="protocol_date" class="block mt-1 custom-input"
                                   type="date" name="protocol_date"
                                   value="{{isset($protocol) ? $protocol->protocol_date : old('protocol_date')}}">
-                    @error('protocol_date') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    @error('protocol_date') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
         </div>
@@ -32,7 +32,7 @@
                     <input id="creator" class="block mt-1 custom-input" type="text"
                                   placeholder="{{__('protocol.protocol_creator')}}" name="creator"
                                   value="{{isset($protocol) ? $protocol->creator : old('creator')}}">
-                    @error('creator') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    @error('creator') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
             <label for="receiver" class="custom-label">
@@ -42,7 +42,7 @@
                 @else
                     <input id="receiver" class="block mt-1 custom-input" type="text" placeholder="{{__('protocol.receiver_name')}}"
                                   name="receiver" value="{{isset($protocol) ? $protocol->receiver : old('receiver')}}">
-                    @error('receiver') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    @error('receiver') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
         </div>
@@ -54,7 +54,7 @@
                 @else
                     <input id="title" class="block mt-1 custom-input" type="text" placeholder="{{__('protocol.protocol_title')}}"
                                   name="title" value="{{isset($protocol) ? $protocol->title : old('title')}}">
-                    @error('title') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    @error('title') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
         </div>
@@ -66,7 +66,7 @@
                 @else
                     <textarea id="description" class="custom-textarea" name="description"
                               placeholder="{{__('protocol.protocol_description')}}">{{isset($protocol) ? $protocol->description : old('description')}}</textarea>
-                    @error('description') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    @error('description') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
         </div>
@@ -104,7 +104,7 @@
                     <div class="flex">
                         <input type="file" name="file[]" placeholder="{{__('protocol.select_file')}}" class="block mt-1">
                     </div>
-                    @error('file[]') <span class="text-red-700 text-md">{{ $message }}</span> @enderror
+                    @error('file[]') <span class="error">{{ $message }}</span> @enderror
                 </label>
             @endif
         </div>

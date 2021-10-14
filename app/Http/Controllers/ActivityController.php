@@ -18,7 +18,9 @@ class ActivityController extends Controller
         'add-files' => 'primary',
         'delete-file' => 'danger',
         'protocol-reactivate' => 'warning',
-        'protocol-cancel' => 'warning'
+        'protocol-cancel' => 'warning',
+        'user-update' => 'primary',
+        'password-update' => 'warning'
     ];
     /**
      * Function that returns the columns for the datatable.

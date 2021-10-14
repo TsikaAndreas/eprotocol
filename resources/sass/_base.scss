@@ -277,3 +277,10 @@ textarea:focus, input:focus, button:focus {
 .breadcrumb {
     @apply my-4;
 }
+// Profile
+.account-header {
+    @apply text-lg text-indigo-600;
+}
+.header-line {
+    @apply h-0.5 bg-indigo-600;
+}

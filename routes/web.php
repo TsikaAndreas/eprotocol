@@ -51,6 +51,8 @@ Route::group(['middleware'=>'auth'],function () {
     Route::get('/activity/data',[ActivityController::class,'tableData'])->middleware('ajax')->name('activity.getData');
 
     Route::get('/profile', [UserController::class, 'show'])->name('profile.show');
+    Route::post('/profile/update', [UserController::class, 'update'])->name('profile.update');
+    Route::post('/password-change', [UserController::class, 'passwordChange'])->name('password.change');
 });
 
 require __DIR__.'/auth.php';

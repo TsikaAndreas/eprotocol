@@ -69,6 +69,30 @@ $(document).ready(function () {
             $('.search-list').show();
         });
     }
+
+    // Show/Hide Password
+    document.querySelectorAll('.active-eye').forEach(item => {
+        item.addEventListener('click', event => {
+            let sibling = event.target.previousElementSibling;
+            if (sibling.getAttribute('type') === 'password'){
+                sibling.setAttribute('type','text');
+                event.target.classList.remove('.fa-eye');
+                event.target.classList.add('fa-eye-slash');
+            } else {
+                sibling.setAttribute('type','password');
+                event.target.classList.remove('fa-eye-slash');
+                event.target.classList.add('fa-eye');
+            }
+        })
+    })
+
+    // Remove alert
+    let alert = $('div[role="alert"]').find('.close-alert');
+    if (alert.length > 0) {
+        alert.on('click', function (event) {
+            event.target.closest('div[role="alert"]').remove();
+        });
+    }
 });
 
 $(document).mouseup(function(e)
