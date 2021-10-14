@@ -13,8 +13,5 @@ npm-debug.log
 yarn-error.log
 .idea
 /storage/custom/
-/resources/css/*
-/resources/js/*
-/resources/sass/*
 /public/css/*
 /public/js/*

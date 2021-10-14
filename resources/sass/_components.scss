@@ -1,0 +1,38 @@
+// Small badges
+.badge-success {
+    @apply text-sm px-3 bg-green-200 text-green-800 rounded-full text-center w-min;
+}
+.badge-danger {
+    @apply text-sm px-3 bg-red-200 text-red-800 rounded-full text-center w-min;
+}
+.badge-primary {
+    @apply text-sm px-3 bg-blue-200 text-blue-800 rounded-full text-center w-min;
+}
+.badge-warning {
+    @apply text-sm px-3 bg-yellow-200 text-yellow-800 rounded-full text-center w-min;
+}
+
+// Big badges
+.badge-success-lg {
+    @apply text-lg px-3 py-0.5 bg-green-200 text-green-800 rounded-full text-center w-min;
+}
+.badge-danger-lg {
+    @apply text-lg px-3 py-0.5 bg-red-200 text-red-800 rounded-full text-center w-min;
+}
+.badge-primary-lg {
+    @apply text-lg px-3 py-0.5 bg-blue-200 text-blue-800 rounded-full text-center w-min;
+}
+.badge-warning-lg {
+    @apply text-lg px-3 py-0.5 bg-yellow-200 text-yellow-800 rounded-full text-center w-min;
+}
+
+// Alerts
+.close-alert {
+    @apply absolute top-0 bottom-0 right-0 px-4 py-3 my-3;
+}
+.success-alert {
+    @apply bg-green-200 m-4 border-l-4 border-green-600 rounded text-green-900 px-4 py-3 shadow-md relative;
+}
+.failure-alert {
+    @apply bg-red-200 m-4 border-l-4 border-red-600 rounded text-red-900 px-4 py-3 shadow-md relative;
+}
