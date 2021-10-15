@@ -55,6 +55,22 @@
                             </label>
                         </div>
                     </div>
+                    <div class="form-section m-4">
+                        <div class="form-group grid grid-cols-2 gap-x-8">
+                            <label for="pref_lang" class="custom-label">
+                                {{trans('app.preferable_language')}}
+                                <select id="pref_lang" class="block mt-1 custom-input"
+                                       type="text" name="pref_lang">
+                                    @foreach (\Illuminate\Support\Facades\Config::get('languages') as $lang => $language)
+                                        <option value="{{$lang}}" {{($lang === $user->preferable_language) ? 'selected' : null}}>
+                                            {{trans('app.'.$lang)}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('pref_lang') <span class="error">{{ $message }}</span> @enderror
+                            </label>
+                        </div>
+                    </div>
                     <div class="form-section my-4 text-center">
                         <button form="update-details-form" class="submit-button">
                             {{trans('app.update_details_btn')}}

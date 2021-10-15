@@ -22,6 +22,7 @@ class User extends Authenticatable
         'lastname',
         'email',
         'password',
+        'preferable_language'
     ];
 
     /**
@@ -45,5 +46,8 @@ class User extends Authenticatable
 
     public function getFullName(){
         return $this->lastname.' '.$this->firstname;
+    }
+    public function getPreferableLanguage() {
+        return $this->preferable_language;
     }
 }

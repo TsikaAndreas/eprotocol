@@ -32,6 +32,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if (Auth::check() && !empty(Auth::user()->getPreferableLanguage())) {
+            session()->put('applocale', Auth::user()->getPreferableLanguage());
+        }
+
         return redirect(RouteServiceProvider::HOME);
     }
 
