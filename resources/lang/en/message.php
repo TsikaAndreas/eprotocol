@@ -21,12 +21,20 @@ return [
     'alert' => [
         'success' => [
             'account' => [
-                'title' => 'Update Successful!',
+                'title' => 'Updated Successfully!',
                 'content' => 'The account details have been updated successfully.'
             ],
             'password' => [
-                'title' => 'Update Successful!',
+                'title' => 'Updated Successfully!',
                 'content' => 'The account password has been updated successfully.'
+            ],
+            'protocol_create' => [
+                'title' => 'Created Successfully!',
+                'content' => 'The protocol has been created successfully.'
+            ],
+            'protocol_update' => [
+                'title' => 'Updated Successfully!',
+                'content' => 'The protocol has been updated successfully.'
             ]
         ],
         'failure' => [
@@ -37,6 +45,14 @@ return [
             'password' => [
                 'title' => 'Update Failure!',
                 'content' => 'The account password has not been updated.'
+            ],
+            'protocol_create' => [
+                'title' => 'Create Failure!',
+                'content' => 'The protocol has not been created.'
+            ],
+            'protocol_update' => [
+                'title' => 'Update Failure!',
+                'content' => 'The protocol has not been updated.'
             ]
         ]
     ]

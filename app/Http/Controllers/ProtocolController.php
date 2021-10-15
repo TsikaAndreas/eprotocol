@@ -40,13 +40,7 @@ class ProtocolController extends Controller
      */
     public function store(ProtocolRequest $request)
     {
-        $rules = $request->rules();
-        $validateResult = sanitize($request->validated(), $rules);
-        if ($validateResult !== true) {
-            return $validateResult;
-        }
         $data = $request->validated();
-
         $protocol = Protocol::create([
             'protocol_date' => $data['protocol_date'],
             'status' => 'Active',
@@ -79,24 +73,26 @@ class ProtocolController extends Controller
             }
         }
 
-        return Redirect::route('protocol.show',$protocol->id);
+        return Redirect::route('protocol.show',$protocol->id)->with(['success' => collect([
+            'title' => trans('message.alert.success.protocol_create.title'),
+            'content' => trans('message.alert.success.protocol_create.content'),
+        ])]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
+     * @param Protocol $protocol
      * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(Protocol $protocol)
     {
-        $protocol = Protocol::findOrFail($id);
         $protocol->badge = '<span id="protocol_status" class="badge-'. Protocol::$protocol_status[$protocol->status]
             . '-lg">' . __('protocol.'.strtolower($protocol->status)) .'</span>';
 
-        $title = (new Protocol)->getProtocolType($protocol->type);
+        $title = $protocol->getProtocolType($protocol->type);
 
-        $files = File::getFiles($id);
+        $files = File::getFiles($protocol->id);
 
         return view('protocol',['title'=> self::lang_prefix.$title, 'protocol'=>$protocol, 'preview_mode'=>'PREVIEW','files' => $files]);
     }
@@ -104,17 +100,16 @@ class ProtocolController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param $id
+     * @param Protocol $protocol
      * @return Application|Factory|View|RedirectResponse
      */
-    public function edit($id)
+    public function edit(Protocol $protocol)
     {
-        $protocol = Protocol::findOrFail($id);
         $protocol->badge = '<span id="protocol_status" class="badge-'. Protocol::$protocol_status[$protocol->status]
             . '-lg">' . __('protocol.'.strtolower($protocol->status)) .'</span>';
 
         $title = (new Protocol)->getProtocolType($protocol->type);
-        $files = File::getFiles($id);
+        $files = File::getFiles($protocol->id);
 
         return view('protocol',['title'=> self::lang_prefix.$title, 'protocol'=>$protocol, 'preview_mode'=>'EDIT','files' => $files]);
     }
@@ -122,20 +117,14 @@ class ProtocolController extends Controller
     /**
      * Update the specified resource.
      *
-     * @param $id
+     * @param Protocol $protocol
      * @param ProtocolRequest $request
      * @return View|bool|RedirectResponse|Factory|Application|string
      */
-    public function update($id,ProtocolRequest $request)
+    public function update(Protocol $protocol,ProtocolRequest $request)
     {
-        $rules = $request->rules();
-        $validateResult = sanitize($request->validated(), $rules);
-        if ($validateResult !== true) {
-            return $validateResult;
-        }
-
         $data = $request->validated();
-        $protocol = Protocol::find($id);
+
         $protocol->creator = $data['creator'];
         $protocol->receiver = $data['receiver'];
         $protocol->title = $data['title'];
@@ -162,7 +151,10 @@ class ProtocolController extends Controller
                 return \redirect()->back()->withInput()->withErrors($result['error']);
             }
         }
-        return Redirect::route('protocol.show',$protocol->id);
+        return Redirect::route('protocol.show',$protocol->id)->with(['success' => collect([
+            'title' => trans('message.alert.success.protocol_update.title'),
+            'content' => trans('message.alert.success.protocol_update.content'),
+        ])]);
     }
 
     /**

@@ -41,7 +41,7 @@ Breadcrumbs::for('new-protocol', function (BreadcrumbTrail $trail, $type) {
 Breadcrumbs::for('show-protocol', function (BreadcrumbTrail $trail, $protocol) {
     $trail->parent('home');
     $trail->push(trans('app.'.strtolower($protocol->type)),
-        route('protocol.show', ['id' => $protocol->id]));
+        route('protocol.show', ['protocol' => $protocol]));
     $trail->push($protocol->protocol);
 });
 
@@ -49,6 +49,6 @@ Breadcrumbs::for('show-protocol', function (BreadcrumbTrail $trail, $protocol) {
 Breadcrumbs::for('edit-protocol', function (BreadcrumbTrail $trail, $protocol) {
     $trail->parent('home');
     $trail->push(trans('app.'.strtolower($protocol->type)),
-        route('protocol.show', ['id' => $protocol->id]));
+        route('protocol.show', ['protocol' => $protocol]));
     $trail->push(trans('protocol.edit'));
 });

@@ -31,7 +31,7 @@
 
 <div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 relative">
     <x-loader>{{__('message.submitting')}}</x-loader>
-    <form id="updateProtocol" action="{{route('protocol.update',$protocol->id)}}" method="POST" enctype="multipart/form-data">
+    <form id="updateProtocol" action="{{route('protocol.update',$protocol)}}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
             <input type="hidden" name="type" value="{{$protocol->type}}">

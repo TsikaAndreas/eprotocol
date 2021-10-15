@@ -11,6 +11,12 @@
             {{ Breadcrumbs::render('new-protocol', $type) }}
         @endif
     </div>
+
+    <div class="mx-4">
+        <x-alerts.success :data="session('success')" />
+        <x-alerts.failure :data="session('failure')" />
+    </div>
+
     <div class="pb-4">
         <div class="max-w-full mx-auto sm:px-6 lg:px-8">
             @if(isset($preview_mode) && $preview_mode === 'PREVIEW')

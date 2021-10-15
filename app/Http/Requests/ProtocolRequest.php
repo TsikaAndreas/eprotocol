@@ -2,12 +2,17 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Protocol;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\Rule;
 
 class ProtocolRequest extends FormRequest
 {
+    protected const STORE_URI = 'protocol/store';
+    protected const UPDATE_URI = 'protocol/{id}';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -15,7 +20,7 @@ class ProtocolRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -25,34 +30,17 @@ class ProtocolRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = array();
-        $type = $this->request->get('type');
-        if ($type == Protocol::INCOMING){
-            $rules = [
-                'incoming_protocol' => 'required|string|max:20',
-                'incoming_protocol_date' => 'required|date',
-            ];
-        }elseif ($type == Protocol::OUTGOING){
-            $rules = [];
-        }
-
-        $details = [
-            'protocol_date' => 'nullable|date',
+        return [
             'type' => Rule::in(['incoming','outgoing']),
-            'creator' => 'required|string|max:80',
-            'receiver' => 'required|string|max:80',
-            'title' => 'required|string|max:100',
-            'description' => 'nullable|string|max:500'
+            'incoming_protocol' => ['required_if:type,===,incoming','string','max:20'],
+            'incoming_protocol_date' => ['required_if:type,===,incoming','date'],
+            'protocol_date' => ['required_if:'.Request::route()->uri().',===,'.self::STORE_URI,'date'],
+            'creator' => ['required','string','max:80'],
+            'receiver' => ['required','string','max:80'],
+            'title' => ['required','string','max:100'],
+            'description' => ['nullable','string','max:500'],
+            'file.*' => ['nullable','file','max:2048']
         ];
-
-        $files = [
-//            'file.*' => 'nullable|file|mimes:jpeg,jpg,bmp,png,pdf,doc,docx,xls,xlsx,xlx,msg,txt,zip,7z|max:2048'
-            'file.*' => 'nullable|file|max:2048'
-        ];
-//        jpeg,jpg,bmp,png,pdf,doc,docx,xls,xlsx,msg,txt,zip,7z
-        $rules = array_merge( $rules, $details, $files);
-
-        return $rules;
     }
 
     public function messages()
@@ -60,5 +48,34 @@ class ProtocolRequest extends FormRequest
         return [
             'type.in' => 'The hidden input :attribute must be one of the following types: :values',
         ];
+    }
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     *
+     * @throws \Illuminate\Http\Exceptions\HttpResponseException
+     */
+    public function failedValidation(Validator $validator)
+    {
+        $message = [];
+        switch (Request::route()->uri())
+        {
+            case self::STORE_URI:
+                $message = ['failure' => collect([
+                    'title' => trans('message.alert.failure.protocol_create.title'),
+                    'content' => trans('message.alert.failure.protocol_create.content'),
+                ])];
+                break;
+            case self::UPDATE_URI:
+                $message = ['failure' => collect([
+                    'title' => trans('message.alert.failure.protocol_update.title'),
+                    'content' => trans('message.alert.failure.protocol_update.content'),
+                ])];
+                break;
+        }
+        throw new HttpResponseException(back()->withErrors($validator->errors())
+            ->with($message));
     }
 }

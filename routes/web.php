@@ -30,9 +30,9 @@ Route::group(['middleware'=>'auth'],function () {
     // Protocols
     Route::get('/protocol/create/{type}',[ProtocolController::class,'create'])->name('protocol.create');
     Route::post('/protocol/store',[ProtocolController::class,'store'])->name('protocol.store');
-    Route::get('/protocol/{id}',[ProtocolController::class,'show'])->name('protocol.show');
-    Route::get('/protocol/{id}/edit',[ProtocolController::class,'edit'])->name('protocol.edit');
-    Route::put('/protocol/{id}',[ProtocolController::class,'update'])->name('protocol.update');
+    Route::get('/protocol/{protocol}',[ProtocolController::class,'show'])->name('protocol.show');
+    Route::get('/protocol/{protocol}/edit',[ProtocolController::class,'edit'])->name('protocol.edit');
+    Route::put('/protocol/{protocol}',[ProtocolController::class,'update'])->name('protocol.update');
 
     Route::group(['middleware' => 'ajax'],function () {
         // Protocol Status Change
