@@ -53,7 +53,12 @@ return [
             'protocol_update' => [
                 'title' => 'Update Failure!',
                 'content' => 'The protocol has not been updated.'
+            ],
+            'protocol_type_error' => [
+                'title' => 'Protocol Type Error!',
+                'content' => 'The protocol type is not valid or not defined.'
             ]
-        ]
+        ],
+        'store_file_error' => 'File Saving Failure!',
     ]
 ];

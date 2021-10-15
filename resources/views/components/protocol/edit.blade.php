@@ -18,17 +18,6 @@
     </div>
 </div>
 
-@error('file.*')
-<div id="content" class="bg-red-100 overflow-hidden shadow-sm sm:rounded-lg p-6 mb-5">
-    @foreach($errors->get('file.*') as $errors)
-        @foreach($errors as $error)
-            <span> {{ $error }} </span>
-            <br>
-        @endforeach
-    @endforeach
-</div>
-@enderror
-
 <div id="content" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 relative">
     <x-loader>{{__('message.submitting')}}</x-loader>
     <form id="updateProtocol" action="{{route('protocol.update',$protocol)}}" method="POST" enctype="multipart/form-data">

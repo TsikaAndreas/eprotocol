@@ -33,6 +33,6 @@
 .success-alert {
     @apply bg-green-200 m-4 border-l-4 border-green-600 rounded text-green-900 px-4 py-3 shadow-md relative;
 }
-.failure-alert {
+.failure-alert, .file-error-alert, .type-error-alert {
     @apply bg-red-200 m-4 border-l-4 border-red-600 rounded text-red-900 px-4 py-3 shadow-md relative;
 }

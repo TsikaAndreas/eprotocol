@@ -69,7 +69,10 @@ class ProtocolController extends Controller
         if (isset($data['file'])) {
             $result = (new FileManager())->fileUpload($protocol, $data['file']);
             if (array_key_exists('error',$result)) {
-                return \redirect()->back()->withInput()->withErrors($result['error']);
+                return Redirect::back()->with(['file-error' => collect([
+                    'title' => trans('message.alert.store_file_error'),
+                    'content' => $result['error'],
+                ])]);
             }
         }
 
@@ -148,7 +151,10 @@ class ProtocolController extends Controller
         if (isset($data['file'])) {
             $result = (new FileManager())->fileUpload($protocol, $data['file']);
             if (array_key_exists('error',$result)) {
-                return \redirect()->back()->withInput()->withErrors($result['error']);
+                return Redirect::back()->with(['file-error' => collect([
+                    'title' => trans('message.alert.store_file_error'),
+                    'content' => $result['error'],
+                ])]);
             }
         }
         return Redirect::route('protocol.show',$protocol->id)->with(['success' => collect([

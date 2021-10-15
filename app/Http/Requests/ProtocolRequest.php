@@ -12,7 +12,7 @@ use Illuminate\Validation\Rule;
 class ProtocolRequest extends FormRequest
 {
     protected const STORE_URI = 'protocol/store';
-    protected const UPDATE_URI = 'protocol/{id}';
+    protected const UPDATE_URI = 'protocol/{protocol}';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -39,7 +39,7 @@ class ProtocolRequest extends FormRequest
             'receiver' => ['required','string','max:80'],
             'title' => ['required','string','max:100'],
             'description' => ['nullable','string','max:500'],
-            'file.*' => ['nullable','file','max:2048']
+            'file.*' => ['nullable','file','max:5120']
         ];
     }
 
@@ -75,6 +75,23 @@ class ProtocolRequest extends FormRequest
                 ])];
                 break;
         }
+        if ($validator->errors()->has('type'))
+        {
+            $message = array_merge($message, ['type-error' => collect([
+                'title' => trans('message.alert.failure.protocol_type_error.title'),
+                'content' => trans('message.alert.failure.protocol_type_error.content'),
+            ])]);
+        }
+        if ($validator->errors()->has('file.*'))
+        {
+            $message = array_merge($message, ['file-error' => collect([
+                'title' => trans('message.alert.store_file_error'),
+                'content' => collect($validator->errors()->get('file.*'))->map(function ($item) {
+                    return $item[key($item)];
+                }),
+            ])]);
+        }
+
         throw new HttpResponseException(back()->withErrors($validator->errors())
             ->with($message));
     }

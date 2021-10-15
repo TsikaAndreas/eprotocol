@@ -15,6 +15,8 @@
     <div class="mx-4">
         <x-alerts.success :data="session('success')" />
         <x-alerts.failure :data="session('failure')" />
+        <x-alerts.file-error :data="session('file-error')" />
+        <x-alerts.type-error :data="session('type-error')" />
     </div>
 
     <div class="pb-4">
