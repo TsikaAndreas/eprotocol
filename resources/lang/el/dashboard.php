@@ -1,5 +1,7 @@
 <?php
 return  [
+    // General
+    'no_protocols_found' => 'Δεν βρέθηκαν πρωτόκολλα...',
     // Latest Protocols Widget
     'latest_protocols_title' => 'Πρόσφατα πρωτόκολλα',
     'latest_protocols_type' => 'Τύπος: ',

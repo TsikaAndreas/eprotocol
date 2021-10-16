@@ -30,7 +30,12 @@ class LatestProtocols extends AbstractWidget
 
     public function placeholder()
     {
-        return '<div class="h-full w-full"><img class="mx-auto" src="'. asset('assets/gifs/loading.gif') .'" alt="This is a loader." /></div>';
+        return '<div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg" style="text-align-last: justify">
+                    <h3 class="p-1 inline-block">'.__($this->config["title"]).'</h3>
+                </div>
+                <div class="h-full w-full mt-10">
+                    <img class="mx-auto" src="'. asset('assets/gifs/loading.gif') .'" alt="This is a loader." />
+                </div>';
     }
 
     /**

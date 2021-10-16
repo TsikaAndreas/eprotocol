@@ -39,4 +39,16 @@ class Protocol extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+    public function scopeCanceled($query) {
+        $query->where('status',self::CANCELED);
+    }
+    public function scopeActive($query) {
+        $query->where('status',self::ACTIVE);
+    }
+    public function scopeIncoming($query) {
+        $query->where('type',self::INCOMING);
+    }
+    public function scopeOutgoing($query) {
+        $query->where('type',self::OUTGOING);
+    }
 }

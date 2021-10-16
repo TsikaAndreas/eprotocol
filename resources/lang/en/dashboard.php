@@ -1,5 +1,7 @@
 <?php
 return  [
+    // General
+    'no_protocols_found' => 'No protocols were found...',
     // Latest Protocols Widget
     'latest_protocols_title' => 'Latest Protocols',
     'latest_protocols_type' => 'Type: ',

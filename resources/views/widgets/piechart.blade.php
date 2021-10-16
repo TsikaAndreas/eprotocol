@@ -1,16 +1,20 @@
-@if(sizeof($config['data']) > 0)
-<div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg h-1/6" style="text-align-last: justify">
+<div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg" style="text-align-last: justify">
     <h3 class="p-1 inline-block">{{__($config['title'])}}</h3>
 </div>
-
 <div class="w-full">
-    <div class="chart-container w-full h-full overflow-auto input-block">
-        <div class="pie-chart-container w-1/2 h-1/2 mx-auto">
-            <canvas id="pie-chart"></canvas>
-        </div>
+    <div class="chart-container w-full h-full overflow-auto input-block flex">
+        @if($config['data']['total'] > 0)
+            <div class="pie-chart-container w-1/2 h-1/2 mx-auto">
+                <canvas id="pie-chart"></canvas>
+            </div>
+        @else
+            <div class="p-5 text-gray-500">
+                {{__('dashboard.no_protocols_found')}}
+            </div>
+        @endif
     </div>
 </div>
-
+@if($config['data']['total'] > 0)
 <script>
     var ctx1 = $('#pie-chart');
 
@@ -19,7 +23,7 @@
     var data1 = {
         labels: [
             @foreach($config['data'] as $key => $value)
-                '{{$key}}',
+                '{{ucfirst($key)}}',
             @endforeach
         ],
         datasets: [

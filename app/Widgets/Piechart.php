@@ -27,7 +27,12 @@ class Piechart extends AbstractWidget
 
     public function placeholder()
     {
-        return '<div class="h-full w-full"><img class="mx-auto" src="'. asset('assets/gifs/loading.gif') .'" alt="This is a loader." /></div>';
+        return '<div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg" style="text-align-last: justify">
+                    <h3 class="p-1 inline-block">'.__($this->config["title"]).'</h3>
+                </div>
+                <div class="h-full w-full mt-10">
+                    <img class="mx-auto" src="'. asset('assets/gifs/loading.gif') .'" alt="This is a loader." />
+                </div>';
     }
 
     /**
@@ -36,12 +41,12 @@ class Piechart extends AbstractWidget
      */
     public function run()
     {
-        $protocols['Total'] = Protocol::all()->count();
-        $protocols['Incoming'] = Protocol::where('type','=',Protocol::INCOMING)->get()->count();
-        $protocols['Outgoing'] = Protocol::where('type','=',Protocol::OUTGOING)->get()->count();
-        $protocols['Active'] = Protocol::where('status','=',Protocol::ACTIVE)->get()->count();
-        $protocols['Canceled'] = Protocol::where('status','=',Protocol::CANCELED)->get()->count();
-        $this->config = array_merge($this->config, ['data' => $protocols]);
+        $data['total'] = Protocol::count();
+        $data['incoming'] = Protocol::incoming()->count();
+        $data['outgoing'] = Protocol::outgoing()->count();
+        $data['active'] = Protocol::active()->count();
+        $data['canceled'] = Protocol::canceled()->count();
+        $this->config = array_merge($this->config, ['data' => $data]);
 
         return view('widgets.piechart', [
             'config' => $this->config,
