@@ -18,6 +18,7 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'validation_error_message' => 'Whoops! Something went wrong.',
     'login' => [
+        'title' => 'e-Protocol',
         'welcome' => 'Welcome to e-Protocol',
         'login' => 'Login',
         'remember_me' => 'Remember Me',

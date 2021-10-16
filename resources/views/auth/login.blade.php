@@ -1,8 +1,11 @@
 <x-guest-layout>
     <x-auth.auth-card>
         <div class="md:flex w-full">
-            <div class="hidden md:block w-1/2 bg-indigo-400 py-10 px-10">
-                <img class="w-full h-full" src="{{asset('/assets/images/login.svg')}}" alt="Login door.">
+            <div class="hidden md:block w-1/2 bg-indigo-400 relative">
+                <div class="absolute w-full text-center pt-12 text-white text-3xl font-bold">
+                    {{__('auth.login.title')}}
+                </div>
+                <img class="w-full h-full py-10 px-10" src="{{asset('/assets/images/login.svg')}}" alt="Login door.">
             </div>
             <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
                 <div class="text-center mb-10">
@@ -11,8 +14,6 @@
                 </div>
                 <!-- Session Status -->
                 <x-auth.auth-session-status :status="session('status')" />
-                <!-- Validation Errors -->
-                <x-auth.auth-validation-errors :errors="$errors" />
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -20,14 +21,16 @@
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-user fa-sm"></i>
                             <x-auth.label for="email">{{__('auth.general.email')}}</x-auth.label>
-                            <x-auth.input id="email" name="email" type="email" value="{{old('email')}}" placeholder="{{__('auth.general.email')}}"/>
+                            <x-auth.input id="email" name="email" type="email" error="email"
+                                          value="{{old('email')}}" placeholder="{{__('auth.general.email')}}"/>
                         </div>
                     </div>
                     <div class="flex">
                         <div class="w-full px-3">
                             <i class="fas fa-lock fa-sm"></i>
                             <x-auth.label for="password">{{__('auth.general.password')}}</x-auth.label>
-                            <x-auth.input id="password" name="password" type="password" placeholder="{{__('auth.general.password')}}"/>
+                            <x-auth.input id="password" name="password" type="password" error="password"
+                                          placeholder="{{__('auth.general.password')}}"/>
                         </div>
                     </div>
                     <div class="px-3 mt-4 mb-6 flex justify-between items-center">

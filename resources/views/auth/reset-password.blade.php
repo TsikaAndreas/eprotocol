@@ -8,8 +8,6 @@
                 </div>
                 <!-- Session Status -->
                 <x-auth.auth-session-status :status="session('status')" />
-                <!-- Validation Errors -->
-                <x-auth.auth-validation-errors :errors="$errors" />
 
                 <form method="POST" action="{{ route('password.update') }}">
                     @csrf
@@ -18,21 +16,24 @@
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-envelope fa-sm"></i>
                             <x-auth.label for="email">{{__('auth.reset_password.email')}}</x-auth.label>
-                            <x-auth.input id="email" name="email" type="email" value="{{old('email')}}" placeholder="{{__('auth.reset_password.email')}}"/>
+                            <x-auth.input id="email" name="email" type="email" required error="email"
+                                          value="{{old('email')}}" placeholder="{{__('auth.reset_password.email')}}"/>
                         </div>
                     </div>
                     <div class="flex">
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-lock fa-sm"></i>
                             <x-auth.label for="password">{{__('auth.reset_password.password')}}</x-auth.label>
-                            <x-auth.input id="password" name="password" type="password" placeholder="{{__('auth.reset_password.password')}}"/>
+                            <x-auth.input id="password" name="password" type="password" required error="password"
+                                          placeholder="{{__('auth.reset_password.password')}}"/>
                         </div>
                     </div>
                     <div class="flex">
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-lock fa-sm"></i>
                             <x-auth.label for="password_confirmation">{{__('auth.reset_password.password_confirmation')}}</x-auth.label>
-                            <x-auth.input id="password_confirmation" name="password_confirmation" type="password_confirmation" placeholder="{{__('auth.reset_password.password_confirmation')}}"/>
+                            <x-auth.input id="password_confirmation" name="password_confirmation" required error="password_confirmation"
+                                          type="password_confirmation" placeholder="{{__('auth.reset_password.password_confirmation')}}"/>
                         </div>
                     </div>
                     <div class="flex">

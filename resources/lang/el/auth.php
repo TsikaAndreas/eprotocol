@@ -18,6 +18,7 @@ return [
     'throttle' => 'Πάρα πολλές προσπάθειες σύνδεσης. Προσπαθήστε ξανά σε :seconds δευτερόλεπτα.',
     'validation_error_message' => 'Ουπς! Κάτι πήγε στραβά.',
     'login' => [
+        'title' => 'e-Protocol',
         'welcome' => 'Καλώς ήλθατε στο e-Protocol',
         'login' => 'Σύνδεση',
         'remember_me' => 'Να με θυμάσαι',
