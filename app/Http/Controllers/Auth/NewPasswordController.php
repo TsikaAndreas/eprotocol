@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Rules\CustomPassword;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,9 +33,10 @@ class NewPasswordController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|string|confirmed|min:8',
+            'token' => ['required'],
+            'email' => ['required','email'],
+            'password' => ['required', 'max:16',
+                CustomPassword::min(6)->mixedCase()->symbols()->numbers()->letters()->uncompromised(3)]
         ]);
 
         // Here we will attempt to reset the user's password. If it is successful we
