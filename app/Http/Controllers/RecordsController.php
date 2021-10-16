@@ -78,7 +78,7 @@ class RecordsController extends Controller
             })
             // add action button
             ->addColumn('action', function ($protocol) {
-                return '<a href="'.route('protocol.show',['id'=>$protocol]).'">'.'<i class="text-indigo-600 fas fa-search"></i>'.'</a>';
+                return '<a href="'.route('protocol.show',$protocol).'">'.'<i class="text-indigo-600 fas fa-search"></i>'.'</a>';
             })
             //add row tailwind css styling
             ->rawColumns(['status', 'action'])

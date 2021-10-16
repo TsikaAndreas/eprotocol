@@ -5,11 +5,11 @@
     <div class="form-section m-4">
         <div class="form-group grid grid-cols-2 gap-x-8">
             <label for="protocol_date" class="custom-label">
-                {{__('protocol.protocol_date')}}
+                <span class="text-red-500">*</span>{{__('protocol.protocol_date')}}
                 @if(isset($mode) && ($mode === 'PREVIEW' || $mode === 'EDIT'))
                     <span class="custom-span">{{$protocol->protocol_date}}</span>
                 @else
-                    <input id="protocol_date" class="block mt-1 custom-input"
+                    <input id="protocol_date" class="block mt-1 custom-input" required
                                   type="date" name="protocol_date"
                                   value="{{isset($protocol) ? $protocol->protocol_date : old('protocol_date')}}">
                     @error('protocol_date') <span class="error">{{ $message }}</span> @enderror
@@ -25,35 +25,35 @@
     <div class="form-section m-4">
         <div class="form-group grid grid-cols-2 gap-x-8">
             <label for="author" class="custom-label">
-                {{__('protocol.creator')}}
+                <span class="text-red-500">*</span>{{__('protocol.creator')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
                     <span class="custom-span">{{$protocol->creator}}</span>
                 @else
-                    <input id="creator" class="block mt-1 custom-input" type="text"
+                    <input id="creator" class="block mt-1 custom-input" type="text" required
                                   placeholder="{{__('protocol.protocol_creator')}}" name="creator"
                                   value="{{isset($protocol) ? $protocol->creator : old('creator')}}">
                     @error('creator') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
             <label for="receiver" class="custom-label">
-                {{__('protocol.receiver')}}
+                <span class="text-red-500">*</span>{{__('protocol.receiver')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
                     <span class="custom-span">{{$protocol->receiver}}</span>
                 @else
                     <input id="receiver" class="block mt-1 custom-input" type="text" placeholder="{{__('protocol.receiver_name')}}"
-                                  name="receiver" value="{{isset($protocol) ? $protocol->receiver : old('receiver')}}">
+                                  name="receiver" value="{{isset($protocol) ? $protocol->receiver : old('receiver')}}" required>
                     @error('receiver') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
         </div>
         <div class="form-group">
             <label for="title" class="custom-label">
-                {{__('protocol.title')}}
+                <span class="text-red-500">*</span>{{__('protocol.title')}}
                 @if(isset($mode) && $mode === 'PREVIEW')
                     <span class="custom-span">{{$protocol->title}}</span>
                 @else
                     <input id="title" class="block mt-1 custom-input" type="text" placeholder="{{__('protocol.protocol_title')}}"
-                                  name="title" value="{{isset($protocol) ? $protocol->title : old('title')}}">
+                                  name="title" value="{{isset($protocol) ? $protocol->title : old('title')}}" required>
                     @error('title') <span class="error">{{ $message }}</span> @enderror
                 @endif
             </label>
