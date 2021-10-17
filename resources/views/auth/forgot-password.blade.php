@@ -8,8 +8,6 @@
                 </div>
                 <!-- Session Status -->
                 <x-auth.auth-session-status :status="session('status')" />
-                <!-- Validation Errors -->
-                <x-auth.auth-validation-errors :errors="$errors" />
 
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
@@ -17,7 +15,7 @@
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-envelope fa-sm"></i>
                             <x-auth.label for="email" >{{__('auth.general.email')}}</x-auth.label>
-                            <x-auth.input id="email" name="email" type="email" placeholder="{{__('auth.general.email')}}"/>
+                            <x-auth.input id="email" name="email" error="email" type="email" placeholder="{{__('auth.general.email')}}"/>
                         </div>
                     </div>
                     <div class="flex">
