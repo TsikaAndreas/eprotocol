@@ -2,7 +2,7 @@
     <x-auth.auth-card>
         <div class="md:flex w-full">
             <div class="hidden md:block w-1/2 bg-indigo-400 relative">
-                <div class="absolute w-full text-center pt-12 text-white text-3xl font-bold">
+                <div class="absolute w-full text-center mt-12 text-white text-3xl font-bold">
                     {{__('auth.login.title')}}
                 </div>
                 <img class="w-full h-full py-10 px-10" src="{{asset('/assets/images/login.svg')}}" alt="Login door.">
