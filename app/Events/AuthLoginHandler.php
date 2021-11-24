@@ -25,16 +25,6 @@ class AuthLoginHandler
         //
     }
 
-    /**
-     * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
-     */
-    public function broadcastOn()
-    {
-        return new PrivateChannel('channel-name');
-    }
-
     public function login($event) {
         activity('auth-login')->causedBy($event->user->id)
             ->withProperties(['ip',Request::ip(), 'agent', Request::userAgent()])

@@ -55,6 +55,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/protocols'),
         ],
+        'backup' => [
+            'driver' => 'local',
+            'root' => storage_path('app/backups'),
+        ]
     ],
 
     /*

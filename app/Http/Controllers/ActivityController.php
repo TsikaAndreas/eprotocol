@@ -20,7 +20,11 @@ class ActivityController extends Controller
         'protocol-reactivate' => 'warning',
         'protocol-cancel' => 'warning',
         'user-update' => 'primary',
-        'password-update' => 'warning'
+        'password-update' => 'warning',
+        'successful-backup' => 'success',
+        'failed-backup' => 'warning',
+        'successful-cleanup' => 'success',
+        'failed-cleanup' => 'warning'
     ];
     /**
      * Function that returns the columns for the datatable.
