@@ -42,5 +42,12 @@ return [
         'password' => 'Password',
         'password_confirmation' => 'Confirm Password',
         'button' => 'Reset Password'
+    ],
+    'verify_email' => [
+        'header' => 'Verify Email',
+        'description_1' => 'Before getting started, could you verify your email address by clicking on the link we just emailed to you?',
+        'description_2' => 'If you didn\'t receive the email, we will gladly send you another.',
+        'button' => 'Resend Verification Email',
+        'logout' => 'Logout'
     ]
 ];

@@ -33,5 +33,7 @@ return  [
     'new_password' => 'New Password',
     'new_password_confirmation' => 'Password Confirmation',
     'update_details_btn' => 'Update Details',
-    'change_password_btn' => 'Change Password'
+    'change_password_btn' => 'Change Password',
+    'verified' => 'Verified',
+    'unverified' => 'Unverified'
 ];

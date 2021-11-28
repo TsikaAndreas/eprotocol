@@ -35,6 +35,14 @@ return [
             'protocol_update' => [
                 'title' => 'Επιτυχής Ενημέρωση!',
                 'content' => 'Το πρωτόκολλο ενημερώθηκε με επιτυχία.'
+            ],
+            'email_verification' => [
+                'title' => 'Επαληθεύτηκε επιτυχώς!',
+                'content' => 'Το Email επαληθεύτηκε με επιτυχία.'
+            ],
+            'email_verified' => [
+                'title' => 'Επαληθευμένο Email!',
+                'content' => 'Το τρέχον email είναι επαληθευμένο.'
             ]
         ],
         'failure' => [
@@ -60,5 +68,7 @@ return [
             ]
         ],
         'store_file_error' => 'Αποτυχία Αποθήκευσης Αρχείου!',
-    ]
+    ],
+    // Email Verification,
+    'email_sent' => 'Email εστάλη!',
 ];

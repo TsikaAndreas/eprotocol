@@ -35,6 +35,14 @@ return [
             'protocol_update' => [
                 'title' => 'Updated Successfully!',
                 'content' => 'The protocol has been updated successfully.'
+            ],
+            'email_verification' => [
+                'title' => 'Verified Successfully!',
+                'content' => 'The Email has been verified successfully.'
+            ],
+            'email_verified' => [
+                'title' => 'Verified Email!',
+                'content' => 'The current email is verified.'
             ]
         ],
         'failure' => [
@@ -60,5 +68,7 @@ return [
             ]
         ],
         'store_file_error' => 'File Saving Failure!',
-    ]
+    ],
+    // Email Verification,
+    'email_sent' => 'Email Sent!',
 ];

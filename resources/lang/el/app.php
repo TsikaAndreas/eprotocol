@@ -33,5 +33,7 @@ return  [
     'new_password' => 'Νέος κωδικός πρόσβασης',
     'new_password_confirmation' => 'Επιβεβαίωση κωδικού',
     'update_details_btn' => 'Ενημέρωση πληροφοριών',
-    'change_password_btn' => 'Αλλαγή κωδικού'
+    'change_password_btn' => 'Αλλαγή κωδικού',
+    'verified' => 'Επαληθευμένο',
+    'unverified' => 'Μη επαληθευμένο'
 ];

@@ -6,6 +6,9 @@
     <x-layouts.page-header :title="$title">
         <i class="fas fa-home fa-2x header-icon"></i>
     </x-layouts.page-header>
+
+    <x-alerts.success :data="session('success')"></x-alerts.success>
+
     <div class="py-2 grid row-cols-2 gap-y-16 mx-4 mt-4">
         <div class="grid grid-cols-2 gap-x-12">
             <div>

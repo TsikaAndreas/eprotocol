@@ -3,5 +3,6 @@
     "/js/basic.min.js": "/js/basic.min.js",
     "/css/app.css": "/css/app.css",
     "/js/protocol/protocol-bundle.js": "/js/protocol/protocol-bundle.js",
+    "/js/profile-bundle.js": "/js/profile-bundle.js",
     "/js/chart.js/chart.min.js": "/js/chart.js/chart.min.js"
 }

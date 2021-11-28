@@ -284,3 +284,16 @@ textarea:focus, input:focus, button:focus {
 .header-line {
     @apply h-0.5 bg-indigo-600;
 }
+.ajax-loader {
+    @apply w-4 h-4 ml-3 border-4 border-green-500 border-solid rounded-full animate-spin;
+    border-top-color: transparent;
+}
+.resend {
+    @apply ml-3;
+}
+.success {
+    @apply text-green-600;
+}
+.fail {
+    @apply text-red-600;
+}

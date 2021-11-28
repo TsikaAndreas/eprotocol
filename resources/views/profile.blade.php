@@ -7,8 +7,8 @@
         {{ Breadcrumbs::render('profile', $user->getFullName()) }}
     </div>
 
-    <x-alerts.success :data="session('success')" />
-    <x-alerts.failure :data="session('failure')" />
+    <x-alerts.success :data="session('success')"></x-alerts.success>
+    <x-alerts.failure :data="session('failure')"></x-alerts.failure>
 
     <div class="page-container">
         <div id="account-details">
@@ -24,16 +24,21 @@
                         <div class="form-group grid grid-cols-2 gap-x-8">
                             <label for="username" class="custom-label">
                                 {{trans('app.username')}}
-                                <input id="username" class="block mt-1 custom-input bg-gray-200"
+                                <input id="username" class="block mt-1 custom-input bg-gray-100"
                                        type="text" placeholder="{{trans('app.username')}}"
-                                       name="username" value="{{$user->username}}" disabled>
+                                       name="username" value="{{$user->username}}" readonly>
                             </label>
-                            <label for="email" class="custom-label">
-                                {{trans('app.email')}}
-                                <input id="email" class="block mt-1 custom-input"
-                                       type="email" placeholder="{{trans('app.email')}}"
-                                       name="email" value="{{$user->email}}">
-                                @error('email') <span class="error">{{ $message }}</span> @enderror
+                            <label for="pref_lang" class="custom-label">
+                                {{trans('app.preferable_language')}}
+                                <select id="pref_lang" class="block mt-1 custom-input"
+                                        type="text" name="pref_lang">
+                                    @foreach (\Illuminate\Support\Facades\Config::get('languages') as $lang => $language)
+                                        <option value="{{$lang}}" {{($lang === $user->preferable_language) ? 'selected' : null}}>
+                                            {{trans('app.'.$lang)}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('pref_lang') <span class="error">{{ $message }}</span> @enderror
                             </label>
                         </div>
                     </div>
@@ -57,17 +62,35 @@
                     </div>
                     <div class="form-section m-4">
                         <div class="form-group grid grid-cols-2 gap-x-8">
-                            <label for="pref_lang" class="custom-label">
-                                {{trans('app.preferable_language')}}
-                                <select id="pref_lang" class="block mt-1 custom-input"
-                                       type="text" name="pref_lang">
-                                    @foreach (\Illuminate\Support\Facades\Config::get('languages') as $lang => $language)
-                                        <option value="{{$lang}}" {{($lang === $user->preferable_language) ? 'selected' : null}}>
-                                            {{trans('app.'.$lang)}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('pref_lang') <span class="error">{{ $message }}</span> @enderror
+                            <label for="email" class="custom-label">
+                                <span>
+                                    {{trans('app.email')}}
+                                </span>
+                                @if(empty($user->email_verified_at))
+                                    <span class="border rounded-xl px-1 py-0.5 text-xs text-yellow-500 border-yellow-500">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        {{trans('app.unverified')}}
+                                    </span>
+                                @else
+                                    <span class="border rounded-xl px-1 py-0.5 text-xs text-green-600 border-green-600">
+                                        <i class="fas fa-check-circle"></i>
+                                        {{trans('app.verified')}}
+                                    </span>
+                                @endif
+                                <input id="email" class="block mt-1 custom-input"
+                                       type="email" placeholder="{{trans('app.email')}}"
+                                       name="email" value="{{$user->email}}">
+                                @error('email') <span class="error">{{ $message }}</span> @enderror
+                                @if(empty($user->email_verified_at))
+                                    <div id="resend_verify_email" class="flex text-sm text-indigo-500">
+                                        <div class="cursor-pointer hover:text-indigo-700">
+                                            <i class="fas fa-envelope"></i>
+                                            <span class="underline">
+                                                {{__('auth.verify_email.button')}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                @endif
                             </label>
                         </div>
                     </div>
@@ -135,4 +158,7 @@
             </div>
         </div>
     </div>
+    @push('footer-scripts')
+        <script type="text/javascript" src="{{ asset('js/profile-bundle.js') }}"></script>
+    @endpush
 </x-app-layout>

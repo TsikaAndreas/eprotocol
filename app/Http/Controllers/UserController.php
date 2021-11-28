@@ -14,18 +14,21 @@ class UserController extends Controller
 {
     public function show() {
 
-        return view('profile')->with(['title' => 'Profile', 'user' => Auth::user()]);
+        return view('profile')->with(['title' => trans('app.profile'), 'user' => Auth::user()]);
     }
 
     public function update(ProfileRequest $request) {
         $data = $request->validated();
         $user = User::findorFail(Auth::user()->getAuthIdentifier());
-        $user->update([
-            'email' => $data['email'],
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'preferable_language' => $data['pref_lang']
-        ]);
+        $user->fill($data);
+        if ($user->isDirty('email')){
+            $user->email_verified_at = null;
+        }
+        $user->update();
+
+        if ($user->wasChanged('email')) {
+            $user->sendEmailVerificationNotification();
+        }
 
         Session::put('applocale', $data['pref_lang']);
         App::setLocale(Session::get('applocale'));

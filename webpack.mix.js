@@ -27,7 +27,10 @@ mix.js('resources/js/basic.js','public/js/basic.min.js');
 mix.babel([
     'resources/js/protocol/file_manager.js',
     'resources/js/protocol/base.js'
-], 'public/js/protocol/protocol-bundle.js')
+], 'public/js/protocol/protocol-bundle.js');
+
+// ------------ Profile Bundle ---------------
+mix.babel(['resources/js/profile.js'], 'public/js/profile-bundle.js');
 
 // ------------ Charts -------------
 mix.copy('node_modules/chart.js/dist/chart.min.js', 'public/js/chart.js/chart.min.js');

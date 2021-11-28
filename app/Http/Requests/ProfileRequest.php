@@ -38,8 +38,8 @@ class ProfileRequest extends FormRequest
             case self::PROFILE_URI:
                 $rules = [
                     'email' => ['required','email','unique:App\Models\User,email,'.Auth::user()->getAuthIdentifier().',id'],
-                    'firstname' => ['required','string','min:3','max:20'],
-                    'lastname' => ['required','string','min:3','max:20'],
+                    'firstname' => ['required','alpha','min:3','max:20'],
+                    'lastname' => ['required','alpha','min:3','max:20'],
                     'pref_lang' => ['required', 'string', Rule::in(array_keys(Config::get('languages')))]
                 ];
                 break;
