@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Spatie\Activitylog\Models\Activity;
@@ -66,31 +67,36 @@ class ActivityController extends Controller
      */
     public function tableData()
     {
-        return DataTables::of(Activity::query())
-//            //added order by latest
-            ->order(function ($query) {
-                $query->orderBy('created_at', 'DESC');
-            })
-//            //edit dates
-            ->editColumn('created_at', function ($activity) {
-                return date('d-m-Y H:i:s', strtotime($activity->created_at) );
-            })
-            ->editColumn('updated_at', function ($activity) {
-                return date('d-m-Y H:i:s', strtotime($activity->updated_at) );
-            })
-            ->editColumn('log_name', function ($activity) {
-                return '<div class="mx-auto badge-'.self::$action_type[$activity->log_name].'">'.$activity->log_name.'</div>';
-            })
-            ->editColumn('properties', function ($activity) {
-                $html = '';
-                foreach ($activity->properties as $key => $property){
-                    $html .= '<p>'.$key.': '.$property.'</p>';
-                }
-                return $html;
-            })
-//            //add row tailwind css styling
-            ->rawColumns(['log_name','properties'])
-            ->setRowClass('text-center')
-            ->make(true);
+        $activities = Activity::query();
+
+        $activities->whereNotIn('log_name', ['auth-login','auth-logout','auth-failed']);
+
+        $datatables = DataTables::of($activities);
+
+        // added order by latest
+        $datatables->order(function ($query) {
+            $query->orderBy('created_at', 'DESC');
+        })
+        // edit dates
+        ->editColumn('created_at', function ($activity) {
+            return date('d-m-Y H:i:s', strtotime($activity->created_at) );
+        })
+        ->editColumn('updated_at', function ($activity) {
+            return date('d-m-Y H:i:s', strtotime($activity->updated_at) );
+        })
+        ->editColumn('log_name', function ($activity) {
+            return '<div class="mx-auto badge-'.self::$action_type[$activity->log_name].'">'.$activity->log_name.'</div>';
+        })
+        ->editColumn('properties', function ($activity) {
+            $html = '';
+            foreach ($activity->properties as $key => $property){
+                $html .= '<p>'.$key.': '.$property.'</p>';
+            }
+            return $html;
+        })
+        //add row tailwind css styling
+        ->rawColumns(['log_name','properties'])->setRowClass('text-center');
+
+        return $datatables->make(true);
     }
 }
