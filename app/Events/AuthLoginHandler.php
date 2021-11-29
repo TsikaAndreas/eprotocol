@@ -27,18 +27,18 @@ class AuthLoginHandler
 
     public function login($event) {
         activity('auth-login')->causedBy($event->user->id)
-            ->withProperties(['ip',Request::ip(), 'agent', Request::userAgent()])
+            ->withProperties(['ip' => Request::ip(), 'agent' => Request::userAgent()])
         ->log($event->user->lastname.' '.$event->user->firstname.' logged in.');
     }
     public function logout($event) {
         activity('auth-logout')->causedBy($event->user->id)
-            ->withProperties(['ip',Request::ip(), 'agent', Request::userAgent()])
+            ->withProperties(['ip' => Request::ip(), 'agent' => Request::userAgent()])
             ->log($event->user->lastname.' '.$event->user->firstname.' logged out.');
     }
     public function failed($event) {
         if (!empty($event->user)) {
             activity('auth-failed')->causedBy($event->user->id)
-                ->withProperties(['ip',Request::ip(), 'agent', Request::userAgent()])
+                ->withProperties(['ip' => Request::ip(), 'agent' => Request::userAgent()])
                 ->log('An failed login attempt was made for this email.');
         }
     }
