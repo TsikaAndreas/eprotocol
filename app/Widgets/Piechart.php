@@ -27,7 +27,8 @@ class Piechart extends AbstractWidget
 
     public function placeholder()
     {
-        return '<div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg" style="text-align-last: justify">
+        return '<div class="widget-header bg-indigo-600 text-white p-2 rounded-t-lg">
+                    <i class="fas fa-chart-pie"></i>
                     <h3 class="p-1 inline-block">'.__($this->config["title"]).'</h3>
                 </div>
                 <div class="h-full w-full mt-10">
@@ -41,15 +42,34 @@ class Piechart extends AbstractWidget
      */
     public function run()
     {
-        $data['total'] = Protocol::count();
-        $data['incoming'] = Protocol::incoming()->count();
-        $data['outgoing'] = Protocol::outgoing()->count();
-        $data['active'] = Protocol::active()->count();
-        $data['canceled'] = Protocol::canceled()->count();
-        $this->config = array_merge($this->config, ['data' => $data]);
+        $data = [
+            'total' => Protocol::count(),
+            'types' => [
+                'Incoming' => [
+                    'value' => Protocol::incoming()->count(),
+                    'color' => 'rgb(248, 113, 113)', //'bg-red-400'
+                ],
+                'Outgoing' => [
+                    'value' => Protocol::outgoing()->count(),
+                    'color' => 'rgb(96, 165, 250)', //'bg-blue-400'
+                ],
+                'Active' => [
+                    'value' => Protocol::active()->count(),
+                    'color' => 'rgb(251, 191, 36)', //'bg-yellow-400'
+                ],
+                'Canceled' => [
+                    'value' => Protocol::canceled()->count(),
+                    'color' => 'rgb(52, 211, 153)', //'bg-green-400'
+                ]
+            ],
+        ];
+        foreach ($data['types'] as $key => $item){
+            $data['types'][$key]['percentage'] = number_format($item['value'] / $data['total'] * 100,2);
+        }
 
         return view('widgets.piechart', [
             'config' => $this->config,
+            'data' => $data
         ]);
     }
 }

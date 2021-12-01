@@ -1,5 +1,6 @@
-<div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg">
-    <h3 class="p-1">{{__($config['title'])}}</h3>
+<div class="widget-header bg-indigo-600 text-white p-2 rounded-t-lg">
+    <i class="fas fa-server"></i>
+    <h3 class="p-1 inline-block">{{__($config['title'])}}</h3>
 </div>
 <div class="h-5/6 overflow-auto">
     @if(sizeof($config['data']) > 0)

@@ -19,4 +19,11 @@
             </div>
         </div>
     </div>
+    <div class="py-2 grid row-cols-1 gap-y-16 mx-4 mt-4 mb-8">
+        <div class="grid grid-cols-1">
+            <div>
+                @asyncWidget('latestActivity')
+            </div>
+        </div>
+    </div>
 </x-app-layout>

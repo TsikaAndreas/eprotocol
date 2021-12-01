@@ -30,7 +30,8 @@ class LatestProtocols extends AbstractWidget
 
     public function placeholder()
     {
-        return '<div class="widget-header bg-indigo-600 text-white p-3 rounded-t-lg" style="text-align-last: justify">
+        return '<div class="widget-header bg-indigo-600 text-white p-2 rounded-t-lg">
+                    <i class="fas fa-server"></i>
                     <h3 class="p-1 inline-block">'.__($this->config["title"]).'</h3>
                 </div>
                 <div class="h-full w-full mt-10">

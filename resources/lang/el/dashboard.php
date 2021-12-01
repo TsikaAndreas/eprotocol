@@ -13,5 +13,17 @@ return  [
     'latest_protocols_canceled' => 'Ακυρωμένο',
     // Pie Chart Widget
     'piechart_title' => 'Κυκλικό Διάγραμμα Πρωτοκόλλων',
-
+    'piechart_total' => 'Συνολικά',
+    'piechart_incoming' => 'Εισερχόμενα',
+    'piechart_outgoing' => 'Εξερχόμενα',
+    'piechart_active' => 'Ενεργά',
+    'piechart_canceled' => 'Ακυρωμένα',
+    // Latest Activity Widget
+    'latest_activity_title' => 'Πρόσφατη δραστηριότητα',
+    'latest_activity_no_found' => 'Δεν βρέθηκε καμία πρόσφατη δραστηριότητα...',
+    'latest_activity_name' => 'Όνομα',
+    'latest_activity_description' => 'Περιγραφή',
+    'latest_activity_type' => 'Τύπος',
+    'latest_activity_ip' => 'IP',
+    'latest_activity_time' => 'Χρόνος',
 ];
