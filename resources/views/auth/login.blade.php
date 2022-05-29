@@ -21,7 +21,7 @@
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-user fa-sm"></i>
                             <x-auth.label for="email">{{__('auth.general.email')}}</x-auth.label>
-                            <x-auth.input id="email" name="email" type="email" error="email"
+                            <x-auth.input id="email" name="email" type="email" error="email" autocomplete="email"
                                           value="{{old('email')}}" placeholder="{{__('auth.general.email')}}"/>
                         </div>
                     </div>
@@ -29,8 +29,11 @@
                         <div class="w-full px-3">
                             <i class="fas fa-lock fa-sm"></i>
                             <x-auth.label for="password">{{__('auth.general.password')}}</x-auth.label>
-                            <x-auth.input id="password" name="password" type="password" error="password"
-                                          placeholder="{{__('auth.general.password')}}"/>
+                            <div class="relative">
+                                <x-auth.input id="password" name="password" type="password"
+                                              error="password" autocomplete="current-password"
+                                              placeholder="{{__('auth.general.password')}}"/>
+                            </div>
                         </div>
                     </div>
                     <div class="px-3 mt-4 mb-6 flex justify-between items-center">

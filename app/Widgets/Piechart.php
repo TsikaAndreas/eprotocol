@@ -63,8 +63,10 @@ class Piechart extends AbstractWidget
                 ]
             ],
         ];
-        foreach ($data['types'] as $key => $item){
-            $data['types'][$key]['percentage'] = number_format($item['value'] / $data['total'] * 100,2);
+        if ($data['total'] > 0) {
+            foreach ($data['types'] as $key => $item) {
+                $data['types'][$key]['percentage'] = number_format($item['value'] / $data['total'] * 100, 2);
+            }
         }
 
         return view('widgets.piechart', [

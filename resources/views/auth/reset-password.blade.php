@@ -24,16 +24,20 @@
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-lock fa-sm"></i>
                             <x-auth.label for="password">{{__('auth.reset_password.password')}}</x-auth.label>
-                            <x-auth.input id="password" name="password" type="password" required error="password"
-                                          placeholder="{{__('auth.reset_password.password')}}"/>
+                            <div class="relative">
+                                <x-auth.input id="password" name="password" type="password" required error="password"
+                                              placeholder="{{__('auth.reset_password.password')}}"/>
+                            </div>
                         </div>
                     </div>
                     <div class="flex">
                         <div class="w-full px-3 mb-5">
                             <i class="fas fa-lock fa-sm"></i>
                             <x-auth.label for="password_confirmation">{{__('auth.reset_password.password_confirmation')}}</x-auth.label>
-                            <x-auth.input id="password_confirmation" name="password_confirmation" required error="password_confirmation"
-                                          type="password_confirmation" placeholder="{{__('auth.reset_password.password_confirmation')}}"/>
+                            <div class="relative">
+                                <x-auth.input id="password_confirmation" name="password_confirmation" required error="password_confirmation"
+                                              type="password_confirmation" placeholder="{{__('auth.reset_password.password_confirmation')}}"/>
+                            </div>
                         </div>
                     </div>
                     <div class="flex">

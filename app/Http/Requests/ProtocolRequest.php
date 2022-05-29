@@ -33,8 +33,8 @@ class ProtocolRequest extends FormRequest
         return [
             'type' => Rule::in(['incoming','outgoing']),
             'incoming_protocol' => ['required_if:type,===,incoming','string','max:20'],
-            'incoming_protocol_date' => ['required_if:type,===,incoming','date'],
-            'protocol_date' => ['required_if:'.Request::route()->uri().',===,'.self::STORE_URI,'date'],
+            'incoming_protocol_date' => ['required_if:type,===,incoming','date','date_format:Y-m-d'],
+            'protocol_date' => ['required_if:'.Request::route()->uri().',===,'.self::STORE_URI,'date','date_format:Y-m-d'],
             'creator' => ['required','string','max:80'],
             'receiver' => ['required','string','max:80'],
             'title' => ['required','string','max:100'],

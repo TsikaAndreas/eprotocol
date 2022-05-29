@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class UserFactory extends Factory
 {
@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'firstname' => 'Admin',
             'lastname' => 'System',
             'email_verified_at' => now(),
-            'password' => bcrypt('admin123')
+            'password' => Hash::make('Admin123!@#')
         ];
     }
 }

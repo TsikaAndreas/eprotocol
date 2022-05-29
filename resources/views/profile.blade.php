@@ -118,8 +118,8 @@
                                 <div class="relative">
                                     <input id="password" class="block mt-1 custom-input"
                                            type="password" placeholder="{{trans('app.password')}}"
-                                           name="password" value="">
-                                    <i class="far fa-eye active-eye"></i>
+                                           name="password" value="" autocomplete="current-password">
+                                    <i class="far fa-eye-slash active-eye cursor-pointer"></i>
                                 </div>
                                 @error('password') <span class="error">{{ $message }}</span> @enderror
                             </label>
@@ -132,8 +132,8 @@
                                 <div class="relative">
                                     <input id="new_password" class="block mt-1 custom-input"
                                            type="password" placeholder="{{trans('app.new_password')}}"
-                                           name="new_password" value="">
-                                    <i class="far fa-eye active-eye"></i>
+                                           name="new_password" value="" autocomplete="new-password">
+                                    <i class="far fa-eye-slash active-eye cursor-pointer"></i>
                                 </div>
                                 @error('new_password') <span class="error">{{ $message }}</span> @enderror
                             </label>
@@ -142,8 +142,8 @@
                                 <div class="relative">
                                     <input id="new_password_confirmation" class="block mt-1 custom-input"
                                            type="password" placeholder="{{trans('app.new_password_confirmation')}}"
-                                           name="new_password_confirmation" value="">
-                                    <i class="far fa-eye active-eye"></i>
+                                           name="new_password_confirmation" value="" autocomplete="new-password">
+                                    <i class="far fa-eye-slash active-eye cursor-pointer"></i>
                                 </div>
                                 @error('new_password_confirmation') <span class="error">{{ $message }}</span> @enderror
                             </label>

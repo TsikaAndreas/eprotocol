@@ -76,12 +76,12 @@ $(document).ready(function () {
             let sibling = event.target.previousElementSibling;
             if (sibling.getAttribute('type') === 'password'){
                 sibling.setAttribute('type','text');
-                event.target.classList.remove('.fa-eye');
-                event.target.classList.add('fa-eye-slash');
-            } else {
-                sibling.setAttribute('type','password');
                 event.target.classList.remove('fa-eye-slash');
                 event.target.classList.add('fa-eye');
+            } else {
+                sibling.setAttribute('type','password');
+                event.target.classList.remove('fa-eye');
+                event.target.classList.add('fa-eye-slash');
             }
         })
     })
