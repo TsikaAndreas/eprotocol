@@ -1,6 +1,6 @@
 ## About eProtocol
 
-This is an application for the digital management and organization of the registration process of records in an organization.
+It is an application for the digital management and organisation of the registration process in an organisation/institution.
 
 An e-Protocol program includes all the necessary tools to coordinate, monitor and organise an organisation's protocol process.
 
