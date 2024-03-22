@@ -13,7 +13,7 @@ The eProtocol program encompasses essential tools for coordinating, monitoring, 
 - **Robust Document Security**: Ensures secure storage of documents to maintain confidentiality.
 
 ## 👨‍💻 Author
-This laravel application was developed by **Andrei-Robert Tica** (**Αντρέϊ-Ρομπερτ Τσίκα**).
+This laravel application was developed by **Andrei-Robert Țîcă** (**Αντρέϊ-Ρομπερτ Τσίκα**).
 
 ## ⚙️ Installation
 To install the application on your server, follow the steps below:
